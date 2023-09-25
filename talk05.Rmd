@@ -391,6 +391,22 @@ grades.melted2 %>%
 
 问题1： 每个人的最**差**科目是什么？？
 
+```{r}
+# Arrange the data
+grades.melted3 = 
+  grades.melted %>% 
+  arrange(Name, grade);
+
+# Print the results
+grades.melted3 %>% 
+  group_by(Name) %>% 
+  summarise( worst_course = first(course),
+             worst_grade = first(grade),
+             avg_grades = mean(grade)) %>% 
+  arrange(-avg_grades);
+
+```
+
 ## ** 列的使用！ **，以 `starwars` tibble 为例
 
 \FontSmall
