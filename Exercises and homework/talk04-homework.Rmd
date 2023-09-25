@@ -1,0 +1,387 @@
+---
+title: "talk04 练习与作业"
+documentclass: ctexart
+output:
+  rticles::ctex:
+    fig_caption: yes
+    number_sections: yes
+    toc: true
+    toc_depth: 2
+  word_document: default
+  html_document:
+    df_print: paged
+knit: (
+  function(inputFile, encoding) { 
+
+    pSubTitle <- 'talk04-homework'
+
+    rmarkdown::render( 
+      input       = inputFile, 
+      encoding    = encoding, 
+      params      = list(sub_title = pSubTitle),      
+      output_file = pSubTitle) })
+---
+
+## 练习和作业说明
+
+将相关代码填写入以 \`\`\`{r} \`\`\` 标志的代码框中，运行并看到正确的结果；
+
+完成后，用工具栏里的"Knit"按键生成PDF文档；
+
+**将PDF文档**改为：`姓名-学号-talk04作业.pdf`，并提交到老师指定的平台/钉群。
+
+## Talk04 内容回顾
+
+待写 ...
+
+## 练习与作业：用户验证
+
+请运行以下命令，验证你的用户名。
+
+**如你当前用户名不能体现你的真实姓名，请改为拼音后再运行本作业！**
+
+```{r}
+Sys.info()[["user"]]
+Sys.getenv("HOME")
+```
+
+## 练习与作业1：R session管理
+
+------------------------------------------------------------------------
+
+### **完成以下操作**
+
+-   定义一些变量（比如 x, y , z 并赋值；内容随意）
+-   从外部文件装入一些数据（可自行创建一个4行5列的数据，内容随意）
+-   保存workspace 到.RData
+-   列出当前工作空间内的所有变量
+-   删除当前工作空间内所有变量
+-   从.RData文件恢复保存的数据
+-   再次列出当前工作空间内的所有变量，以确认变量已恢复
+-   随机删除两个变量
+-   再次列出当前工作空间内的所有变量
+
+```{r}
+## 代码写这里，并运行；
+# Creating some variables
+x = 1
+y = 2
+table = read.table(file = "data/Table0.txt",
+           col.names = c("Name", "Age", "Height", "Weight", "Gender"))
+
+# Store these variables
+ls()
+
+# Save .RData
+save.image(file = ".talk03.RData")
+
+# Remove the variables
+rm(list = ls())
+
+# List the variables
+ls()
+
+# Restore data from file
+load(file = ".talk03.RData")
+
+# List the variables
+ls()
+
+# Remove two variables
+rm(list = c("x", "y"))
+
+
+```
+
+## 练习与作业2：Factor基础
+
+------------------------------------------------------------------------
+
+### **factors 增加**
+
+-   创建一个变量：
+
+`x <- c("single", "married", "married", "single");`
+
+-   为其增加 两个 levels，`single`, `married`;
+
+-   以下操作能成功吗？
+
+`x[3] <- "widowed"`;
+
+-   如果不，请提供解决方案；
+
+```{r}
+## 代码写这里，并运行；
+# Creating the variable
+x = c("single", "married", "married", "single")
+
+# Adding two levels
+x = as.factor(x)
+x_level = levels(x)
+str(x)
+
+# Print the result
+print(x_level)
+
+# Add "widowed" to the variable
+levels(x) = c(levels(x), "widowed")
+x[length(x) + 1] = "widowed"
+str(x)
+
+# Print the result
+print(x)
+
+```
+
+### **factors 改变**
+
+-   创建一个变量：
+
+`v = c("a", "b", "a", "c", "b")`
+
+-   将其转化为 `factor`，查看变量内容
+
+-   将其第一个levels的值改为任意字符，再次查看变量内容
+
+```{r}
+## 代码写这里，并运行；
+# Creating the variable
+v = c("a", "b", "a", "c", "b")
+
+# Convert the variable to factor
+if(!is.factor(v))
+  v = as.factor(v)
+
+# Print the result
+is.factor(v)
+print(v)
+
+# Change the factor
+v[1] = "c"
+
+# Print the result
+print(v)
+```
+
+-   比较改变前后的 `v` 的内容，改变levels 的操作使 `v` 发生了什么变化？
+
+**答：**
+
+When changing the levels of a factor, the categories or labels associated with that factor are essentially being modified. In this example, I modify the lable of the first level from "a" to "c".
+
+### **factors合并**
+
+-   创建两个由随机大写字母组成的 factors
+
+-   合并两个变量，使其 `factors` 得以在合并后保留
+
+```{r}
+## 代码写这里，并运行；
+# Set a random seed
+set.seed(sample(1:1000, 1))
+
+# Create two random factors
+factor1 = factor(sample(LETTERS, 5, replace = TRUE))
+factor2 = factor(sample(LETTERS, 5, replace = TRUE))
+
+# Print the two factors
+print(factor1)
+print(factor2)
+
+# Merge the two factors into a new factor
+merged_factor = factor(paste(factor1, factor2, sep = "_"))
+
+# Print the result
+print(merged_factor)
+
+```
+
+------------------------------------------------------------------------
+
+### **利用factor排序**
+
+以下变量包含了几个月份，请使用`factor`，使其能按月份，而不是英文字符串排序：
+
+`mon <- c("Mar","Nov","Mar","Aug","Sep","Jun","Nov","Nov","Oct","Jun","May","Sep","Dec","Jul","Nov");`
+
+```{r}
+## 代码写这里，并运行；
+# Create the required factor and a factor containing months, sorted in month order
+mon = c("Mar", "Nov", "Mar", "Aug", "Sep", "Jun", "Nov", "Nov", "Oct", "Jun", "May", "Sep", "Dec", "Jul", "Nov")
+months = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+# Use the factor function to convert mon into a factor and specify the levels parameter to sort by month order
+mon_factor = factor(mon, levels = months)
+
+# Print the result
+print(mon_factor)
+
+```
+
+------------------------------------------------------------------------
+
+### **forcats的问题**
+
+`forcats`包中的 fct_inorder, fct_infreq和 fct_inseq 函数的作用是什么？
+
+请使用`forcats`包中的`gss_cat`数据举例说明
+
+**答：**
+
+`forcats` 包是用于操作因子变量的包，它提供了许多有用的函数来处理和修改因子。其中包括 `fct_inorder()`、`fct_infreq()` 和 `fct_inseq()` 函数，分别用于以下用途：
+
+1. `fct_inorder()`: 此函数用于按照因子的当前顺序对因子水平进行排序。它不会改变因子水平的值，只会按照它们出现的顺序重新排列因子水平。这对于将因子水平按照它们在数据中的出现顺序进行排序非常有用。
+
+2. `fct_infreq()`: 此函数用于按照因子水平的频率（出现次数）对因子水平进行排序。它会将最常出现的水平排在前面，依次排列其他水平。这对于查看或可视化因子水平的频率分布非常有用。
+
+3. `fct_inseq()`: 此函数用于按照一组自定义的水平顺序对因子水平进行排序。您可以提供一个水平的向量，指定所需的排序顺序。这对于按照特定顺序对因子水平进行排序非常有用。
+
+下面是使用 `forcats` 包中的 `gss_cat` 数据说明如何使用这些函数的例子：
+
+```{r}
+## 代码写这里，并运行；
+library(forcats)
+
+# Using the gss_cat dataset
+data("gss_cat")
+
+# View the first few rows of the gss_cat dataset
+head(gss_cat)
+
+# Sorting 'relig' variables in the gss_cat dataset with fct_inorder()
+gss_cat$relig = fct_inorder(gss_cat$relig)
+head(gss_cat$relig)
+
+# Sorting 'relig' variables in the gss_cat dataset using fct_infreq()
+gss_cat$relig = fct_infreq(gss_cat$relig)
+head(gss_cat$relig)
+sum(is.na(gss_cat$tvhours))
+
+# Define custom sort order
+custom_order = c("12", "16", "20", "8", "9", "5", "6", "7", "10", "11", "4", "3", "2", "1")
+gss_cat$tvhours = as.factor(gss_cat$tvhours)
+gss_cat$tvhours = fct_inseq(gss_cat$tvhours, ordered = TRUE)
+
+head(gss_cat$tvhours)
+
+```
+
+## 练习与作业3：用 mouse genes 数据做图
+
+------------------------------------------------------------------------
+
+### **画图**
+
+1.  用 readr 包中的函数读取 mouse genes 文件 （从本课程的 Github 页面下载 data/talk04/ ）
+2.  选取常染色体（1-19）和性染色体（X，Y）的基因
+3.  画以下两个基因长度 boxplot :
+
+-   按染色体序号排列，比如 1, 2, 3 .... X, Y
+-   按基因长度 中值 排列，从 短 -\> 长 ...
+-   作图结果要求：
+    -   要清晰显示 boxplot 的主体；
+
+    -   严格按照中值进行排序；注：\`ylim()\`限制时会去除一些值，造成中值错位。可考虑使用其它函数或调整参数。
+
+```{r}
+## 代码写这里，并运行；
+# Load the required libraries
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+
+# 1. Read the mouse genes file with functions from the readr package
+file_path = "../data/talk04/mouse_genes_biomart_sep2018.txt"
+mouse_genes = read_delim(file_path, 
+                         delim = "\t", 
+                         show_col_types = FALSE)
+mouse_genes = tibble(mouse_genes)
+
+
+# 2. Selection of genes for autosomes (1-19) and sex chromosomes (X, Y)
+selected_chromosomes = c(1:19, "X", "Y")
+filtered_genes = mouse_genes %>%
+  filter(`Chromosome/scaffold name` %in% selected_chromosomes)
+
+# 3. Draw a boxplot of the lengths of the two genes
+
+# 3.1. Arrangement by chromosome number
+
+filtered_genes$`Chromosome/scaffold name` = factor(filtered_genes$`Chromosome/scaffold name`, levels = selected_chromosomes)
+
+# Not using ylim()
+p1 = ggplot(filtered_genes, 
+            aes(x = factor(`Chromosome/scaffold name`), 
+                y = `Transcript length (including UTRs and CDS)`)) +
+  geom_boxplot() +
+  coord_flip() + 
+  labs(
+    x = "Chromosome",
+    y = "Gene Length",
+    title = "Gene Length by Chromosome, not using ylim()"
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Using ylim()
+p2 = ggplot(filtered_genes, 
+            aes(x = factor(`Chromosome/scaffold name`), 
+                y = `Transcript length (including UTRs and CDS)`)) +
+  geom_boxplot() +
+  ylim(0, 5000) +
+  coord_flip() + 
+  labs(
+    x = "Chromosome",
+    y = "Gene Length",
+    title = "Gene Length by Chromosome, using ylim()"
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# 3.2. Ordered by median gene length
+# Not Using ylim()
+p3 = ggplot(filtered_genes, 
+            aes(x = reorder(`Chromosome/scaffold name`, `Transcript length (including UTRs and CDS)`, FUN = median), 
+                y = `Transcript length (including UTRs and CDS)`)) + 
+  geom_boxplot() +
+  coord_flip() + 
+  labs(
+    x = "Chromosome (Ordered by Median Gene Length)",
+    y = "Gene Length",
+    title = "Gene Length by Chromosome (Ordered by Median), not using ylim()"
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Using ylim()
+p4 = ggplot( data = filtered_genes, 
+             aes( x = reorder( `Chromosome/scaffold name`, `Transcript length (including UTRs and CDS)`,FUN = median ),
+                  y = `Transcript length (including UTRs and CDS)` ) ) +
+  geom_boxplot() + 
+  coord_flip() + 
+  ylim(0, 5000) +
+  theme_bw() +
+  labs(
+    x = "Chromosome (Ordered by Median Gene Length)",
+    y = "Gene Length",
+    title = "Gene Length by Chromosome (Ordered by Median), using ylim()"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
+
+# Drawing two shapes
+pic1 = grid.arrange(p1)
+
+pic3 = grid.arrange(p3)
+
+pic2 = grid.arrange(p2)
+
+pic4 = grid.arrange(p4)
+
+```
+
+> All the codes above partly based on ChatGPT 3.5 to fix some bugs.
+
+> Refer to the DigitalOcean forum for the usage of some of the functions.

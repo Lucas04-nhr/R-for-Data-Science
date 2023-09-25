@@ -1,0 +1,834 @@
+---
+title: "talk03 练习与作业"
+documentclass: ctexart
+output:
+  rticles::ctex:
+    fig_caption: yes
+    number_sections: yes
+    toc: true
+    toc_depth: 2
+  word_document: default
+  html_document:
+    df_print: paged
+knit: (
+  function(inputFile, encoding) { 
+
+    pSubTitle <- 'talk03-homework'
+
+    rmarkdown::render( 
+      input       = inputFile, 
+      encoding    = encoding, 
+      params      = list(sub_title = pSubTitle),      
+      output_file = pSubTitle)
+      
+    knitr::opts_chunk$set(
+      tidy = TRUE)
+      })
+---
+
+## 练习和作业说明
+
+将相关代码填写入以 \`\`\`{r} \`\`\` 标志的代码框中，运行并看到正确的结果；
+
+完成后，用工具栏里的"Knit"按键生成PDF文档；
+
+**将生成的PDF**改为：**`姓名-学号-talk03作业.pdf`**，并提交到老师指定的平台/钉群。
+
+## talk03 内容回顾
+
+-   二维表：`data.frame`, `tibble`
+
+    -   声明
+
+    -   操作
+
+        -   增减行、列
+
+        -   合并
+
+    -   常用相关函数
+
+        -   `nrow`, `ncol`, `dim` , `str` , `head`, `tail`
+
+    -   `data.frame`和 `tibble` 的不同
+
+    -   高级技巧：
+
+        -   `with`, `within`
+
+-   IO
+
+    -   系统自带函数
+
+    -   `readr` 带的函数
+
+    -   不同格式的读取
+
+    -   从网络、压缩文件读取
+
+## 练习与作业：用户验证
+
+请运行以下命令，验证你的用户名。
+
+**如你当前用户名不能体现你的真实姓名，请改为拼音后再运行本作业！**
+
+```{r}
+Sys.info()[["user"]]
+Sys.getenv("HOME")
+```
+
+## 练习与作业1，`data.frame`
+
+注：以下内容来自 <https://www.r-exercises.com/>。
+
+-   **生成下面的 `data.frame` 的前三列，之后再增加 `Sex` 这列**
+
+![](images/table1.png){width="80%"}
+
+```{r}
+# Generate the first 3 columns；
+df01 = data.frame(
+  Age = c(25, 31, 23, 52 ,76, 49, 26),
+  Height = c(177, 163, 190, 179, 163, 183, 164),
+  `Weight` = c(57, 69, 83, 75, 70, 83, 53)
+)
+
+# Rename
+rownames(df01) [1:7] = c("Alex", "Lilly", "Mark", "Oliver", "Martha", "Lucas", "Caroline")
+
+# Insert the forth row
+cbind(df01, "Sex" = c("F", "F", "M", "M", "F", "M", "F"))
+
+# Print the final result
+df01
+```
+
+------------------------------------------------------------------------
+
+-   **生成以下`data.frame`，确保`Working`这列的类型是 `character`，而不是 `factor`**
+
+![](images/table2.png){width="80%"}
+
+```{r}
+# Generate data.frame
+df02 = data.frame(
+  "Working" = c("Yes", "No", "No", "Yes", "Yes", "No", "Yes")
+)
+
+# Rename
+rownames(df02) [1:7] = c("Alex", "Lilly", "Mark", "Oliver", "Martha", "Lucas", "Caroline")
+
+# Print the final result
+df02;
+
+# Print the statue of row "Working"
+class(df02$Working);
+is.character(df02$Working)
+```
+
+------------------------------------------------------------------------
+
+-   **检查系统自带变量 `state.center` 的内容，将其转化为 `data.frame`**
+
+```{r}
+## 代码写这里，并运行；
+
+# Inspect the content
+state.center
+
+# Convert it into data.frame
+df03 = data.frame(state.center)
+
+# Print the data frame
+df03
+```
+
+------------------------------------------------------------------------
+
+-   **生成一个 50行 \* 5列 的`matrix`，将其行名改为：row_i 格式，其中 i 为当前的行号，比如 row_1, row_2 等**
+
+```{r}
+## 代码写这里，并运行；
+
+# Generate a 50*5 matrix
+m01 = matrix(sample(1:250), nrow = 50, ncol = 5);
+
+#Rename
+row_name_prefix = "row_"
+col_name_prefix = "col_"
+rownames(m01)[1:50] = paste0(row_name_prefix, 1:50)
+colnames(m01)[1:5] = paste0(col_name_prefix, 1:5)
+m01
+
+
+```
+
+------------------------------------------------------------------------
+
+-   **使用系统自带变量`VADeaths`，做如下练习：**
+
+-   检查`VADeaths`的类型，如果不是 `data.frame`，则转换之；
+
+-   添加新的一列，取名 `Total`，其值为每行的总合
+
+-   调整列的顺序，将 `Total` 变为第一列。
+
+```{r}
+## 代码写这里，并运行；
+
+VADeaths
+# Inspect the class of VADeaths
+if (!is.data.frame(VADeaths)) {
+  df04 = as.data.frame(VADeaths)
+}
+
+# Add the row "Total", which presents the sum of each column
+df04$Total = rowSums(df04)
+
+# Adjust the order to put "Total" to the first column
+df04 = df04[, c("Total", names(df04)[1:(ncol(df04)-1)])]
+
+# Print the result
+df04
+```
+
+------------------------------------------------------------------------
+
+-   **用系统自带的`swiss`数据做练习：**
+
+-   取子集，选取第1, 2, 3, 10, 11, 12 and 13行，第`Examination`, `Education` 和 `Infant.Mortality`列；
+
+-   将`Sarine`行 `Infant.Mortality` 列的值改为NA；
+
+-   增加一列，命名为 `Mean`，其值为当前行的平均值；
+
+```{r}
+## 代码写这里，并运行；
+
+# Load the data
+data(swiss)
+
+# Choose the subset
+df05_subset = swiss[c(1, 2, 3, 10, 11, 12, 13), c("Examination", "Education", "Infant.Mortality")]
+
+# Replace the data of "Sarine"'s "Infant.Mortality to NA
+df05_subset[df05_subset$Infant.Mortality == "Sarine", "Infant.Mortality"] = NA
+ 
+# Add a row called "Mean"
+df05_subset = rowMeans(df05_subset, na.rm = TRUE)
+
+# Print the data frame
+df05_subset
+```
+
+------------------------------------------------------------------------
+
+-   **将下面三个变量合并生成一个`data.frame`**
+
+`Id <- LETTERS`
+
+`x <- seq(1,43,along.with=Id)`
+
+`y <- seq(-20,0,along.with=Id)`
+
+```{r}
+## 代码写这里，并运行；
+
+# Create the variables
+Id = LETTERS
+x = seq(1, 43, along.with = Id)
+y = seq(-20, 0, along.with = Id)
+
+# Combine to data.frame
+df06 <- data.frame(Id = Id, x = x, y = y)
+
+# Show the result
+df06
+
+```
+
+**问：** `seq`函数中的`along.with` 参数的意义是什么？请举例说明。
+
+**答：**
+
+**`seq()`**函数中的**`along.with`**参数是一个用于指定生成序列的长度和步长的参数。它是一个可选参数，通常与**`from`**和**`to`**参数一起使用，用于确保生成的序列具有与**`along.with`**参数相同的长度。
+
+当提供**`along.with`**参数时，R会根据**`along.with`**参数中的向量的长度来确定生成序列的长度，并根据需要对**`from`**和**`to`**参数进行适当的调整，以确保生成的序列具有与**`along.with`**相同的长度。
+
+> Partly based on wikipedia.org
+
+```{r}
+## 代码写这里，并运行；
+
+# Create an along.with vector
+along_with_vector = c("A", "B", "C", "D", "E")
+
+# Generate a sequence using the along.with parameter
+sequence = seq(1, 10, along.with = along_with_vector)
+
+# Display the generated sequence and the along.with vector
+along_with_vector
+sequence
+```
+
+------------------------------------------------------------------------
+
+-   **提供代码，合并以下两个 `data.frame`**
+
+<!-- -->
+
+```         
+> df1 的内容 
+Id Age
+1 14
+2 12
+3 15
+4 10 
+
+>df2 的内容
+Id Sex Code
+1 F a
+2 M b
+3 M c
+4 F d
+```
+
+合并之后的结果：
+
+```         
+> M 
+Id Age Sex Code
+1 14 F a
+2 12 M b
+3 15 M c
+4 10 F d
+```
+
+```{r}
+## 代码写这里，并运行；
+
+# Create df1
+df1 = data.frame(Id = 1:4, Age = c(14, 12, 15, 10))
+
+# Create df2
+df2 = data.frame(Id = 1:4, Sex = c("F", "M", "M", "F"), Code = c("a", "b", "c", "d"))
+
+# Merge the two data frames
+result = merge(df1, df2, by = "Id")
+
+# Rename the column names of the result
+colnames(result) = c("Id", "Age", "Sex", "Code")
+
+# Print the merged result
+result
+
+
+```
+
+------------------------------------------------------------------------
+
+-   **从上面的`data.frame`中删除`code`列**
+
+-   Method 1: Using the `subset()` function
+
+```{r}
+## 代码写这里，并运行；
+
+# Use the subset() function to remove the Code column
+result = subset(result, select = -Code)
+
+# Print the data frame after removing the Code column
+result
+
+```
+
+-   Method 2: Directly specifying NULL
+
+```{r}
+## 代码写这里，并运行；
+
+# Set the Code column to NULL directly
+result$Code = NULL
+
+# Print the data frame after removing the Code column
+result
+
+```
+
+------------------------------------------------------------------------
+
+-   **练习，回答代码中的问题**
+
+<!-- -->
+
+```         
+## 1. 生成一个10 行2 列的data.frame
+df3 <- data.frame( data = 1:10, group = c("A","B") );
+## 2. 增加一列，其长度是1，可以吗？
+cbind(df3, newcol = 1);
+## 3. 增加一列，其长度是10，可以吗？
+cbind(df3, newcol = 1:10);
+## 4. 增加一列，其长度是2，可以吗？
+cbind(df3, newcol = 1:2);
+## 5. 增加一列，其长度是3，可以吗？
+cbind(df3, newcol = 1:3);
+```
+
+**答：**
+
+All of the question is OK, except for the last one. Here is the reason:
+
+When using the `cbind()` function to add a new column to a data frame, the length of the new column must match the number of rows in the data frame; otherwise, it will result in an error.
+
+> Partly based on the R documentation.
+
+## 练习与作业2，`tibble`
+
+-   **运行以下代码，生成一个新的`tibble`：**
+
+```{r}
+## 如果系统中没有 lubridate 包，则安装：
+if (!require("lubridate")){ 
+  chooseCRANmirror();
+  install.packages("lubridate");
+} 
+library(lubridate);
+
+if (!require("tibble")){ 
+  chooseCRANmirror();
+  install.packages("tibble");
+}
+library(tibble);
+
+tibble(
+  a = lubridate::now() + runif(1e3) * 86400,
+  b = lubridate::today() + runif(1e3) * 30,
+  c = 1:1e3,
+  d = runif(1e3),
+  e = sample(letters, 1e3, replace = TRUE)
+)
+```
+
+从中可以看出，`tibble`支持一些细分数据类型，包括：
+
+-   `<dttm>`
+-   `<date>`
+
+等；
+
+------------------------------------------------------------------------
+
+-   **生成一个如下的`tibble`，完成以下任务：**
+
+<!-- -->
+
+```         
+df <- tibble(
+  x = runif(5),
+  y = rnorm(5)
+)
+```
+
+任务：
+
+-   取一列，比如`x`这一列，得到一个 `tibble`；
+-   取一列，比如`y`这一列，得到一个 `vector`；
+
+```{r}
+## 代码写这里，并运行；
+# Generate a new tibble
+df = tibble(
+  x = runif(5),
+  y = rnorm(5)
+)
+df
+
+# Extract "x" row
+df_x = df[,1]
+df_ext_x = tibble(df_x)
+df_ext_x
+
+# Extract "y" row
+df_y = df[,2]
+df_ext_y = tibble(df_y)
+df_ext_y = as.vector(df_ext_y)
+df_ext_y
+```
+
+------------------------------------------------------------------------
+
+-   **用 `tibble` 函数创建一个新的空表，并逐行增加一些随机的数据，共增加三行：**
+
+```{r}
+## 代码写这里，并运行；
+## 新tibble, with defined columns ... 创建表头
+tb = tibble( name = character(), age = integer(), salary = double() );
+
+##增加三行随机数据；
+# Generate the data and add the pre-generated data to the table
+
+for(i in 1:3) {
+  new_row = tibble(name = sample(c("Alice", "Bob", "Charlie"), 1),
+                   age = sample(20:60, 1),
+                   salary = runif(1, 30000, 80000))
+  tb <- add_row(tb, new_row)
+}
+
+# Print the tibble
+tb
+
+```
+
+------------------------------------------------------------------------
+
+> 下面的题目本来也想和前面那道题一样用英文回答的，但是感觉说的并不是很清楚，于是就用中文了
+
+-   \*\* 请解释为什么下面第一行代码能够运行成功，但第二个不行？ \*\*
+
+这个可以：
+
+`data.frame(a = 1:6, b = LETTERS[1:2]);`
+
+但下面这个不行：
+
+`tibble(a = 1:6, b = LETTERS[1:2]);`
+
+问：为什么？tibble 循环的规则是什么？
+
+答：
+
+这是因为`data.frame` 和 `tibble` 对于列的处理方式不同。
+
+1.  **data.frame**: `data.frame` 允许列的长度不同，如果列的长度不同，它会自动进行适配。因此，可以在 `data.frame` 中创建不同长度的列，如下：
+
+    ``` r
+    data.frame(a = 1:6, b = LETTERS[1:2])
+    ```
+
+2.  **tibble**: 与 `data.frame` 不同，`tibble` 要求所有的列长度必须相同。因此，如果尝试在 `tibble` 中创建不同长度的列，就像第二个示例一样，引发错误。
+
+    ```         
+    Error: Tibble columns must have consistent lengths, only values of length one are recycled:
+    * Length 6: Column `a`
+    * Length 2: Column `b`
+    ```
+
+------------------------------------------------------------------------
+
+-   **`attach`和`detach`：**
+
+问：这个两个函数的用途是什么？请用 `iris` 这个系统自带变量举例说明。
+
+答：
+
+`attach` 和 `detach` 是在R中用于将数据框或其他数据对象附加到搜索路径（search path）的函数。它们的主要目的是可以更方便地访问数据框中的变量。
+
+**`attach` 函数**的作用是将一个数据框或数据对象添加到搜索路径中，这样就可以直接使用数据框中的变量名而不需要使用数据框的名称来访问这些变量。
+
+**`detach` 函数**的作用是从搜索路径中移除附加的数据框或数据对象。这可以帮助避免变量名的歧义，并将搜索路径恢复到较原始的状态。
+
+下面是示例：
+
+```{r}
+# Using attach to add "iris" data frame into the search path
+attach(iris)
+
+# I can now call on the data in data.frame "iris" directly，not need to add prefix "iris$" 
+head(Sepal.Length)  # Call on "Sepal.Length" 
+head(Species)       # Call on "Species"
+
+# Using detach to remove "iris" data frame from the cearch path
+detach(iris)
+
+# Re-accessing the variable in the "iris" data box now results in an error because it is no longer in the search path
+# head(Sepal.Length)  # This line of code will cause an error
+# head(Species)       # This line of code will cause an error
+```
+
+需要注意的是，虽然 `attach` 和 `detach` 可以使代码看起来更简洁，但它们容易引发变量名的歧义，尤其当多个数据框中有相同名称的变量时。为了编写更清晰和健壮的代码，建议使用 `$` 运算符或 `with()` 函数来显式访问数据框中的变量，而不是使用 `attach` 和 `detach`。
+
+> Partly based on R Documentation and the "DigitalOcean" forum.
+
+------------------------------------------------------------------------
+
+-   **使用内置变量`airquality`：**
+
+-   检查它是否是 `tibble`；
+
+-   如果不是，转化为 `tibble`；
+
+```{r}
+## 代码写这里，并运行；
+
+# Check if airquality is a tibble
+if (!is_tibble(airquality)) {
+  # If it's not a tibble, convert it to a tibble
+  airquality = as_tibble(airquality)
+}
+
+# Now, airquality should be a tibble
+airquality
+
+```
+
+------------------------------------------------------------------------
+
+-   **问：`tibble::enframe`函数的用途是什么？请举例说明：**
+
+答：
+
+`tibble::enframe()` 函数用于将向量或列表转换为 `tibble` 格式的数据框，其中一列包含原始数据，另一列包含索引或名称。以下是一个示例：
+
+```{r}
+
+# Create a vector
+test_vector = c("apple", "banana", "cherry")
+
+# Converting vectors to tibble using enframe
+test_tibble_converted = tibble::enframe(test_vector, name = "fruit")
+
+# Print the result
+print(test_tibble_converted)
+```
+
+> Partly based on R Documentation and the "DigitalOcean" forum.
+
+------------------------------------------------------------------------
+
+-   **简述`tibble`相比`data.frame`的优势？并用实例展示**
+
+答：
+
+1.  **可读性：** `tibble` 对于数据的输出和显示更加友好，它会自动缩短过长的列名以提高可读性。这对于处理大型数据集时特别有用。
+
+2.  **数据结构一致性：** `tibble` 强制要求所有列的长度必须相同，防止了一些常见的数据不一致问题，有助于提高数据的质量。
+
+3.  **列的类型推断：** `tibble` 会自动推断列的数据类型，而 `data.frame` 通常将字符向量视为因子，这可能导致数据处理问题。
+
+4.  **更好的子集选择：** `tibble` 具有更好的列子集选择语法，可以使用 `dplyr` 包中的函数进行更灵活的数据操作。
+
+下面是一个示例，展示了 `tibble` 相对于 `data.frame` 的优势：
+
+```{r}
+## 代码写这里，并运行；
+
+# Creating a data.frame
+df = data.frame(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(25, 30, 35),
+  stringsAsFactors = FALSE
+)
+
+# Creating a tibble
+tb = tibble(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(25, 30, 35)
+)
+
+# Print data.frame
+print(df)
+
+# Print tibble
+print(tb)
+
+```
+
+> Partly based on R Documentation and the "DigitalOcean" & "CSDN" forum.
+
+## 练习与作业3：IO
+
+-   **提供代码，正确读取以下文件：**
+
+注：数据在当前目录下的 `data/` 子目录里
+
+-   Table0.txt
+-   Table1.txt
+-   Table2.txt
+-   Table3.txt
+-   Table4.txt
+-   Table5.txt
+-   Table6.txt
+-   states1.csv
+-   states2.csv
+
+注2：每个文件读取需要提供两种方法，一种是利用系统自带函数，另一种是`readr`包的函数；
+
+注3：请注意观察每列的数据特点，并将之读取为合理的数据类型；比如 体重 `1,77` 可理解为 `1.77` 米，并将之读取为 `col_double()` 类型；
+
+```{r}
+## 用系统自带函数，并显示读取的内容；
+
+# Table0
+read.table(file = "data/Table0.txt",
+           col.names = c("Name", "Age", "Height", "Weight", "Gender"))
+
+# Table1
+read.table(file = "data/Table1.txt",
+           header = 1)
+
+# Table2
+read.table(file = "data/Table2.txt",
+           skip = 2,
+           header = 3,
+           quote = "/")
+
+# Table3
+table3 = read.table(
+  file = "data/Table3.txt",
+  skip = 2,
+  header = 3,
+  stringsAsFactors = FALSE  
+)
+
+# Replace the odd character with NA
+table3[table3 == "--" | table3 == "*"] = NA
+
+table3$Age = as.numeric(table3$Age)
+table3$Height = as.numeric(table3$Height)
+table3$Weight = as.numeric(table3$Weight)
+
+print(table3)
+
+
+# Table4
+table4 = read.table(
+  file = "data/Table4.txt",
+  header = 1,
+  stringsAsFactors = FALSE,
+  na.strings = c("--", "-", "*", "**")
+)
+
+table4[table4 == "--" | table4 == "*" | table4 == "**"] = NA
+
+table4$Age = as.numeric(gsub(",", ".", table4$Age))
+table4$Height = as.numeric(gsub(",", ".", table4$Height))
+table4$Weight = as.numeric(table4$Weight)
+
+print(table4)
+
+
+# Table5
+table5 = read.csv2(file = "data/Table5.txt",
+          header = 1,
+          na.strings = c("--", "-", "*", "**"))
+
+table5$Age = as.numeric(gsub(",", ".", table5$Age))
+table5$Height = as.numeric(gsub(",", ".", table5$Height))
+table5$Weight = as.numeric(table5$Weight)
+
+# Table6
+# To avoid error, I should delete the " " after "@"
+lines_01 = readLines("data/Table6.txt")
+cleaned_lines_01 = character(0)
+for (line_01 in lines_01) {
+  cleaned_line_01 = sub("@ ", "@", line_01)
+  cleaned_lines_01 = c(cleaned_lines_01, cleaned_line_01)
+}
+cleaned_text_01 = paste(cleaned_lines_01, collapse = "\n")
+read.table(text = cleaned_text_01,
+           skip = 2,
+           header = 1)
+
+read.csv(file = "data/states1.csv")
+
+read.csv("data/states2.csv",
+           sep = ";")
+
+## 用readr 包的函数读取，并显示读取的内容；
+library(readr)
+library(dplyr)
+
+# Table0
+readr::read_table(file = "data/Table0.txt",
+                  col_names = c("Name", "Age", "Height", "Weight", "Gender"),
+                  show_col_types = FALSE)
+
+
+# Table1
+readr::read_table(file = "data/Table1.txt",
+                  show_col_types = FALSE)
+
+# Table2
+table02 = readr::read_table(
+  file = "data/Table2.txt",
+  col_names = c("Name", "Age", "Height", "Weight", "Sex"),
+  col_types = cols(
+    Name = col_character(),
+    Age = col_double(),
+    Height = col_double(),
+    Weight = col_double(),
+    Sex = col_character()
+  ),
+  skip = 1
+)
+
+table02$Name = gsub("/", "", table02$Name)
+table02$Sex = gsub("/", "", table02$Sex)
+
+print(table02)
+
+
+# Table3
+table03 = readr::read_table(file = "data/Table3.txt",
+           skip = 2)
+
+# Replace the odd character with NA
+table03[table03 == "--" | table03 == "*"] = NA
+
+table03$Age = as.numeric(table03$Age)
+table03$Height = as.numeric(table3$Height)
+table03$Weight = as.numeric(table3$Weight)
+
+print(table03)
+
+# Table4
+table04 = readr::read_table(
+  file = "data/Table4.txt"
+)
+
+table04[table04 == "--" | table04 == "*" | table04 == "**"] <- NA
+
+table04$Age = as.numeric(gsub(",", ".", table04$Age))
+table04$Height = as.numeric(gsub(",", ".", table04$Height))
+table04$Weight = as.numeric(table4$Weight)
+
+print(table04)
+
+# Table5
+table05 = readr::read_csv2(file = "data/Table5.txt",
+                  show_col_types = FALSE)
+
+table05$Age = as.numeric(gsub(",", ".", table05$Age))
+table05$Height = as.numeric(gsub(",", ".", table05$Height))
+table05$Weight = as.numeric(table05$Weight)
+
+# Table6
+# To avoid error, I should delete the " " after "@"
+lines_01 = readLines("data/Table6.txt")
+cleaned_lines_01 = character(0)
+for (line_01 in lines_01) {
+  cleaned_line_01 = sub("@ ", "@", line_01)
+  cleaned_lines_01 = c(cleaned_lines_01, cleaned_line_01)
+}
+cleaned_text_01 = paste(cleaned_lines_01, collapse = "\n")
+readr::read_table(cleaned_text_01,
+           skip = 2)
+
+readr::read_csv(file = "data/states1.csv")
+
+readr::read_delim("data/states2.csv",
+                  delim = ";", 
+                  escape_double = FALSE, 
+                  trim_ws = TRUE)
+
+```
+
+## Some bugs haven't been fixed:
+
+-   The white space before "\@" in "Table 06.txt". I can only delete it to avoid errors;
+
+-   The "/" character of "Table2.txt" in "readr" section;
+
+-   Transform the data type such as "1,77"(character) into "1.77"(numeric).
+
+**All the bugs are fixed in this version of homework.**

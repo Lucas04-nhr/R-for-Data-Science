@@ -1,0 +1,7 @@
+\contentsline {subsection}{\numberline {0.1}练习和作业说明}{1}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}talk03 内容回顾}{1}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}练习与作业：用户验证}{2}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.4}练习与作业1，\texttt {data.frame}}{2}{subsection.0.4}%
+\contentsline {subsection}{\numberline {0.5}练习与作业2，\texttt {tibble}}{18}{subsection.0.5}%
+\contentsline {subsection}{\numberline {0.6}练习与作业3：IO}{28}{subsection.0.6}%
+\contentsline {subsection}{\numberline {0.7}Some bugs haven't been fixed:}{49}{subsection.0.7}%
