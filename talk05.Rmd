@@ -175,7 +175,6 @@ mtcars %<>% transform(cyl = cyl * 2);
 -   pipe 的使用可以使思路更清晰
 -   因此，尽量使用 `%>%` （方向明确），而不使用其它方向不明确的 pipe
 
-
 # section 3: data wrangler - dplyr
 
 ## dplyr
@@ -409,7 +408,7 @@ grades.melted3 %>%
 
 ```
 
-## ** 列的使用！ **，以 `starwars` tibble 为例
+## \*\* 列的使用！ \*\*，以 `starwars` tibble 为例
 
 \FontSmall
 
@@ -507,11 +506,13 @@ starwars %>% select( name, ends_with("color"), gender, species ) %>%
 
 ## 练习考察
 
-问题2： 从 `starwars` 中选出 18 < bmi < 25  的人物，统计他们的 `homeworld` 分布情况
+问题2： 从 `starwars` 中选出 18 \< bmi \< 25 的人物，统计他们的 `homeworld` 分布情况
 
 提示： 1. 需计算 bmi； 2. 用 `count` 函数计算 `homeworld` 的分布
 
+```{r}
 
+```
 
 # section 4 : 练习与作业
 
