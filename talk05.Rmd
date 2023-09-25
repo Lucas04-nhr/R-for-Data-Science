@@ -391,6 +391,8 @@ grades.melted2 %>%
 
 问题1： 每个人的最**差**科目是什么？？
 
+\FontSmall
+
 ```{r}
 # Arrange the data
 grades.melted3 = 
