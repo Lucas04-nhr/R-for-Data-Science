@@ -67,23 +67,111 @@ library(dplyr)
 library(tidyverse)
 
 # read mouse.tibble
-mouse.tibble =
+mouse_tibble =
   read_delim(file = "../data/talk04/mouse_genes_biomart_sep2018.txt",
              delim = "\t", 
              quote = "",
              show_col_types = FALSE)
 
 # Convert the mouse.tibble to tibble
-if(!is.tibble(mouse.tibble))
-  mouse.tibble = as_tibble(mouse.tibble)
+if(!is.tibble(mouse_tibble))
+  mouse_tibble = as_tibble(mouse_tibble)
 
 # Arrange the data
-mouse.melted1 = grades %>% 
-  gather( course, grade, -Name, -Occupation, na.rm = T )
+gene_summary = mouse_tibble %>%
+  group_by(
+    `Chromosome/scaffold name`, 
+    `Transcript type`) %>%
+  summarize(
+    Gene_Count = n(),
+    Avg_Length = 
+      mean(`Transcript length (including UTRs and CDS)`),
+    Max_Length = 
+      max(`Transcript length (including UTRs and CDS)`),
+    Min_Length = 
+      min(`Transcript length (including UTRs and CDS)`),
+    Longest_Gene = 
+      `Chromosome/scaffold name`[
+        which.max(
+          `Transcript length (including UTRs and CDS)`)],
+    Shortest_Gene = 
+      `Chromosome/scaffold name`[
+        which.min(
+          `Transcript length (including UTRs and CDS)`)]
+  )
 
-# Check the data
+# Remove the chromosome containing the following 500 genes
+filtered_gene_summary =
+  gene_summary %>%
+  group_by(
+    `Chromosome/scaffold name`) %>%
+  filter(
+    sum(Gene_Count) > 500)
 
-filter(mouse.melted1$`Transcript length (including UTRs and CDS)` %in% )
+# Descending order by number of chromosomes and genes
+sorted_gene_summary =
+  filtered_gene_summary %>%
+  arrange(
+    `Chromosome/scaffold name`, desc(Gene_Count))
+
+# Print the data
+sorted_gene_summary
+
+
+```
+
+**挑战题：**
+
+```{r}
+# Load the packages
+library(dplyr)
+library(tidyverse)
+
+# read mouse.tibble
+mouse_tibble2 =
+  read_delim(file = "../data/talk04/mouse_genes_biomart_sep2018.txt",
+             delim = "\t", 
+             quote = "",
+             show_col_types = FALSE)
+
+# Convert the mouse.tibble to tibble
+if(!is.tibble(mouse_tibble2))
+  mouse_tibble2 = as_tibble(mouse_tibble2)
+
+# Processing data
+sorted_gene_summary2 =
+  mouse_tibble2 %>%
+  group_by(
+    `Chromosome/scaffold name`,
+    `Transcript type`) %>%
+  summarize(
+    Gene_Count = n(),
+    Avg_Length = 
+      mean(`Transcript length (including UTRs and CDS)`),
+    Max_Length = 
+      max(`Transcript length (including UTRs and CDS)`),
+    Min_Length = 
+      min(`Transcript length (including UTRs and CDS)`),
+    Longest_Gene = 
+      `Chromosome/scaffold name`[
+        which.max(
+          `Transcript length (including UTRs and CDS)`)],
+    Shortest_Gene = 
+      `Chromosome/scaffold name`[
+        which.min(
+          `Transcript length (including UTRs and CDS)`)]
+  )%>%
+  ungroup() %>%
+  group_by(
+    `Chromosome/scaffold name`) %>%
+  filter(
+    sum(Gene_Count) > 500) %>%
+  # ungroup() %>%
+  arrange(
+    `Chromosome/scaffold name`, desc(Gene_Count))
+
+# Print the data
+sorted_gene_summary2
 
 ```
 
@@ -101,7 +189,9 @@ filter(mouse.melted1$`Transcript length (including UTRs and CDS)` %in% )
 
 ```{r}
 ## 代码写这里，并运行；
+library(dplyr);
 
+grades = read_tsv(file = "data/talk05/grades.txt")
 ```
 
 3.  研究并使用 `tidyr`包里的 `pivot_longer` 和 `pivot_wider` 函数对 `grades` 变量进行宽长转换；
