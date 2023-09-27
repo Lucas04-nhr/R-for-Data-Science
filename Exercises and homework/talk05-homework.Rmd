@@ -196,6 +196,75 @@ grades2 <- tibble( "Name" = c("Weihua Chen", "Mm Hu", "John Doe", "Jane Doe",
 ```{r}
 ## 代码写这里，并运行；
 
+# Load the tibble
+grades2 =
+  tibble( 
+    "Name" = c("Weihua Chen", "Mm Hu", 
+               "John Doe", "Jane Doe",
+               "Warren Buffet", "Elon Musk", 
+               "Jack Ma"),
+    "Occupation" = c("Teacher", "Student", 
+                     "Teacher", "Student", 
+                     rep("Entrepreneur", 3)),
+    "English" = sample(60:100, 7),
+    "ComputerScience" = sample(80:90, 7),
+    "Biology" = sample(50:100, 7),
+    "Bioinformatics" = sample(40:90, 7))
+
+# Question 1
+# Use dplyr to find everyone's worst subjects and grades
+worst_subject_per_person =
+  grades2 %>%
+  mutate(
+    Min_Score = pmin(English,
+                     ComputerScience,
+                     Biology, 
+                     Bioinformatics)) %>%
+  select(Name, Min_Score)
+
+print(worst_subject_per_person)
+
+# Question 2
+# Use dplyr to calculate the average score for each occupation 
+# Find the occupation with the highest average score
+best_occupation =
+  grades2 %>%
+  group_by(Occupation) %>%
+  summarise(
+    Avg_Score = 
+      mean(English + 
+             ComputerScience + 
+             Biology + 
+             Bioinformatics)/4) %>%
+  arrange(desc(Avg_Score)) %>%
+  slice(1)
+
+print(best_occupation)
+
+# Question 3
+# Use dplyr to calculate the average score 
+# for each subject for each occupation 
+# Find the subject with the highest average score
+best_subject_per_occupation =
+  grades2 %>%
+  group_by(Occupation) %>%
+  summarise(
+    Best_Subject = 
+      which.max(c(mean(English), 
+                  mean(ComputerScience), 
+                  mean(Biology), 
+                  mean(Bioinformatics)))) %>%
+  ungroup() %>%
+  mutate(
+    Best_Subject =
+      c("English", 
+        "ComputerScience", 
+        "Biology", 
+        "Bioinformatics")[Best_Subject])
+
+print(best_subject_per_occupation)
+
+
 ```
 
 ------------------------------------------------------------------------
@@ -207,6 +276,29 @@ grades2 <- tibble( "Name" = c("Weihua Chen", "Mm Hu", "John Doe", "Jane Doe",
 
 ```{r}
 ## 代码写这里，并运行；
+# Loading the dplyr library
+library(dplyr)
+
+# Calculate BMI for each individual
+starwars_bmi =
+  starwars %>%
+  mutate(
+    BMI = mass / (height/100)^2)
+
+# Print the results of Q1
+print(starwars_bmi)
+
+# Pick out obese humans and screen for columns that need to be
+obese_humanoids =
+  starwars_bmi %>%
+  filter(
+    species == "Human" 
+    & BMI >= 30) %>%
+  select(name, sex, homeworld)
+
+# Print the result of Q2
+print(obese_humanoids)
+
 
 ```
 
@@ -216,6 +308,52 @@ grades2 <- tibble( "Name" = c("Weihua Chen", "Mm Hu", "John Doe", "Jane Doe",
 
 ```{r}
 ## 代码写这里，并运行；
+# Select all human beings
+humans =
+  starwars_bmi %>%
+  filter(species == "Human")
+
+# Create three BMI groupings
+humans$BMI_Group =
+  cut(humans$BMI, 
+      breaks = 
+        c(-Inf, 18, 25, Inf), 
+      labels = 
+        c("<18", "18-25", ">25"))
+
+# Counting the number of people in each group
+group_counts =
+  table(humans$BMI_Group)
+
+# Sort by BMI from smallest to largest
+group_counts =
+  group_counts[
+    order(
+      as.numeric(names(group_counts)))]
+
+# Displayed using barplot
+barplot(
+  group_counts, 
+  main = "Human BMI Distribution", 
+  xlab = "BMI Group", 
+  ylab = "Number of People", 
+  col = "blue")
+
+# Ordered from smallest to largest
+group_counts =
+  group_counts[order(group_counts)]
+
+# Displayed using barplot, 
+# sorted by quorum
+# from smallest to largest
+barplot(
+  group_counts,
+  main = "Human BMI Distribution(Sorted by quorum)", 
+  xlab = "BMI Group", 
+  ylab = "Number of People", 
+  col = "green")
+
+
 
 ```
 
