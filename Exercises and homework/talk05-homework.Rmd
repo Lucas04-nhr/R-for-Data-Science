@@ -359,12 +359,70 @@ barplot(
 
 6.  查看 `starwars` 的 `films` 列，它有什么特点？`data.frame`可以实现类似的功能吗？
 
-答：
+**答：**
+
+这一列中的所有元素都是以列表的形式存储在tibble中。
+
+data.frame不能够直接存储一些列表在某特定单元格内，但是可以通过其他的方式来实现类似的效果。
+
++ List Column: 使用data.frame的一列来存储列表（list）数据，每个元素表示一个包含电影信息的子列表。这样可以模拟films列的结构。
+
+```{r}
+films_list_colmn =
+  data.frame(
+  Name = 
+    c("Luke Skywalker",
+      "Darth Vader"),
+  Films = 
+    list(
+      list(
+        "A New Hope",
+        "The Empire Strikes Back"),
+    list(
+      "A New Hope", 
+      "The Empire Strikes Back",
+      "Return of the Jedi")
+    )
+  )
+
+print(films_list_colmn)
+```
+
++ 使用Tidy Data Structure
+
+```{r}
+# 创建一个整洁数据结构示例
+films_tidy_data_str =
+  data.frame(
+  Name = c(
+    "Luke Skywalker", 
+    "Luke Skywalker", 
+    "Darth Vader", 
+    "Darth Vader"),
+  Film = c(
+    "A New Hope",
+    "The Empire Strikes Back", 
+    "A New Hope", 
+    "The Empire Strikes Back")
+)
+
+print(films_tidy_data_str)
+```
 
 7.  为`starwars`增加一列，用于统计每个角色在多少部电影中出现。
 
 ```{r}
 ## 代码写这里，并运行；
+# Adding a new column using the mutate function
+starwars_with_appearances =
+  starwars %>%
+  mutate(
+    Appearances = 
+      rowSums(!is.na(.[5:12])))
+
+# Printing results
+# Including the new Appearances column
+print(starwars_with_appearances)
 
 ```
 
@@ -378,6 +436,24 @@ barplot(
 
 ```{r}
 ## 代码写这里，并运行；
+# Loading the Theoph dataset
+data("Theoph")
+
+# Select the columns from Subject to Dose.
+selected_columns =
+  Theoph[, c("Subject", "Wt", "Dose")]
+
+# Calculate the total number of columns
+num_columns =
+  ncol(selected_columns)
+
+# Show first 6 rows
+head(selected_columns)
+
+# Total number of columns displayed
+cat("There are ", 
+    num_columns,
+    "columns in total.")
 
 ```
 
@@ -386,12 +462,32 @@ barplot(
 ```{r}
 ## 代码写这里，并运行；
 
+# 计算Time列的平均值
+mean_time <- mean(Theoph$Time)
+
+# 使用filter函数选择符合条件的行
+filtered_data <- filter(Theoph, Dose > 5, Time > mean_time)
+
+# 显示结果的前6行
+head(filtered_data)
+
 ```
 
 3.  用 `mutate` 函数产生新列 `trend`，其值为 `Time` 与 `Time`列平均值的差；注意：请去除可能产生的 `na` 值；
 
 ```{r}
 ## 代码写这里，并运行；
+# 计算Time列的平均值
+mean_time <- mean(Theoph$Time, na.rm = TRUE)
+
+# 使用mutate函数创建新列trend
+Theoph <- mutate(Theoph, trend = Time - mean_time)
+
+# 移除可能产生的NA值
+Theoph <- na.omit(Theoph)
+
+# 显示结果的前6行
+head(Theoph)
 
 ```
 
@@ -401,3 +497,19 @@ barplot(
 -   如果 `Wt` \> 72.57，为 'Middleweight'，否则
 -   如果 `Wt` \> 66.68，为 'Light-middleweight'
 -   其它值，为 'Welterweight'
+
+```{r}
+# 使用mutate函数创建新列weight_cat
+Theoph <- mutate(Theoph, weight_cat = 
+  case_when(
+    Wt > 76.2 ~ 'Super-middleweight',
+    Wt > 72.57 ~ 'Middleweight',
+    Wt > 66.68 ~ 'Light-middleweight',
+    TRUE ~ 'Welterweight'
+  )
+)
+
+# 显示结果的前6行
+head(Theoph)
+
+```
