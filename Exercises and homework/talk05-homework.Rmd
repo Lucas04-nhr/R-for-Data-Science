@@ -462,13 +462,17 @@ cat("There are ",
 ```{r}
 ## 代码写这里，并运行；
 
-# 计算Time列的平均值
-mean_time <- mean(Theoph$Time)
+# Calculate the average of the Time columns
+mean_time =
+  mean(Theoph$Time)
 
-# 使用filter函数选择符合条件的行
-filtered_data <- filter(Theoph, Dose > 5, Time > mean_time)
+# Use the filter function to 
+# select the rows that match the conditions
+filtered_data =
+  filter(Theoph, Dose > 5,
+         Time > mean_time)
 
-# 显示结果的前6行
+# Display the first 6 rows of results 
 head(filtered_data)
 
 ```
@@ -477,16 +481,23 @@ head(filtered_data)
 
 ```{r}
 ## 代码写这里，并运行；
-# 计算Time列的平均值
-mean_time <- mean(Theoph$Time, na.rm = TRUE)
+# Calculate the average 
+# of the Time columns
+mean_time =
+  mean(Theoph$Time, 
+       na.rm = TRUE)
 
-# 使用mutate函数创建新列trend
-Theoph <- mutate(Theoph, trend = Time - mean_time)
+# Using the mutate function 
+# to create a new column trend
+Theoph =
+  mutate(Theoph, 
+         trend = Time - mean_time)
 
-# 移除可能产生的NA值
-Theoph <- na.omit(Theoph)
+# Removal of possible NA values
+Theoph =
+  na.omit(Theoph)
 
-# 显示结果的前6行
+# Display the first 6 rows of results
 head(Theoph)
 
 ```
@@ -499,17 +510,19 @@ head(Theoph)
 -   其它值，为 'Welterweight'
 
 ```{r}
-# 使用mutate函数创建新列weight_cat
-Theoph <- mutate(Theoph, weight_cat = 
-  case_when(
-    Wt > 76.2 ~ 'Super-middleweight',
-    Wt > 72.57 ~ 'Middleweight',
-    Wt > 66.68 ~ 'Light-middleweight',
-    TRUE ~ 'Welterweight'
+# Using the mutate function to create a new column weight_cat
+Theoph =
+  mutate(
+    Theoph, 
+    weight_cat = case_when(
+      Wt > 76.2 ~ 'Super-middleweight',
+      Wt > 72.57 ~ 'Middleweight',
+      Wt > 66.68 ~ 'Light-middleweight',
+      TRUE ~ 'Welterweight'
+    )
   )
-)
 
-# 显示结果的前6行
+# Display the first 6 rows of results
 head(Theoph)
 
 ```
