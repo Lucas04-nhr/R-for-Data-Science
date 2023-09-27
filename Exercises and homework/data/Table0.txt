@@ -5,4 +5,3 @@ Oliver	 52      179      75	 M
 Martha   76      163      70     F
 Lucas	 49      183      83     M
 Caroline 26      164      53     F
-

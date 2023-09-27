@@ -33,7 +33,7 @@ knit: (
 ## Talk05 内容回顾
 
 -   dplyr 、 tidyr (超级强大的数据处理) part 1
-    -   长宽数据转换
+    -   pipe
     -   dplyr 几个重要函数
 
 ## 练习与作业：用户验证
@@ -45,6 +45,7 @@ knit: (
 ```{r}
 Sys.info()[["user"]]
 Sys.getenv("HOME")
+getwd(); ## 显示当前工作目录
 ```
 
 ## 练习与作业1：dplyr练习
@@ -62,157 +63,8 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
-# Load the packages
-library(dplyr)
-library(tidyverse)
-
-# read mouse.tibble
-mouse_tibble =
-  read_delim(file = "../data/talk04/mouse_genes_biomart_sep2018.txt",
-             delim = "\t", 
-             quote = "",
-             show_col_types = FALSE)
-
-# Convert the mouse.tibble to tibble
-if(!is.tibble(mouse_tibble))
-  mouse_tibble = as_tibble(mouse_tibble)
-
-# Arrange the data
-gene_summary = mouse_tibble %>%
-  group_by(
-    `Chromosome/scaffold name`, 
-    `Transcript type`) %>%
-  summarize(
-    Gene_Count = n(),
-    Avg_Length = 
-      mean(`Transcript length (including UTRs and CDS)`),
-    Max_Length = 
-      max(`Transcript length (including UTRs and CDS)`),
-    Min_Length = 
-      min(`Transcript length (including UTRs and CDS)`),
-    Longest_Gene = 
-      `Chromosome/scaffold name`[
-        which.max(
-          `Transcript length (including UTRs and CDS)`)],
-    Shortest_Gene = 
-      `Chromosome/scaffold name`[
-        which.min(
-          `Transcript length (including UTRs and CDS)`)]
-  )
-
-# Remove the chromosome containing the following 500 genes
-filtered_gene_summary =
-  gene_summary %>%
-  group_by(
-    `Chromosome/scaffold name`) %>%
-  filter(
-    sum(Gene_Count) > 500)
-
-# Descending order by number of chromosomes and genes
-sorted_gene_summary =
-  filtered_gene_summary %>%
-  arrange(
-    `Chromosome/scaffold name`, desc(Gene_Count))
-
-# Print the data
-sorted_gene_summary
-
 
 ```
-
-**挑战题：**
-
-```{r}
-# Load the packages
-library(dplyr)
-library(tidyverse)
-
-# read mouse.tibble
-mouse_tibble2 =
-  read_delim(file = "../data/talk04/mouse_genes_biomart_sep2018.txt",
-             delim = "\t", 
-             quote = "",
-             show_col_types = FALSE)
-
-# Convert the mouse.tibble to tibble
-if(!is.tibble(mouse_tibble2))
-  mouse_tibble2 = as_tibble(mouse_tibble2)
-
-# Processing data
-sorted_gene_summary2 =
-  mouse_tibble2 %>%
-  group_by(
-    `Chromosome/scaffold name`,
-    `Transcript type`) %>%
-  summarize(
-    Gene_Count = n(),
-    Avg_Length = 
-      mean(`Transcript length (including UTRs and CDS)`),
-    Max_Length = 
-      max(`Transcript length (including UTRs and CDS)`),
-    Min_Length = 
-      min(`Transcript length (including UTRs and CDS)`),
-    Longest_Gene = 
-      `Chromosome/scaffold name`[
-        which.max(
-          `Transcript length (including UTRs and CDS)`)],
-    Shortest_Gene = 
-      `Chromosome/scaffold name`[
-        which.min(
-          `Transcript length (including UTRs and CDS)`)]
-  )%>%
-  ungroup() %>%
-  group_by(
-    `Chromosome/scaffold name`) %>%
-  filter(
-    sum(Gene_Count) > 500) %>%
-  # ungroup() %>%
-  arrange(
-    `Chromosome/scaffold name`, desc(Gene_Count))
-
-# Print the data
-sorted_gene_summary2
-
-```
-
-------------------------------------------------------------------------
-
-### **使用 `grades` 变量做练习**
-
-1.  装入`grades`变量；
-
-`library(dplyr);`
-
-`grades <- read_tsv( file = "data/talk05/grades.txt" );`
-
-2.  尝试使用`spread`和`gather`函数将其变宽后再变长；
-
-```{r}
-## 代码写这里，并运行；
-library(dplyr);
-
-grades = read_tsv(file = "data/talk05/grades.txt")
-```
-
-3.  研究并使用 `tidyr`包里的 `pivot_longer` 和 `pivot_wider` 函数对 `grades` 变量进行宽长转换；
-
-```{r}
-## 代码写这里，并运行；
-
-```
-
-4.  使用 `pivot_longer` 时，有时会产生 `na` 值，如何使用此函数的参数去除带 `na` 的行？
-
-```{r}
-## 代码写这里，并运行；
-
-```
-
-5.  以下代码有什么作用？
-
-`grades %>% complete( name, course )`
-
-答：
 
 ------------------------------------------------------------------------
 
@@ -270,6 +122,8 @@ grades2 <- tibble( "Name" = c("Weihua Chen", "Mm Hu", "John Doe", "Jane Doe",
 ## 代码写这里，并运行；
 
 ```
+
+
 
 ### **使用`Theoph`变量做练习**
 

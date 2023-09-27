@@ -28,7 +28,7 @@ knitr::knit_hooks$set(error = color_block('red'))
 
 ## 前情提要
 
-1.  IO, project management, working enviroment management
+1.  IO, project management, working environment management
 2.  factors: R 中最重要的概念之一
 
 -   factors 基本概念
@@ -36,16 +36,6 @@ knitr::knit_hooks$set(error = color_block('red'))
 -   factors 在做图中的使用
 -   ggplot2 和 dplyr 初步
 
-## 问题点评
-
-1.  ggplot2问题
-2.  长宽数据转换 & pipe ...
-
-\FontSmall
-
-```{r eval=FALSE}
-N %>% gather( ind, values ); 
-```
 
 ## 今次提要
 
@@ -175,6 +165,7 @@ mtcars %<>% transform(cyl = cyl * 2);
 -   pipe 的使用可以使思路更清晰
 -   因此，尽量使用 `%>%` （方向明确），而不使用其它方向不明确的 pipe
 
+
 # section 3: data wrangler - dplyr
 
 ## dplyr
@@ -253,6 +244,7 @@ mouse.tibble <- read_delim( file = "data/talk04/mouse_genes_biomart_sep2018.txt"
 ( ttype.stats <- mouse.tibble %>% count( `Transcript type` ) %>% arrange(-n) );
 ```
 
+
 ## 查看 mouse.tibble 的内容, cont.
 
 \FontSmall
@@ -301,6 +293,12 @@ dat <- mouse.tibble %>%
 ```{r echo=FALSE}
 knitr::kable( head( dat, n = 15 ) );
 ```
+
+
+## dplyr中其它取行的操作
+
+![dplyr与行相关的操作](images/talk05/dplyr-subset.png){height="70%"}
+
 
 ## 课堂练习：使用常用函数解决问题
 
@@ -382,33 +380,11 @@ grades.melted2 %>%
 
 ![dplyr::summarise 可用的操作](images/talk05/dplyr-summarise.png){height="60%"}
 
-## dplyr中其它取行的操作
-
-![dplyr与行相关的操作](images/talk05/dplyr-subset.png){height="70%"}
-
 ## 练习考察
 
 问题1： 每个人的最**差**科目是什么？？
 
-\FontSmall
-
-```{r}
-# Arrange the data
-grades.melted3 = 
-  grades.melted %>% 
-  arrange(Name, grade);
-
-# Print the results
-grades.melted3 %>% 
-  group_by(Name) %>% 
-  summarise( worst_course = first(course),
-             worst_grade = first(grade),
-             avg_grades = mean(grade)) %>% 
-  arrange(-avg_grades);
-
-```
-
-## \*\* 列的使用！ \*\*，以 `starwars` tibble 为例
+## ** 列的使用！ **，以 `starwars` tibble 为例
 
 \FontSmall
 
@@ -496,23 +472,11 @@ starwars %>% select( name, ends_with("color"), gender, species ) %>%
   filter( hair_color == "blond" & eye_color == "blue" );
 ```
 
-## tidyr::separate
-
-<https://r4ds.had.co.nz/tidy-data.html>
-
-## tidyr::unite
-
-<https://r4ds.had.co.nz/tidy-data.html>
-
 ## 练习考察
 
-问题2： 从 `starwars` 中选出 18 \< bmi \< 25 的人物，统计他们的 `homeworld` 分布情况
+问题2： 从 `starwars` 中选出 18 < bmi < 25  的人物，统计他们的 `homeworld` 分布情况
 
 提示： 1. 需计算 bmi； 2. 用 `count` 函数计算 `homeworld` 的分布
-
-```{r}
-
-```
 
 # section 4 : 练习与作业
 
