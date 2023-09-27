@@ -60,9 +60,116 @@ getwd(); ## 显示当前工作目录
 **挑战题（可选做）：**
 
 实现上述目标（即：去掉少于500基因的染色体、排序、并统计）时不使用中间变量；
+```{r}
+# Load the package
+library(dplyr)
+library(tidyverse)
+
+# read mouse.tibble
+mouse_tibble =
+  read_delim(file = "../data/talk04/mouse_genes_biomart_sep2018.txt",
+             delim = "\t", 
+             quote = "",
+             show_col_types = FALSE)
+
+# Convert the mouse.tibble to tibble
+if(!is.tibble(mouse_tibble))
+  mouse_tibble = as_tibble(mouse_tibble)
+
+# Arrange the data
+gene_summary = mouse_tibble %>%
+  group_by(
+    `Chromosome/scaffold name`, 
+    `Transcript type`) %>%
+  summarize(
+    Gene_Count = n(),
+    Avg_Length = 
+      mean(`Transcript length (including UTRs and CDS)`),
+    Max_Length = 
+      max(`Transcript length (including UTRs and CDS)`),
+    Min_Length = 
+      min(`Transcript length (including UTRs and CDS)`),
+    Longest_Gene = 
+      `Chromosome/scaffold name`[
+        which.max(
+          `Transcript length (including UTRs and CDS)`)],
+    Shortest_Gene = 
+      `Chromosome/scaffold name`[
+        which.min(
+          `Transcript length (including UTRs and CDS)`)]
+  )
+
+# Remove the chromosome containing the following 500 genes
+filtered_gene_summary =
+  gene_summary %>%
+  group_by(
+    `Chromosome/scaffold name`) %>%
+  filter(
+    sum(Gene_Count) > 500)
+
+# Descending order by number of chromosomes and genes
+sorted_gene_summary =
+  filtered_gene_summary %>%
+  arrange(
+    `Chromosome/scaffold name`, desc(Gene_Count))
+
+# Print the data
+sorted_gene_summary
+
+```
+
+**挑战题：**
 
 ```{r}
-## 代码写这里，并运行；
+# Load the packages
+library(dplyr)
+library(tidyverse)
+
+# read mouse.tibble
+mouse_tibble2 =
+  read_delim(file = "../data/talk04/mouse_genes_biomart_sep2018.txt",
+             delim = "\t", 
+             quote = "",
+             show_col_types = FALSE)
+
+# Convert the mouse.tibble to tibble
+if(!is.tibble(mouse_tibble2))
+  mouse_tibble2 = as_tibble(mouse_tibble2)
+
+# Processing data
+sorted_gene_summary2 =
+  mouse_tibble2 %>%
+  group_by(
+    `Chromosome/scaffold name`,
+    `Transcript type`) %>%
+  summarize(
+    Gene_Count = n(),
+    Avg_Length = 
+      mean(`Transcript length (including UTRs and CDS)`),
+    Max_Length = 
+      max(`Transcript length (including UTRs and CDS)`),
+    Min_Length = 
+      min(`Transcript length (including UTRs and CDS)`),
+    Longest_Gene = 
+      `Chromosome/scaffold name`[
+        which.max(
+          `Transcript length (including UTRs and CDS)`)],
+    Shortest_Gene = 
+      `Chromosome/scaffold name`[
+        which.min(
+          `Transcript length (including UTRs and CDS)`)]
+  )%>%
+  ungroup() %>%
+  group_by(
+    `Chromosome/scaffold name`) %>%
+  filter(
+    sum(Gene_Count) > 500) %>%
+  # ungroup() %>%
+  arrange(
+    `Chromosome/scaffold name`, desc(Gene_Count))
+
+# Print the data
+sorted_gene_summary2
 
 ```
 
