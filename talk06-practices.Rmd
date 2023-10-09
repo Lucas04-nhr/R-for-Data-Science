@@ -167,6 +167,7 @@ library( igraph );
 ```{r fig.height=4, fig.width=10}
 netnet <- graph_from_data_frame( netdata, directed = FALSE );
 plot(netnet);
+
 ```
 
 ## 图的问题
@@ -518,7 +519,7 @@ head(meth3);
 
 ```{r}
 comb2 <- left_join( meth3, expr2, by = "gene" ) %>% select( -group );
-head(comb2);
+head(comb2)
 ```
 
 \FontNormal
