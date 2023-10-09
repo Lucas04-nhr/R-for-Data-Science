@@ -1,0 +1,20 @@
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.25)  9 OCT 2023 16:44
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**"/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/~~aa学习/大二上/学习/R for Data Science/R-for-Data-Science/talk06-practices.tex"
+! Emergency stop.
+<to be read again> 
+                   \protect 
+<*> "/Users/lucas/Library/Mobile Documents/com~
+                                               apple~CloudDocs/~~aa学习/大二上/学习... 
+Here is how much of TeX's memory you used:
+ 3 strings out of 477590
+ 51 string characters out of 5817991
+ 1910422 words of memory out of 5000000
+ 21311 multiletter control sequences out of 15000+600000
+ 558069 words of font info for 36 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 3i,0n,0p,1b,6s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+No pages of output.
