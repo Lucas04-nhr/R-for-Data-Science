@@ -71,7 +71,47 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the library
+library(readr)
+library(ggplot2)
+library(gridExtra)
 
+# Read the data
+abu = 
+  read_delim(
+    file = 
+      "../data/talk06/relative_abundance_for_RUN_ERR1072629_taxonlevel_species.txt",
+    delim = "\t", quote = "", comment = "#");
+
+# Re-order the data
+abu_reorder = 
+  abu[order(-abu$relative_abundance), ]
+
+# Find out top 5
+abu_top5 =
+  abu_reorder[1:5, ]
+
+# Add the rest of the data
+abu_qita = 
+  sum(abu[6:nrow(abu_reorder), ]$relative_abundance)
+
+# Combine them
+abu_full = 
+  rbind(abu_top5,c("Qita", abu_qita))
+
+# Draw the plot
+abu_pie_chart =
+  ggplot(data = abu_full,
+         aes(x = "",
+             y = relative_abundance, 
+             fill = ncbi_taxon_id)) +
+  geom_bar(stat = "Identity", width = 1) +
+  coord_polar(theta = "y") +
+  theme_void() +
+  theme(legend.position = "right")
+
+# Print the pie chart
+print(abu_pie_chart)
 ```
 
 ------------------------------------------------------------------------
@@ -83,16 +123,35 @@ Sys.getenv("HOME")
 但是，怎么做到**按数量从小到大**排序？
 
 ```{r}
+# Load the library
 library(dplyr)
-library(ggplot2)
-library(forcats)
-ggplot(starwars, aes(x = hair_color)) + 
-  geom_bar() + 
-  coord_flip()
-```
 
-```{r}
-## 代码写这里，并运行；
+# Count the number o
+# and sort them in descending order.
+starwars_counts =
+  starwars %>%
+  group_by(hair_color) %>%
+  summarise(count = n()) %>%
+  arrange(count)
+
+# Draw the plot
+starwars_plot01=
+  ggplot(
+    starwars_counts,
+    aes(
+      x = reorder(
+        hair_color, 
+        count),
+      y = count)) + 
+  geom_bar(stat = "identity") + 
+  coord_flip() +
+  labs(
+    x = "Hair Color", 
+    y = "Count") +
+  theme_minimal()
+
+# Print the plot
+print(starwars_plot01)
 
 ```
 
@@ -101,12 +160,118 @@ ggplot(starwars, aes(x = hair_color)) +
 ```{r}
 ## 代码写这里，并运行；
 
+# Count the number of 
+# skin_color types and people
+starwars_counts_skin =
+  starwars %>%
+  group_by(skin_color) %>%
+  summarise(count = n())
+
+# Group the category 'Others'
+total_count_group =
+  sum(
+    starwars_counts_skin$count)
+threshold =
+  0.05 * total_count_group
+
+starwars_counts_skin_group =
+  starwars_counts_skin %>%
+  mutate(
+    skin_color = 
+      ifelse(
+        count < threshold, 
+        "Others", 
+        as.character(skin_color)))
+
+# Recount the type and number.
+starwars_counts_skin_group2 =
+  starwars_counts_skin_group %>%
+  group_by(skin_color) %>%
+  summarise(count = sum(count)) %>%
+  arrange(count)
+
+# Draw the plot
+starwars_plot02 =
+  ggplot(
+    starwars_counts_skin_group2, 
+    aes(
+      x = reorder(
+        skin_color,
+        count), 
+      y = count)) + 
+  geom_bar(
+    stat = "identity") + 
+  coord_flip() +
+  labs(
+    x = "Skin Color", 
+    y = "Count") +
+  theme_minimal()
+
+# Print the plot
+print(starwars_plot02)
+
 ```
 
 3.  使用 `2` 的统计结果，但画图时，调整 bar 的顺序，使得 `Others` 处于第4的位置上。提示，可使用 `fct_relevel` 函数；
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the library
+library(forcats)
+
+# Count the number
+starwars_counts_skin2 =
+  starwars %>%
+  group_by(skin_color) %>%
+  summarise(count = n())
+
+# Group the category 'Others'
+total_count_group2 =
+  sum(starwars_counts_skin2$count)
+threshold =
+  0.05 * total_count_group2
+
+starwars_counts_skin2_group =
+  starwars_counts_skin2 %>%
+  mutate(
+    skin_color = 
+      ifelse(
+        count < threshold,
+        "Others",
+        as.character(skin_color)))
+
+# Recount the type and number.
+starwars_counts_skin2_group2 =
+  starwars_counts_skin2_group %>%
+  group_by(skin_color) %>%
+  summarise(count = sum(count))
+
+# Adjusting the position of 'Others'
+starwars_counts_skin2_group2$skin_color =
+  fct_relevel(
+  starwars_counts_skin2_group2$skin_color,
+  "Others",
+  after = 3  # to 4th
+)
+
+# Draw the plot
+starwars_plot03 =
+  ggplot(
+    starwars_counts_skin2_group2,
+    aes(
+      x = skin_color,
+      y = count)) + 
+  geom_bar(
+    stat = "identity") + 
+  labs(
+    x = "Skin Color", 
+    y = "Count") +
+  coord_flip() +
+  theme_minimal()
+
+# Print the plot
+print(starwars_plot03)
+
 
 ```
 
