@@ -81,7 +81,9 @@ abu =
   read_delim(
     file = 
       "../data/talk06/relative_abundance_for_RUN_ERR1072629_taxonlevel_species.txt",
-    delim = "\t", quote = "", comment = "#");
+    delim = "\t",
+    quote = "",
+    comment = "#");
 
 # Re-order the data
 abu_reorder = 
