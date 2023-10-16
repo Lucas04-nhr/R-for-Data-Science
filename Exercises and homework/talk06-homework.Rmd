@@ -294,6 +294,45 @@ print(starwars_plot03)
 
 ```{r}
 ## 代码写这里，并运行；
+# 安装和加载必要的包
+library(readr)
+library(igraph)
+library(dplyr)
+
+# 1. 装入PPI数据
+ppi =
+  read_delim(
+    file = "../data/talk06/ppi900.txt.gz", 
+    col_names = TRUE, 
+    delim = "\t", 
+    quote = "")
+
+# 2. 随机选择一个基因
+set.seed(123)  # 设置随机种子以确保结果可重复
+random_gene =
+  ppi %>%
+    pull(gene1) %>%
+    sample(1)
+
+# 3. 创建互作网络图
+ppi_network =
+  ppi %>%
+    filter(gene1 == random_gene | gene2 == random_gene) %>%
+    select(gene1, gene2) %>%
+    unique() %>%
+    graph.data.frame(directed = FALSE)
+
+# 绘制互作网络图
+plot_ppi =
+  plot(
+    ppi_network, 
+    layout = layout.auto(ppi_network), 
+    main = paste(
+      "PPI Network for Gene:",
+      random_gene))
+
+# Print the plot
+print(plot_ppi)
 
 ```
 
