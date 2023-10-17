@@ -63,6 +63,33 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+library(dplyr)
+library(tidyr)
+library(readr)
+grades =
+  read_tsv(
+    file=
+      "../data/talk05/grades.txt")
+
+# Make the data longer
+grades_long =
+  grades %>%
+    group_by(name, course) %>%
+    summarize(
+      grade = mean(
+        as.numeric(grade),
+        na.rm = TRUE))
+
+# Make the data wider
+grades_wide =
+  grades %>%
+  pivot_wider(
+    names_from = course, 
+    values_from = grade)
+
+# Print the data
+print(grades_long)
+print(grades_wide)
 
 ```
 
@@ -70,6 +97,17 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+library(tidyr)
+
+grades_long2 =
+  grades %>%
+    group_by(name, course) %>%
+    summarize(
+      grade = mean(
+        as.numeric(grade),
+        na.rm = TRUE))
+print(grades_long2)
+
 
 ```
 
@@ -79,6 +117,7 @@ Sys.getenv("HOME")
 
 答：
 
+这段代码使用`dplyr`和`tidyr`中的`complete()`函数来生成一个完整的数据框，确保每个不同的 name 和 course 组合都存在，并且如果数据中没有这些组合，则填充缺失的行。这通常用于数据填充和确保数据表格中包含所有可能的组合。
 
 ## 练习与作业2：作图
 
@@ -103,7 +142,49 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the library
+library(readr)
+library(ggplot2)
+library(gridExtra)
 
+# Read the data
+abu = 
+  read_delim(
+    file = 
+      "../data/talk06/relative_abundance_for_RUN_ERR1072629_taxonlevel_species.txt",
+    delim = "\t",
+    quote = "",
+    comment = "#");
+
+# Re-order the data
+abu_reorder = 
+  abu[order(-abu$relative_abundance), ]
+
+# Find out top 5
+abu_top5 =
+  abu_reorder[1:5, ]
+
+# Add the rest of the data
+abu_qita = 
+  sum(abu[6:nrow(abu_reorder), ]$relative_abundance)
+
+# Combine them
+abu_full = 
+  rbind(abu_top5,c("Qita", abu_qita))
+
+# Draw the plot
+abu_pie_chart =
+  ggplot(data = abu_full,
+         aes(x = "",
+             y = relative_abundance, 
+             fill = ncbi_taxon_id)) +
+  geom_bar(stat = "Identity", width = 1) +
+  coord_polar(theta = "y") +
+  theme_void() +
+  theme(legend.position = "right")
+
+# Print the pie chart
+print(abu_pie_chart)
 ```
 
 ------------------------------------------------------------------------
@@ -125,13 +206,89 @@ ggplot(starwars, aes(x = hair_color)) +
 
 ```{r}
 ## 代码写这里，并运行；
+library(dplyr)
 
+# Count the number o
+# and sort them in descending order.
+starwars_counts =
+  starwars %>%
+  group_by(hair_color) %>%
+  summarise(count = n()) %>%
+  arrange(count)
+
+# Draw the plot
+starwars_plot01=
+  ggplot(
+    starwars_counts,
+    aes(
+      x = reorder(
+        hair_color, 
+        count),
+      y = count)) + 
+  geom_bar(stat = "identity") + 
+  coord_flip() +
+  labs(
+    x = "Hair Color", 
+    y = "Count") +
+  theme_minimal()
+
+# Print the plot
+print(starwars_plot01)
 ```
 
 2.  统计 `skin_color` 时，将出现频率小于0.05（即5%）的颜色归为一类`Others`，按出现次数排序后，做与上面类似的 barplot；
 
 ```{r}
 ## 代码写这里，并运行；
+# Count the number of 
+# skin_color types and people
+starwars_counts_skin =
+  starwars %>%
+  group_by(skin_color) %>%
+  summarise(count = n())
+
+# Group the category 'Others'
+total_count_group =
+  sum(
+    starwars_counts_skin$count)
+threshold =
+  0.05 * total_count_group
+
+starwars_counts_skin_group =
+  starwars_counts_skin %>%
+  mutate(
+    skin_color = 
+      ifelse(
+        count < threshold, 
+        "Others", 
+        as.character(skin_color)))
+
+# Recount the type and number.
+starwars_counts_skin_group2 =
+  starwars_counts_skin_group %>%
+  group_by(skin_color) %>%
+  summarise(count = sum(count)) %>%
+  arrange(count)
+
+# Draw the plot
+starwars_plot02 =
+  ggplot(
+    starwars_counts_skin_group2, 
+    aes(
+      x = reorder(
+        skin_color,
+        count), 
+      y = count)) + 
+  geom_bar(
+    stat = "identity") + 
+  coord_flip() +
+  labs(
+    x = "Skin Color", 
+    y = "Count") +
+  theme_minimal()
+
+# Print the plot
+print(starwars_plot02)
 
 ```
 
@@ -139,6 +296,61 @@ ggplot(starwars, aes(x = hair_color)) +
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the library
+library(forcats)
+
+# Count the number
+starwars_counts_skin2 =
+  starwars %>%
+  group_by(skin_color) %>%
+  summarise(count = n())
+
+# Group the category 'Others'
+total_count_group2 =
+  sum(starwars_counts_skin2$count)
+threshold =
+  0.05 * total_count_group2
+
+starwars_counts_skin2_group =
+  starwars_counts_skin2 %>%
+  mutate(
+    skin_color = 
+      ifelse(
+        count < threshold,
+        "Others",
+        as.character(skin_color)))
+
+# Recount the type and number.
+starwars_counts_skin2_group2 =
+  starwars_counts_skin2_group %>%
+  group_by(skin_color) %>%
+  summarise(count = sum(count))
+
+# Adjusting the position of 'Others'
+starwars_counts_skin2_group2$skin_color =
+  fct_relevel(
+  starwars_counts_skin2_group2$skin_color,
+  "Others",
+  after = 3  # to 4th
+)
+
+# Draw the plot
+starwars_plot03 =
+  ggplot(
+    starwars_counts_skin2_group2,
+    aes(
+      x = skin_color,
+      y = count)) + 
+  geom_bar(
+    stat = "identity") + 
+  labs(
+    x = "Skin Color", 
+    y = "Count") +
+  coord_flip() +
+  theme_minimal()
+
+# Print the plot
+print(starwars_plot03)
 
 ```
 
@@ -159,6 +371,47 @@ ggplot(starwars, aes(x = hair_color)) +
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the packages
+library(readr)
+library(igraph)
+library(dplyr)
+
+# 1. Load PPI data
+ppi =
+  read_delim(
+    file = "../data/talk06/ppi900.txt.gz", 
+    col_names = TRUE, 
+    delim = "\t", 
+    quote = "")
+
+# 2. Randomly select a gene
+set.seed(123)  
+# Setting random seeds to 
+# ensure reproducible results
+random_gene =
+  ppi %>%
+    pull(gene1) %>%
+    sample(1)
+
+# 3. Creating Interaction Network Diagrams
+ppi_network =
+  ppi %>%
+    filter(gene1 == random_gene | gene2 == random_gene) %>%
+    select(gene1, gene2) %>%
+    unique() %>%
+    graph.data.frame(directed = FALSE)
+
+# Mapping of Interaction Networks
+plot_ppi =
+  plot(
+    ppi_network, 
+    layout = layout.auto(ppi_network), 
+    main = paste(
+      "PPI Network for Gene:",
+      random_gene))
+
+# Print the plot
+print(plot_ppi)
 
 ```
 
@@ -182,5 +435,63 @@ ggplot(starwars, aes(x = hair_color)) +
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the required packages
+library(dplyr)
+library(tidyr)
+library(readr)
+
+# Creating a list of file paths
+file_list = list(
+  "data/talk06/relative_abundance_for_curated_sample_PRJEB6070-DE-073_at_taxonlevel_species.txt",
+  "data/talk06/relative_abundance_for_curated_sample_PRJEB6070-DE-074_at_taxonlevel_species.txt",
+  "data/talk06/relative_abundance_for_curated_sample_PRJEB6070-DE-075_at_taxonlevel_species.txt",
+  "data/talk06/relative_abundance_for_curated_sample_PRJEB6070-DE-076_at_taxonlevel_species.txt",
+  "data/talk06/relative_abundance_for_curated_sample_PRJEB6070-DE-077_at_taxonlevel_species.txt"
+)
+
+# Read all the files, 
+# skip the first three lines, 
+# and merge them into one dataframe
+all_data =
+  lapply(file_list, function(file_path) {
+    sample_data =
+      read_delim(
+        file_path, 
+        delim = "\t", 
+        skip = 3,
+        show_col_types = FALSE)
+    sample_name =
+      gsub(".*sample_(.*?)_at_taxonlevel.*", 
+           "\\1", 
+           basename(file_path))
+    sample_data$sample_name =
+      sample_name
+    return(sample_data)
+  }) %>%
+  bind_rows()
+
+# Merge the rows
+result_df =
+  all_data %>%
+  # Remove unneeded columns
+    select(
+      -ncbi_taxon_id,
+      -taxon_rank_level) %>%  
+    group_by(
+      sample_name, 
+      scientific_name) %>%
+    summarize(
+      relative_abundance = 
+        sum(
+          relative_abundance))
+
+# Change NA value to 0
+result_df[
+  is.na(
+    result_df)] =
+      0
+
+# Print the result
+head(result_df)
 
 ```
