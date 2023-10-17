@@ -30,11 +30,11 @@ knit: (
 
 **将PDF文档**改为：**`姓名-学号-talk06作业.pdf`**，并提交到老师指定的平台/钉群。
 
-## Talk06 内容回顾
+## Talk06 及 talk06-practices 内容回顾
 
-1.  3个生信任务的R解决方案
-2.  factors 的更多应用 (forcats)
-3.  pipe
+1. tidyr  
+2. 3个生信任务的R解决方案
+3. forcats
 
 ## 练习与作业：用户验证
 
@@ -47,8 +47,40 @@ Sys.info()[["user"]]
 Sys.getenv("HOME")
 ```
 
+## 练习与作业1：tidyr
 
-## 练习与作业1：作图
+------------------------------------------------------------------------
+
+### **使用 `grades` 变量做练习**
+
+1.  装入`grades`变量；
+
+`library(dplyr);`
+
+`grades <- read_tsv( file = "data/talk05/grades.txt" );`
+
+2.  使用 `tidyr`包里的 `pivot_longer` 和 `pivot_wider` 函数对 `grades` 变量进行宽长转换；
+
+```{r}
+## 代码写这里，并运行；
+
+```
+
+3.  使用 `pivot_longer` 时，有时会产生 `na` 值，如何使用此函数的参数去除带 `na` 的行？
+
+```{r}
+## 代码写这里，并运行；
+
+```
+
+4.  以下代码有什么作用？
+
+`grades %>% complete( name, course )`
+
+答：
+
+
+## 练习与作业2：作图
 
 ------------------------------------------------------------------------
 
@@ -71,49 +103,7 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
-# Load the library
-library(readr)
-library(ggplot2)
-library(gridExtra)
 
-# Read the data
-abu = 
-  read_delim(
-    file = 
-      "../data/talk06/relative_abundance_for_RUN_ERR1072629_taxonlevel_species.txt",
-    delim = "\t",
-    quote = "",
-    comment = "#");
-
-# Re-order the data
-abu_reorder = 
-  abu[order(-abu$relative_abundance), ]
-
-# Find out top 5
-abu_top5 =
-  abu_reorder[1:5, ]
-
-# Add the rest of the data
-abu_qita = 
-  sum(abu[6:nrow(abu_reorder), ]$relative_abundance)
-
-# Combine them
-abu_full = 
-  rbind(abu_top5,c("Qita", abu_qita))
-
-# Draw the plot
-abu_pie_chart =
-  ggplot(data = abu_full,
-         aes(x = "",
-             y = relative_abundance, 
-             fill = ncbi_taxon_id)) +
-  geom_bar(stat = "Identity", width = 1) +
-  coord_polar(theta = "y") +
-  theme_void() +
-  theme(legend.position = "right")
-
-# Print the pie chart
-print(abu_pie_chart)
 ```
 
 ------------------------------------------------------------------------
@@ -125,35 +115,16 @@ print(abu_pie_chart)
 但是，怎么做到**按数量从小到大**排序？
 
 ```{r}
-# Load the library
 library(dplyr)
+library(ggplot2)
+library(forcats)
+ggplot(starwars, aes(x = hair_color)) + 
+  geom_bar() + 
+  coord_flip()
+```
 
-# Count the number o
-# and sort them in descending order.
-starwars_counts =
-  starwars %>%
-  group_by(hair_color) %>%
-  summarise(count = n()) %>%
-  arrange(count)
-
-# Draw the plot
-starwars_plot01=
-  ggplot(
-    starwars_counts,
-    aes(
-      x = reorder(
-        hair_color, 
-        count),
-      y = count)) + 
-  geom_bar(stat = "identity") + 
-  coord_flip() +
-  labs(
-    x = "Hair Color", 
-    y = "Count") +
-  theme_minimal()
-
-# Print the plot
-print(starwars_plot01)
+```{r}
+## 代码写这里，并运行；
 
 ```
 
@@ -162,122 +133,16 @@ print(starwars_plot01)
 ```{r}
 ## 代码写这里，并运行；
 
-# Count the number of 
-# skin_color types and people
-starwars_counts_skin =
-  starwars %>%
-  group_by(skin_color) %>%
-  summarise(count = n())
-
-# Group the category 'Others'
-total_count_group =
-  sum(
-    starwars_counts_skin$count)
-threshold =
-  0.05 * total_count_group
-
-starwars_counts_skin_group =
-  starwars_counts_skin %>%
-  mutate(
-    skin_color = 
-      ifelse(
-        count < threshold, 
-        "Others", 
-        as.character(skin_color)))
-
-# Recount the type and number.
-starwars_counts_skin_group2 =
-  starwars_counts_skin_group %>%
-  group_by(skin_color) %>%
-  summarise(count = sum(count)) %>%
-  arrange(count)
-
-# Draw the plot
-starwars_plot02 =
-  ggplot(
-    starwars_counts_skin_group2, 
-    aes(
-      x = reorder(
-        skin_color,
-        count), 
-      y = count)) + 
-  geom_bar(
-    stat = "identity") + 
-  coord_flip() +
-  labs(
-    x = "Skin Color", 
-    y = "Count") +
-  theme_minimal()
-
-# Print the plot
-print(starwars_plot02)
-
 ```
 
 3.  使用 `2` 的统计结果，但画图时，调整 bar 的顺序，使得 `Others` 处于第4的位置上。提示，可使用 `fct_relevel` 函数；
 
 ```{r}
 ## 代码写这里，并运行；
-# Load the library
-library(forcats)
-
-# Count the number
-starwars_counts_skin2 =
-  starwars %>%
-  group_by(skin_color) %>%
-  summarise(count = n())
-
-# Group the category 'Others'
-total_count_group2 =
-  sum(starwars_counts_skin2$count)
-threshold =
-  0.05 * total_count_group2
-
-starwars_counts_skin2_group =
-  starwars_counts_skin2 %>%
-  mutate(
-    skin_color = 
-      ifelse(
-        count < threshold,
-        "Others",
-        as.character(skin_color)))
-
-# Recount the type and number.
-starwars_counts_skin2_group2 =
-  starwars_counts_skin2_group %>%
-  group_by(skin_color) %>%
-  summarise(count = sum(count))
-
-# Adjusting the position of 'Others'
-starwars_counts_skin2_group2$skin_color =
-  fct_relevel(
-  starwars_counts_skin2_group2$skin_color,
-  "Others",
-  after = 3  # to 4th
-)
-
-# Draw the plot
-starwars_plot03 =
-  ggplot(
-    starwars_counts_skin2_group2,
-    aes(
-      x = skin_color,
-      y = count)) + 
-  geom_bar(
-    stat = "identity") + 
-  labs(
-    x = "Skin Color", 
-    y = "Count") +
-  coord_flip() +
-  theme_minimal()
-
-# Print the plot
-print(starwars_plot03)
-
 
 ```
 
-## 练习与作业2：数据分析
+## 练习与作业3：数据分析
 
 ------------------------------------------------------------------------
 
@@ -294,45 +159,6 @@ print(starwars_plot03)
 
 ```{r}
 ## 代码写这里，并运行；
-# 安装和加载必要的包
-library(readr)
-library(igraph)
-library(dplyr)
-
-# 1. 装入PPI数据
-ppi =
-  read_delim(
-    file = "../data/talk06/ppi900.txt.gz", 
-    col_names = TRUE, 
-    delim = "\t", 
-    quote = "")
-
-# 2. 随机选择一个基因
-set.seed(123)  # 设置随机种子以确保结果可重复
-random_gene =
-  ppi %>%
-    pull(gene1) %>%
-    sample(1)
-
-# 3. 创建互作网络图
-ppi_network =
-  ppi %>%
-    filter(gene1 == random_gene | gene2 == random_gene) %>%
-    select(gene1, gene2) %>%
-    unique() %>%
-    graph.data.frame(directed = FALSE)
-
-# 绘制互作网络图
-plot_ppi =
-  plot(
-    ppi_network, 
-    layout = layout.auto(ppi_network), 
-    main = paste(
-      "PPI Network for Gene:",
-      random_gene))
-
-# Print the plot
-print(plot_ppi)
 
 ```
 

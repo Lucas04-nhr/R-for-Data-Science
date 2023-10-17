@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.6)  10 OCT 2023 11:13
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.9)  9 OCT 2023 18:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,11 +6,11 @@ entering extended mode
 (./talk06-homework.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/ctexart.cls (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/ctexart.cls (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg
 File: ctexbackend.cfg 2022/07/14 v2.5.10 Backend configuration file (CTEX)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2023-08-29 L3 programming layer (loader) 
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2023-04-19 L3 backend support: XeTeX
 \g__graphics_track_int=\count181
 \l__pdf_internal_box=\box51
@@ -19,13 +19,13 @@ File: l3backend-xetex.def 2023-04-19 L3 backend support: XeTeX
 \g__pdf_backend_link_int=\count184
 ))
 Document Class: ctexart 2022/07/14 v2.5.10 Chinese adapter for class article (CTEX)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/ctexhook.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/ctexhook.sty
 Package: ctexhook 2022/07/14 v2.5.10 Document and package hooks (CTEX)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/ctexpatch.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/ctexpatch.sty
 Package: ctexpatch 2022/07/14 v2.5.10 Patching commands (CTEX)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/base/fix-cm.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/base/fix-cm.sty
 Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/base/ts1enc.def
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 ))
@@ -34,11 +34,11 @@ LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 \l__ctex_tmp_dim=\dimen140
 \g__ctex_section_depth_int=\count186
 \g__ctex_font_size_int=\count187
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
 File: ctexopts.cfg 2022/07/14 v2.5.10 Option configuration file (CTEX)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count188
@@ -52,11 +52,11 @@ File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen141
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.def
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.def
 File: ctex-engine-xetex.def 2022/07/14 v2.5.10 XeLaTeX adapter (CTEX)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 Package: xeCJK 2022/08/05 v3.9.1 Typesetting CJK scripts with XeLaTeX
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
 Package: xtemplate 2023-08-29 L3 Experimental prototype document functions
 \l__xtemplate_tmp_dim=\dimen142
 \l__xtemplate_tmp_int=\count196
@@ -123,11 +123,11 @@ Package xtemplate Info: Declaring object type 'xeCJK/punctuation' taking 0
 \g__xeCJK_fam_allocation_int=\count273
 \l__xeCJK_verb_case_int=\count274
 \l__xeCJK_verb_exspace_skip=\skip57
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.sty (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.sty (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2023-08-29 L3 Experimental document command parser
 )
 Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
 Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
 \l__fontspec_script_int=\count275
 \l__fontspec_language_int=\count276
@@ -143,32 +143,32 @@ Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
 \l__fontspec_tmpa_dim=\dimen170
 \l__fontspec_tmpb_dim=\dimen171
 \l__fontspec_tmpc_dim=\dimen172
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg
 File: xeCJK.cfg 2022/08/05 v3.9.1 Configuration file for xeCJK package
 ))
 \ccwd=\dimen173
 \l__ctex_ccglue_skip=\skip58
 )
 \l__ctex_ziju_dim=\dimen174
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/zhnumber/zhnumber.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/zhnumber/zhnumber.sty
 Package: zhnumber 2022/07/14 v3.0 Typesetting numbers with Chinese glyphs
 \l__zhnum_scale_int=\count286
 \l__zhnum_tmp_int=\count287
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg
 File: zhnumber-utf8.cfg 2022/07/14 v3.0 Chinese numerals with UTF8 encoding
 ))
 \l__ctex_heading_skip=\skip59
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-article.def
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-article.def
 File: ctex-scheme-chinese-article.def 2022/07/14 v2.5.10 Chinese scheme for article (CTEX)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg
 File: ctex-name-utf8.cfg 2022/07/14 v2.5.10 Caption with encoding UTF-8 (CTEX)
-)) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/ctex-c5size.clo
+)) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/ctex-c5size.clo
 File: ctex-c5size.clo 2022/07/14 v2.5.10 c5size option (CTEX)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-mac.def
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-mac.def
 File: ctex-fontset-mac.def 2022/07/14 v2.5.10 macOS fonts definition (CTEX)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-macnew.def
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-macnew.def
 File: ctex-fontset-macnew.def 2022/07/14 v2.5.10 macOS fonts definition for El Capitan or later version (CTEX)
 
 Package fontspec Warning: Font "Songti SC Light" does not contain requested
@@ -196,22 +196,22 @@ Package fontspec Info: Font family 'SongtiSCLight(0)' created for font 'Songti
 (fontspec)             Bold/OT:language=dflt;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
-))) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/ctex/config/ctex.cfg
+))) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/ctex/config/ctex.cfg
 File: ctex.cfg 2022/07/14 v2.5.10 Configuration file (CTEX)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2023/05/13 v2.17o AMS math features
 \@mathmargin=\skip60
 For additional information on amsmath, use the `?' option.
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen175
-)) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
+)) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen176
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count288
@@ -261,29 +261,29 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+)) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty
 Package: unicode-math 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-xetex.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-xetex.sty
 Package: unicode-math-xetex 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
 Package: l3keys2e 2023-08-29 LaTeX2e option processing using LaTeX3 keys
 )
 \g__um_fam_int=\count300
 \g__um_fonts_used_int=\count301
 \l__um_primecount_int=\count302
 \g__um_primekern_muskip=\muskip18
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex))) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex))) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
 Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -317,57 +317,15 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
-Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-)) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2023/03/13 v3.1a Micro-typographical refinements (RS)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks22
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count303
-)
-\MT@toks=\toks23
-\MT@tempbox=\box57
-\MT@count=\count304
-LaTeX Info: Redefining \noprotrusionifhmode on input line 1059.
-LaTeX Info: Redefining \leftprotrusion on input line 1060.
-\MT@prot@toks=\toks24
-LaTeX Info: Redefining \rightprotrusion on input line 1078.
-LaTeX Info: Redefining \textls on input line 1368.
-\MT@outer@kern=\dimen184
-LaTeX Info: Redefining \textmicrotypecontext on input line 1988.
-\MT@listname@count=\count305
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype-xetex.def
-File: microtype-xetex.def 2023/03/13 v3.1a Definitions specific to xetex (RS)
-LaTeX Info: Redefining \lsstyle on input line 238.
-)
-Package microtype Info: Loading configuration file microtype.cfg.
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg
-File: microtype.cfg 2023/03/13 v3.1a microtype main configuration file (RS)
-)) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/parskip/parskip.sty
-Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-))
-Couldn't patch \@startsection
-Couldn't patch \@xsect
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: xetex.def on input line 227.
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.def
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.def
 File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1369.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
@@ -376,75 +334,86 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2023/01/19 4.5a verbatim text (tvz,hv)
-\FV@CodeLineNo=\count306
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks22
+)
+\FV@CodeLineNo=\count303
 \FV@InFile=\read2
-\FV@TabBox=\box58
-\c@FancyVerbLine=\count307
-\FV@StepNumber=\count308
+\FV@TabBox=\box57
+\c@FancyVerbLine=\count304
+\FV@StepNumber=\count305
 \FV@OutFile=\write3
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip63
-\fb@frw=\dimen185
-\fb@frh=\dimen186
-\FrameRule=\dimen187
-\FrameSep=\dimen188
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+\fb@frw=\dimen184
+\fb@frh=\dimen185
+\FrameRule=\dimen186
+\FrameSep=\dimen187
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 107.
 )
-\Gin@req@height=\dimen189
-\Gin@req@width=\dimen190
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
-Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+\Gin@req@height=\dimen188
+\Gin@req@width=\dimen189
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2023-07-08 v7.01b Hypertext links for LaTeX
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode not found.
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2023-08-07 v2.53 Cross-referencing by name of section
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count306
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count307
 )
-\c@section@level=\count309
-)
-\@linkdim=\dimen191
-\Hy@linkcounter=\count310
-\Hy@pagecounter=\count311
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+\@linkdim=\dimen190
+\Hy@linkcounter=\count308
+\Hy@pagecounter=\count309
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2023-07-08 v7.01b Hyperref: PDFDocEncoding definition (HO)
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count312
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
+\Hy@SavedSpaceFactor=\count310
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2023-07-08 v7.01b Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Option `unicode' set `true' on input line 4050.
@@ -456,21 +425,21 @@ Package hyperref Info: Plain pages OFF on input line 4182.
 Package hyperref Info: Backreferencing OFF on input line 4187.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4434.
-\c@Hy@tempcnt=\count313
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
+\c@Hy@tempcnt=\count311
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip19
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4772.
-\XeTeXLinkMargin=\dimen192
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+\XeTeXLinkMargin=\dimen191
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count314
-\Field@Width=\dimen193
-\Fld@charsize=\dimen194
+\Fld@menulength=\count312
+\Field@Width=\dimen192
+\Fld@charsize=\dimen193
 Package hyperref Info: Hyper figures OFF on input line 6051.
 Package hyperref Info: Link nesting OFF on input line 6056.
 Package hyperref Info: Hyper index ON on input line 6059.
@@ -478,40 +447,37 @@ Package hyperref Info: backreferencing OFF on input line 6066.
 Package hyperref Info: Link coloring OFF on input line 6071.
 Package hyperref Info: Link coloring with OCG OFF on input line 6076.
 Package hyperref Info: PDF/A mode OFF on input line 6081.
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count315
-\c@Item=\count316
-\c@Hfootnote=\count317
+\Hy@abspage=\count313
+\c@Item=\count314
+\c@Hfootnote=\count315
 )
 Package hyperref Info: Driver (autodetected): hxetex.
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hxetex.def
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hxetex.def
 File: hxetex.def 2023-07-08 v7.01b Hyperref driver for XeTeX
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\pdfm@box=\box59
-\c@Hy@AnnotLevel=\count318
-\HyField@AnnotCount=\count319
-\Fld@listcount=\count320
-\c@bookmark@seq@number=\count321
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+\pdfm@box=\box58
+\c@Hy@AnnotLevel=\count316
+\HyField@AnnotCount=\count317
+\Fld@listcount=\count318
+\c@bookmark@seq@number=\count319
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+) (/Users/lucas/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip64
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
-File: bkm-dvipdfm.def 2020-11-06 v1.29 bookmark driver for dvipdfm (HO)
-\BKM@id=\count322
-)) (./talk06-homework.aux)
+) (./talk06-homework.aux)
 \openout1 = `talk06-homework.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
@@ -766,21 +732,11 @@ LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `bold' on input line 111.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 111.
-LaTeX Info: Redefining \microtypecontext on input line 111.
-Package microtype Info: Applying patch `item' on input line 111.
-Package microtype Info: Applying patch `toc' on input line 111.
-Package microtype Info: Applying patch `eqnum' on input line 111.
-Package microtype Info: Applying patch `footnote' on input line 111.
-Package microtype Info: Applying patch `verbatim' on input line 111.
-Package microtype Info: Character protrusion enabled (level 2).
-Package microtype Info: Using protrusion set `basicmath'.
-Package microtype Info: No adjustment of tracking.
-Package microtype Info: No adjustment of spacing.
-Package microtype Info: No adjustment of kerning.
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
-File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Modern Roman (RS)
-)
 Package hyperref Info: Link coloring OFF on input line 111.
+(./talk06-homework.out) (./talk06-homework.out)
+\@outlinefile=\write4
+\openout4 = `talk06-homework.out'.
+
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 12.045pt on input line 113.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
@@ -788,7 +744,7 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 6.0pt on input line 113.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 113.
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
@@ -804,16 +760,12 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 5.99936pt on input line 113.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 113.
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
-File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 113.
-(/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/Users/lucas/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (/Users/wchen/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) (./talk06-homework.toc
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 7.37756pt on input line 1.
@@ -832,8 +784,8 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 5.26912pt on input line 1.
 )
-\tf@toc=\write4
-\openout4 = `talk06-homework.toc'.
+\tf@toc=\write5
+\openout5 = `talk06-homework.toc'.
 
 
 Package fontspec Warning: Font "STFangsong" does not contain requested Script
@@ -877,67 +829,101 @@ LaTeX Font Warning: Font shape `TU/STFangsong(0)/b/n' undefined
 
 LaTeX Font Info:    Font shape `TU/STFangsong(0)/m/n' will be
 (Font)              scaled to size 10.53937pt on input line 125.
-
-Underfull \hbox (badness 10000) in paragraph at lines 135--137
-
- []
-
 [1
 
 ]
-
-LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10.53937> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 200.
-
-
-LaTeX Font Warning: Font shape `TU/STFangsong(0)/b/it' undefined
-(Font)              using `TU/STFangsong(0)/b/n' instead on input line 200.
-
-LaTeX Font Info:    Font shape `TU/STFangsong(0)/b/n' will be
-(Font)              scaled to size 10.53937pt on input line 200.
-LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/m/sl' in size <10.53937> not available
-(Font)              Font shape `TU/SongtiSCLight(0)/m/it' tried instead on input line 232.
-[2]
-Overfull \hbox (147.45198pt too wide) in paragraph at lines 251--251
+Overfull \hbox (147.45198pt too wide) in paragraph at lines 188--188
 []    \TU/lmtt/m/n/10.53937 file = "../data/talk06/relative_abundance_for_RUN_ERR1072629_taxonlevel_species.txt",[] 
  []
 
 File: ../images/talk06/121-ggplot-pie-chart-donut-chart-1.png Graphic file (type bmp)
 <../images/talk06/121-ggplot-pie-chart-donut-chart-1.png>
-[3] [4]
-File: talk06-homework_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
-<use talk06-homework_files/figure-latex/unnamed-chunk-5-1.pdf>
-[5]
-Overfull \hbox (53.38817pt too wide) in paragraph at lines 381--381
-[]\TU/lmtt/m/n/10.53937 ppi <- read_delim( file = "../data/talk06/ppi900.txt.gz", col_names = T,[] 
+
+LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10.53937> not available
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 207.
+
+
+LaTeX Font Warning: Font shape `TU/STFangsong(0)/b/it' undefined
+(Font)              using `TU/STFangsong(0)/b/n' instead on input line 207.
+
+LaTeX Font Info:    Font shape `TU/STFangsong(0)/b/n' will be
+(Font)              scaled to size 10.53937pt on input line 207.
+LaTeX Font Info:    Font shape `TU/SongtiSCLight(0)/m/sl' in size <10.53937> not available
+(Font)              Font shape `TU/SongtiSCLight(0)/m/it' tried instead on input line 220.
+[2] [3]
+Overfull \hbox (114.25323pt too wide) in paragraph at lines 231--231
+[]\TU/lmtt/m/n/10.53937 ## -- Column specification --------------------------------------------------------[] 
  []
 
 
-Overfull \hbox (97.65344pt too wide) in paragraph at lines 410--410
+Overfull \hbox (64.45451pt too wide) in paragraph at lines 231--231
+[]\TU/lmtt/m/n/10.53937 ## i Use `spec()` to retrieve the full column specification for this data.[] 
+ []
+
+
+Overfull \hbox (119.78621pt too wide) in paragraph at lines 231--231
+[]\TU/lmtt/m/n/10.53937 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.[] 
+ []
+
+[4]
+Overfull \hbox (103.18668pt too wide) in paragraph at lines 256--256
+[]\TU/lmtt/m/n/10.53937 ## Warning in rbind(deparse.level, ...): number of columns of result, 3, is not a[] 
+ []
+
+File: talk06-homework_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type pdf)
+<use talk06-homework_files/figure-latex/unnamed-chunk-2-1.pdf>
+[5] [6]
+File: talk06-homework_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
+<use talk06-homework_files/figure-latex/unnamed-chunk-3-1.pdf>
+[7]
+Underfull \vbox (badness 5741) detected at line 420
+ []
+
+[8]
+File: talk06-homework_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
+<use talk06-homework_files/figure-latex/unnamed-chunk-4-1.pdf>
+[9] [10]
+Underfull \vbox (badness 10000) detected at line 493
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 493
+ []
+
+[11]
+File: talk06-homework_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
+<use talk06-homework_files/figure-latex/unnamed-chunk-5-1.pdf>
+
+Overfull \hbox (53.38817pt too wide) in paragraph at lines 516--516
+[]\TU/lmtt/m/n/10.53937 ppi <- read_delim( file = "../data/talk06/ppi900.txt.gz", col_names = T,[] 
+ []
+
+[12]
+Overfull \hbox (97.65344pt too wide) in paragraph at lines 545--545
 []\TU/lmtt/m/n/10.53937 relative_abundance_for_curated_sample_PRJEB6070-DE-073_at_taxonlevel_species.txt[] 
  []
 
 
-Overfull \hbox (97.65344pt too wide) in paragraph at lines 410--410
+Overfull \hbox (97.65344pt too wide) in paragraph at lines 545--545
 []\TU/lmtt/m/n/10.53937 relative_abundance_for_curated_sample_PRJEB6070-DE-074_at_taxonlevel_species.txt[] 
  []
 
 
-Overfull \hbox (97.65344pt too wide) in paragraph at lines 410--410
+Overfull \hbox (97.65344pt too wide) in paragraph at lines 545--545
 []\TU/lmtt/m/n/10.53937 relative_abundance_for_curated_sample_PRJEB6070-DE-075_at_taxonlevel_species.txt[] 
  []
 
 
-Overfull \hbox (97.65344pt too wide) in paragraph at lines 410--410
+Overfull \hbox (97.65344pt too wide) in paragraph at lines 545--545
 []\TU/lmtt/m/n/10.53937 relative_abundance_for_curated_sample_PRJEB6070-DE-076_at_taxonlevel_species.txt[] 
  []
 
 
-Overfull \hbox (97.65344pt too wide) in paragraph at lines 410--410
+Overfull \hbox (97.65344pt too wide) in paragraph at lines 545--545
 []\TU/lmtt/m/n/10.53937 relative_abundance_for_curated_sample_PRJEB6070-DE-077_at_taxonlevel_species.txt[] 
  []
 
-[6] [7] (./talk06-homework.aux)
+[13] (./talk06-homework.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -945,14 +931,16 @@ L3 programming layer <2022/07/14>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+Package rerunfilecheck Info: File `talk06-homework.out' has not changed.
+(rerunfilecheck)             Checksum: B627E42132C85B7BD2BBE13AA5756B11;600.
  ) 
 Here is how much of TeX's memory you used:
- 22362 strings out of 477570
- 458838 string characters out of 5817111
- 1925438 words of memory out of 5000000
- 43239 multiletter control sequences out of 15000+600000
- 566314 words of font info for 110 fonts, out of 8000000 for 9000
+ 20468 strings out of 477590
+ 423830 string characters out of 5817991
+ 1924422 words of memory out of 5000000
+ 41375 multiletter control sequences out of 15000+600000
+ 566322 words of font info for 111 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 93i,6n,120p,1012b,902s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,5n,120p,382b,866s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on talk06-homework.pdf (7 pages).
+Output written on talk06-homework.pdf (13 pages).
