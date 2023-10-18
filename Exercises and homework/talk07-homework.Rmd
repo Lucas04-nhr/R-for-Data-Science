@@ -73,6 +73,9 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+library(stringi)
+library(stringr)
+
 # Load the data
 x =
   c('weihua', 'chen')
