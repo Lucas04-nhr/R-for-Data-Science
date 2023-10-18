@@ -73,6 +73,26 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the data
+x =
+  c('weihua', 'chen')
+
+x_length =
+  length(x)
+x_upper =
+  str_to_title(x)
+x_sub =
+  str_sub(x, 1, 2)
+x_collapse =
+  str_c(x, collapse = ', ')
+x_count =
+  str_count(x, '[aeiou]')
+
+print(x_length)
+print(x_upper)
+print(x_sub)
+print(x_collapse)
+print(x_count)
 
 ```
 
@@ -87,6 +107,33 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the package
+library(tidyverse)
+
+# Sift through all the Mercedes-Benz cars
+mtcars_Merc =
+  mtcars %>%
+    rownames_to_column('car') %>%
+    filter(grepl('Merc', car)) %>%
+    select(car, everything())
+
+# Sift through all the non-Mercedes-Benz cars
+mtcars_none_Merc =
+  mtcars %>%
+    rownames_to_column('car') %>%
+    filter(!grepl('Merc', car)) %>%
+    select(car, everything())
+
+# Split the car names into brand and model
+mtcars_split =
+  mtcars %>%
+    rownames_to_column('car') %>%
+    separate(car, c('brand', 'model'), sep = ' ')
+
+# Print the results
+print(mtcars_Merc)
+print(mtcars_none_Merc)
+print(mtcars_split)
 
 ```
 
@@ -103,6 +150,22 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the package
+library(tidyverse)
+
+# Add prefix and suffix
+x =
+  c("abc", NA)
+
+if(is.na(x[2])) {
+  x[2] = 'NA'
+}
+
+x_add =
+  str_c('|-', x, '-|')
+
+# Print the results
+print(x_add)
 
 ```
 
@@ -124,7 +187,23 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the package
+library(tidyverse)
 
+# Filtering data
+white_characters =
+  starwars %>%
+    filter(str_detect(tolower(skin_color), "white")) %>%
+    select(name, homeworld, species, skin_color)
+
+ar_characters =
+  starwars %>%
+    filter(str_detect(tolower(name), "ar")) %>%
+    select(name)
+
+# Print the results
+print(white_characters)
+print(ar_characters)
 ```
 
 ------------------------------------------------------------------------
@@ -142,6 +221,61 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the package
+library(tidyverse)
+
+# Find the first digit
+vec =
+  c( "123", "abc", "wei555hua666" )
+
+vec <- c("123", "abc", "wei555hua666")
+
+# 1. Finding strings containing numbers
+strings_with_digits =
+  grep("[0-9]",
+       vec,
+       value = TRUE)
+print(strings_with_digits)
+
+# 2. Finding the position of the first digit
+first_digit_positions =
+  regexpr(
+    "[0-9]",
+    vec)
+print(first_digit_positions)
+
+# 3. Finding the position of all digits
+all_digit_positions =
+  regexpr(
+    "[0-9]+",
+    vec)
+print(all_digit_positions)
+
+# 4. Extracting the first digit
+first_digits =
+  regmatches(
+    vec,
+    regexec(
+      "[0-9]",
+      vec))
+print(first_digits)
+
+# 5. Extracting all digits
+all_digits =
+  regmatches(
+    vec,
+    regexec(
+      "[0-9]+",
+      vec))
+print(all_digits)
+
+# 6. Replacing all digits with 666
+vec_with_666 =
+  gsub(
+    "[0-9]+",
+    "666",
+    vec)
+print(vec_with_666)
 
 ```
 
