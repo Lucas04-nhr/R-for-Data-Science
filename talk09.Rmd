@@ -97,7 +97,7 @@ with( swiss, plot(Education, Fertility, type = "p", main = "Swiss data 1888",
 
 ![an annotated example](images/talk09/plot_annotated_example.png){height=70%}
 
-## plot 支持的画图类型， 参数 ``` p = '?' ``` 的取值
+## plot 支持的画图类型， 参数 ``` type = '?' ``` 的取值
 
 \FontSmall
 ```{r fig.height=5, fig.width=10}
@@ -219,7 +219,7 @@ par();
 ```{r eval=FALSE}
 oldpar <- par(); ## 备份
 
-do some changes here ... 
+# do some changes here ... 
 
 ## 恢复
 par( oldpar ); 
@@ -306,7 +306,7 @@ for( i in 1:6 )
 
 \FontSmall 
 ```{r eval=FALSE}
-pdf( file = "/path/to/dir/<file_name>.pdf", height = 5, width = 5 ); ## 创建一个新设备/ pdf 文件 
+svg( file = "talk09_data/abc.svg", height = 5, width = 5 ); ## 创建一个新设备/ pdf 文件 
 plot(1:10); ## 作图；
 dev.off(); ## 关闭设备
 ```
