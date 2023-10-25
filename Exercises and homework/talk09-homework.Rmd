@@ -406,29 +406,31 @@ library(dplyr)
 
 data(mtcars)
 
-# 增加一列保存行名
+# Add a column to save row names
 mtcars_named <- mtcars %>% rownames_to_column(var = "car_name")
 
-# 排序数据
+# Sorted data
 mtcars_arranged <- mtcars_named %>%
   arrange(cyl, mpg)
 
-# 更改行名的因子
+# Factors for changing line names
 mtcars_arranged$car_name <- factor(mtcars_arranged$car_name, levels = mtcars_arranged$car_name)
 
-# 计算每个行名的旋转角度
+# Calculate the rotation angle for each line name
 mtcars_arranged <- mtcars_arranged %>%
   mutate(id = row_number(),
          angle = 90 - 360 * (id - 0.5) / n())
 
-# 创建极坐标图
+# Creating a Coordinate Chart
 p4 <- ggplot(mtcars_arranged, aes(x = car_name, y = mpg, fill = factor(cyl))) +
   geom_bar(stat = "identity",) +
-  coord_polar(theta = "x") +
+  coord_polar(theta = "x") + 
+  # scale_x_discrete(labels = mtcars_arranged$car_name) +
+  # theme(axis.title.x = element_text(angle = (mtcars_arranged$angle))) +
   labs(title = "Pie Chart of mpg by cyl")
 
 
-# 保存图形到变量 p4
+# Save to p4
 p4
 
 ```
