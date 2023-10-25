@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.17)  25 OCT 2023 14:20
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.17)  25 OCT 2023 15:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1439,13 +1439,19 @@ File: talk09_files/figure-beamer/unnamed-chunk-42-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-43-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-43-1.pdf>
+) [63
+
+]
+\openout4 = `talk09.vrb'.
+
+(./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-44-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-44-1.pdf>
 )
-Overfull \vbox (199.10619pt too high) detected at line 1577
+Overfull \vbox (10.43411pt too high) detected at line 1579
  []
 
-[63
+[64
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1453,21 +1459,16 @@ Overfull \vbox (199.10619pt too high) detected at line 1577
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-45-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-45-1.pdf>
-) [64
+) [65
 
 ]
 \openout4 = `talk09.vrb'.
 
 (./talk09.vrb)
-Overfull \vbox (0.73471pt too high) detected at line 1627
+Overfull \vbox (0.73471pt too high) detected at line 1629
  []
 
-[65
-
-]
-\openout4 = `talk09.vrb'.
-
-(./talk09.vrb) [66
+[66
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1477,16 +1478,21 @@ Overfull \vbox (0.73471pt too high) detected at line 1627
 ]
 \openout4 = `talk09.vrb'.
 
+(./talk09.vrb) [68
+
+]
+\openout4 = `talk09.vrb'.
+
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-48-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-48-1.pdf>
-) [68
-
-] [69
+) [69
 
 ] [70
 
 ] [71
+
+] [72
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1494,12 +1500,12 @@ File: talk09_files/figure-beamer/unnamed-chunk-48-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-49-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-49-1.pdf>
-) [72
+) [73
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [73
+(./talk09.vrb) [74
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1507,7 +1513,7 @@ File: talk09_files/figure-beamer/unnamed-chunk-49-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-51-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-51-1.pdf>
-) [74
+) [75
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1515,21 +1521,21 @@ File: talk09_files/figure-beamer/unnamed-chunk-51-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-52-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-52-1.pdf>
-) [75
+) [76
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [76
+(./talk09.vrb) [77
 
 ]
 \openout4 = `talk09.vrb'.
 
 (./talk09.vrb)
-Overfull \vbox (39.1005pt too high) detected at line 1943
+Overfull \vbox (39.1005pt too high) detected at line 1945
  []
 
-[77
+[78
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1538,15 +1544,15 @@ Overfull \vbox (39.1005pt too high) detected at line 1943
 File: talk09_files/figure-beamer/unnamed-chunk-56-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-56-1.pdf>
 )
-Overfull \vbox (2.49283pt too high) detected at line 1971
+Overfull \vbox (2.49283pt too high) detected at line 1973
  []
 
-[78
+[79
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [79
+(./talk09.vrb) [80
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1554,12 +1560,12 @@ Overfull \vbox (2.49283pt too high) detected at line 1971
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-58-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-58-1.pdf>
-) [80
+) [81
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [81
+(./talk09.vrb) [82
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1568,15 +1574,10 @@ File: talk09_files/figure-beamer/unnamed-chunk-58-1.pdf Graphic file (type pdf)
 File: talk09_files/figure-beamer/unnamed-chunk-60-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-60-1.pdf>
 )
-Overfull \vbox (3.08926pt too high) detected at line 2076
+Overfull \vbox (3.08926pt too high) detected at line 2078
  []
 
-[82
-
-]
-\openout4 = `talk09.vrb'.
-
-(./talk09.vrb) [83
+[83
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1586,14 +1587,19 @@ Overfull \vbox (3.08926pt too high) detected at line 2076
 ]
 \openout4 = `talk09.vrb'.
 
+(./talk09.vrb) [85
+
+]
+\openout4 = `talk09.vrb'.
+
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-63-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-63-1.pdf>
 )
-Overfull \vbox (81.27325pt too high) detected at line 2160
+Overfull \vbox (81.27325pt too high) detected at line 2162
  []
 
-[85
+[86
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1602,15 +1608,15 @@ Overfull \vbox (81.27325pt too high) detected at line 2160
 File: talk09_files/figure-beamer/unnamed-chunk-64-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-64-1.pdf>
 )
-Overfull \vbox (71.30125pt too high) detected at line 2186
+Overfull \vbox (71.30125pt too high) detected at line 2188
  []
 
-[86
+[87
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [87
+(./talk09.vrb) [88
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1619,15 +1625,10 @@ Overfull \vbox (71.30125pt too high) detected at line 2186
 File: talk09_files/figure-beamer/unnamed-chunk-68-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-68-1.pdf>
 )
-Overfull \vbox (48.24826pt too high) detected at line 2243
+Overfull \vbox (48.24826pt too high) detected at line 2245
  []
 
-[88
-
-]
-\openout4 = `talk09.vrb'.
-
-(./talk09.vrb) [89
+[89
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1637,14 +1638,19 @@ Overfull \vbox (48.24826pt too high) detected at line 2243
 ]
 \openout4 = `talk09.vrb'.
 
+(./talk09.vrb) [91
+
+]
+\openout4 = `talk09.vrb'.
+
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-71-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-71-1.pdf>
 )
-Overfull \vbox (11.80826pt too high) detected at line 2301
+Overfull \vbox (11.80826pt too high) detected at line 2303
  []
 
-[91
+[92
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1653,17 +1659,17 @@ Overfull \vbox (11.80826pt too high) detected at line 2301
 File: talk09_files/figure-beamer/unnamed-chunk-72-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-72-1.pdf>
 )
-Overfull \vbox (94.69763pt too high) detected at line 2325
+Overfull \vbox (94.69763pt too high) detected at line 2327
  []
 
-[92
+[93
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [93
+(./talk09.vrb) [94
 
-] [94
+] [95
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1672,10 +1678,10 @@ Overfull \vbox (94.69763pt too high) detected at line 2325
 File: talk09_files/figure-beamer/unnamed-chunk-75-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-75-1.pdf>
 )
-Overfull \vbox (25.80826pt too high) detected at line 2401
+Overfull \vbox (25.80826pt too high) detected at line 2403
  []
 
-[95
+[96
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1683,7 +1689,7 @@ Overfull \vbox (25.80826pt too high) detected at line 2401
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-76-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-76-1.pdf>
-) [96
+) [97
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1723,11 +1729,11 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
 (Font)              Font shape `TU/lmss/m/sl' tried instead on input line 5.
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <6> not available
 (Font)              Font shape `TU/lmss/m/sl' tried instead on input line 5.
-) [97
-
-] [98
+) [98
 
 ] [99
+
+] [100
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1735,22 +1741,17 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <6> not available
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-77-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-77-1.pdf>
-) [100
+) [101
 
 ]
 File: talk09_files/figure-beamer/unnamed-chunk-78-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-78-1.pdf>
-[101
+[102
 
 ]
 File: images/talk09/equation_explained_paste_version.png Graphic file (type bmp)
 <images/talk09/equation_explained_paste_version.png>
-[102
-
-]
-\openout4 = `talk09.vrb'.
-
-(./talk09.vrb) [103
+[103
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1763,9 +1764,14 @@ File: images/talk09/equation_explained_paste_version.png Graphic file (type bmp)
 (./talk09.vrb) [105
 
 ]
+\openout4 = `talk09.vrb'.
+
+(./talk09.vrb) [106
+
+]
 File: images/talk09/equation_explained.png Graphic file (type bmp)
 <images/talk09/equation_explained.png>
-[106
+[107
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1773,7 +1779,7 @@ File: images/talk09/equation_explained.png Graphic file (type bmp)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-82-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-82-1.pdf>
-) [107
+) [108
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1787,7 +1793,7 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <7> not available
 (Font)              Font shape `TU/lmss/m/sl' tried instead on input line 10.
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <5> not available
 (Font)              Font shape `TU/lmss/m/sl' tried instead on input line 10.
-) [108
+) [109
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1797,12 +1803,12 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <5> not available
 LaTeX Font Warning: Font shape `TU/FandolFang-Regular(0)/m/it' undefined
 (Font)              using `TU/FandolFang-Regular(0)/m/n' instead on input line 19.
 
-) [109
+) [110
 
 ]
 File: talk09_files/figure-beamer/unnamed-chunk-84-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-84-1.pdf>
-[110
+[111
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1811,19 +1817,7 @@ File: talk09_files/figure-beamer/unnamed-chunk-84-1.pdf Graphic file (type pdf)
 File: talk09_files/figure-beamer/unnamed-chunk-85-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-85-1.pdf>
 )
-Overfull \vbox (9.14719pt too high) detected at line 2726
- []
-
-[111
-
-]
-\openout4 = `talk09.vrb'.
-
-(./talk09.vrb
-File: talk09_files/figure-beamer/unnamed-chunk-86-1.pdf Graphic file (type pdf)
-<use talk09_files/figure-beamer/unnamed-chunk-86-1.pdf>
-)
-Overfull \vbox (32.67119pt too high) detected at line 2750
+Overfull \vbox (9.14719pt too high) detected at line 2728
  []
 
 [112
@@ -1832,20 +1826,32 @@ Overfull \vbox (32.67119pt too high) detected at line 2750
 \openout4 = `talk09.vrb'.
 
 (./talk09.vrb
-File: talk09_files/figure-beamer/unnamed-chunk-87-1.pdf Graphic file (type pdf)
-<use talk09_files/figure-beamer/unnamed-chunk-87-1.pdf>
+File: talk09_files/figure-beamer/unnamed-chunk-86-1.pdf Graphic file (type pdf)
+<use talk09_files/figure-beamer/unnamed-chunk-86-1.pdf>
 )
-Overfull \vbox (56.7572pt too high) detected at line 2777
+Overfull \vbox (32.67119pt too high) detected at line 2752
  []
 
 [113
 
-] [114
+]
+\openout4 = `talk09.vrb'.
+
+(./talk09.vrb
+File: talk09_files/figure-beamer/unnamed-chunk-87-1.pdf Graphic file (type pdf)
+<use talk09_files/figure-beamer/unnamed-chunk-87-1.pdf>
+)
+Overfull \vbox (56.7572pt too high) detected at line 2779
+ []
+
+[114
+
+] [115
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [115
+(./talk09.vrb) [116
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1854,10 +1860,10 @@ Overfull \vbox (56.7572pt too high) detected at line 2777
 File: talk09_files/figure-beamer/unnamed-chunk-89-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-89-1.pdf>
 )
-Overfull \vbox (2.13988pt too high) detected at line 2838
+Overfull \vbox (2.13988pt too high) detected at line 2840
  []
 
-[116
+[117
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1865,22 +1871,22 @@ Overfull \vbox (2.13988pt too high) detected at line 2838
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-90-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-90-1.pdf>
-) [117
+) [118
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [118
+(./talk09.vrb) [119
 
 ]
 File: images/talk09/microbiome_fig.png Graphic file (type bmp)
 <images/talk09/microbiome_fig.png>
-[119
+[120
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [120
+(./talk09.vrb) [121
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1888,7 +1894,7 @@ File: images/talk09/microbiome_fig.png Graphic file (type bmp)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-92-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-92-1.pdf>
-) [121
+) [122
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1896,7 +1902,7 @@ File: talk09_files/figure-beamer/unnamed-chunk-92-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-93-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-93-1.pdf>
-) [122
+) [123
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1904,7 +1910,7 @@ File: talk09_files/figure-beamer/unnamed-chunk-93-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-94-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-94-1.pdf>
-) [123
+) [124
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1912,7 +1918,7 @@ File: talk09_files/figure-beamer/unnamed-chunk-94-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-95-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-95-1.pdf>
-) [124
+) [125
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1920,12 +1926,12 @@ File: talk09_files/figure-beamer/unnamed-chunk-95-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-96-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-96-1.pdf>
-) [125
+) [126
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [126
+(./talk09.vrb) [127
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1933,12 +1939,12 @@ File: talk09_files/figure-beamer/unnamed-chunk-96-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-97-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-97-1.pdf>
-) [127
+) [128
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [128
+(./talk09.vrb) [129
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1946,7 +1952,7 @@ File: talk09_files/figure-beamer/unnamed-chunk-97-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-98-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-98-1.pdf>
-) [129
+) [130
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1954,12 +1960,7 @@ File: talk09_files/figure-beamer/unnamed-chunk-98-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-99-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-99-1.pdf>
-) [130
-
-]
-\openout4 = `talk09.vrb'.
-
-(./talk09.vrb) [131
+) [131
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1969,15 +1970,20 @@ File: talk09_files/figure-beamer/unnamed-chunk-99-1.pdf Graphic file (type pdf)
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb
-File: talk09_files/figure-beamer/unnamed-chunk-100-1.pdf Graphic file (type pdf)
-<use talk09_files/figure-beamer/unnamed-chunk-100-1.pdf>
-) [133
+(./talk09.vrb) [133
 
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [134
+(./talk09.vrb
+File: talk09_files/figure-beamer/unnamed-chunk-100-1.pdf Graphic file (type pdf)
+<use talk09_files/figure-beamer/unnamed-chunk-100-1.pdf>
+) [134
+
+]
+\openout4 = `talk09.vrb'.
+
+(./talk09.vrb) [135
 
 ]
 \openout4 = `talk09.vrb'.
@@ -1985,9 +1991,7 @@ File: talk09_files/figure-beamer/unnamed-chunk-100-1.pdf Graphic file (type pdf)
 (./talk09.vrb
 File: talk09_files/figure-beamer/unnamed-chunk-102-1.pdf Graphic file (type pdf)
 <use talk09_files/figure-beamer/unnamed-chunk-102-1.pdf>
-) [135
-
-] [136
+) [136
 
 ] [137
 
@@ -1995,10 +1999,12 @@ File: talk09_files/figure-beamer/unnamed-chunk-102-1.pdf Graphic file (type pdf)
 
 ] [139
 
+] [140
+
 ]
 \openout4 = `talk09.vrb'.
 
-(./talk09.vrb) [140
+(./talk09.vrb) [141
 
 ]
 \tf@nav=\write7
@@ -2022,12 +2028,12 @@ Package rerunfilecheck Info: File `talk09.out' has not changed.
 (rerunfilecheck)             Checksum: 87B84DAC24696F81EBC3DF375D98F6FF;1753.
  ) 
 Here is how much of TeX's memory you used:
- 34721 strings out of 477166
- 772491 string characters out of 5811154
+ 34725 strings out of 477166
+ 772531 string characters out of 5811154
  1983671 words of memory out of 5000000
- 55436 multiletter control sequences out of 15000+600000
+ 55438 multiletter control sequences out of 15000+600000
  578535 words of font info for 110 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  101i,16n,127p,592b,745s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on talk09.pdf (140 pages).
+Output written on talk09.pdf (141 pages).

@@ -81,6 +81,29 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+data(swiss)
+
+# Basic
+# Task 01
+  hist(
+    swiss$Catholic, 
+    main="Distribution of Catholic", 
+    xlab="Catholic")
+
+# Task 02
+# 绘制散点图
+plot(swiss$Education, swiss$Fertility, main = "Education vs Fertility", xlab = "Education", ylab = "Fertility", pch = 16, col = "blue")
+
+# 添加线性回归线
+abline(lm(swiss$Fertility ~ swiss$Education), col = "red")
+
+# 添加相关系数和p值
+cor_val <- cor(swiss$Fertility, swiss$Education)
+p_val <- cor.test(swiss$Fertility, swiss$Education)$p.value
+legend("topright", legend = paste("Correlation =", round(cor_val, 2), "\n", "p-value =", round(p_val, 4)), bty = "n", col = "red")
+
+
+
 
 ```
 
