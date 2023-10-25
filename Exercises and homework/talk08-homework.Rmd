@@ -507,7 +507,7 @@ data_list =
     data.frame(Name = "John", Key = "Age", Value = "30"),
     data.frame(Name = "John", Key = "Sex", Value = "M"),
     data.frame(Name = "Mary", Key = "Sex", Value = "F"),
-    data.frame(Name = "John", Key = "Treatment", Value = "A")
+    data.frame(Name = "Mary", Key = "Treatment", Value = "A")
   )
 
 data_full =
