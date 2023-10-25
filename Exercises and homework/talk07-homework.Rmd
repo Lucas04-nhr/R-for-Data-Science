@@ -309,7 +309,7 @@ seq =
 complement =
   chartr("ATCG", "TAGC", seq)
 reverse_complement =
-  rev(complement)
+  stri_reverse(complement)
 print(reverse_complement)
 
 # 2. Calculating the GC content
