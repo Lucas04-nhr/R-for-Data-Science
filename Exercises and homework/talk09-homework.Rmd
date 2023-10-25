@@ -81,29 +81,92 @@ Sys.getenv("HOME")
 
 ```{r}
 ## 代码写这里，并运行；
+library(ggplot2)
 data(swiss)
 
 # Basic
 # Task 01
   hist(
     swiss$Catholic, 
-    main="Distribution of Catholic", 
+    main="Distribution of Catholic(Basic Method)", 
     xlab="Catholic")
 
 # Task 02
-# 绘制散点图
-plot(swiss$Education, swiss$Fertility, main = "Education vs Fertility", xlab = "Education", ylab = "Fertility", pch = 16, col = "blue")
+# Plotting Scatter Plots
+plot(
+  swiss$Education, 
+  swiss$Fertility, 
+  main = "Education vs Fertility(Basic Method)",
+  xlab = "Education",
+  ylab = "Fertility", 
+  pch = 16, 
+  col = "blue")
 
-# 添加线性回归线
-abline(lm(swiss$Fertility ~ swiss$Education), col = "red")
+# Adding a linear regression line
+abline(
+  lm(swiss$Fertility ~ swiss$Education),
+  col = "red")
 
-# 添加相关系数和p值
-cor_val <- cor(swiss$Fertility, swiss$Education)
-p_val <- cor.test(swiss$Fertility, swiss$Education)$p.value
-legend("topright", legend = paste("Correlation =", round(cor_val, 2), "\n", "p-value =", round(p_val, 4)), bty = "n", col = "red")
+# Add correlation coefficients and p-values
+cor_val =
+  cor(swiss$Fertility, 
+      swiss$Education)
+p_val =
+  cor.test(swiss$Fertility, 
+           swiss$Education)$p.value
+legend(
+  "topright", 
+  legend = paste("Correlation =", 
+                 round(cor_val, 2), 
+                 "\n", "p-value =",
+                 round(p_val, 4)), 
+  bty = "n", 
+  col = "red")
 
+# ggplot2
+# Task 01
+ggplot(
+  swiss, 
+  aes(x = Catholic)) +
+  geom_histogram(
+    fill = "lightblue", 
+    color = "black",
+    bins = 20) +
+  labs(
+    title = "Distribution of Catholic(ggplot2)", 
+    x = "Catholic", 
+    y = "Frequency")
 
-
+# Task 02
+# 使用 ggplot2 绘制散点图
+ggplot(
+  swiss, 
+  aes(x = Education, 
+      y = Fertility)) +
+  geom_point(
+    color = "blue",
+    size = 3) +
+  geom_smooth(
+    method = "lm",
+    color = "red") +
+  labs(
+    title = "Education vs Fertility(ggplot2)", 
+    x = "Education", 
+    y = "Fertility") +
+  annotate(
+    "text",
+    x = 20, 
+    y = 35, 
+    label = 
+      paste(
+        "Correlation =", 
+        round(cor_val, 2),
+        "\n", 
+        "p-value =", 
+        round(p_val, 4)),
+    color = "red",
+    vjust = -1, 
+    size = 3)
 
 ```
 
@@ -118,7 +181,68 @@ legend("topright", legend = paste("Correlation =", round(cor_val, 2), "\n", "p-v
 
 ```{r}
 ## 代码写这里，并运行；
+data(iris)
+library(ggplot2)
 
+# Basic
+# Task 01
+colors =
+  c("setosa" = "red",
+    "versicolor" = "green",
+    "virginica" = "blue")
+plot(
+  iris$Sepal.Length,
+  iris$Petal.Length,
+  pch = 19,
+  col = colors[iris$Species],
+  xlab = "Sepal.Length",
+  ylab = "Petal.Length",
+  main = "Sepal.Length vs Petal.Length(Basic)"
+)
+legend(
+  "topright",
+  legend = levels(iris$Species),
+  col = colors,
+  pch = 19,
+  title = "Species"
+)
+
+# Task 02
+boxplot(
+  Sepal.Length ~ Species,
+  data = iris,
+  xlab = "Species",
+  ylab = "Sepal.Length",
+  main = "Task 02(Basic)"
+)
+
+
+# ggplot
+# Task 01
+ggplot(
+  iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(size = 3) +
+  labs(
+    title = 
+      "Sepal.Length vs Petal.Length(ggplot2)",
+    x = "Sepal.Length",
+    y = "Patal.Length"
+  ) +
+  scale_color_manual(
+    values = 
+      c("setosa" = "red",
+        "versicolor" = "green",
+        "virginica" = "blue")
+  ) +
+  theme(
+    legend.position = "top"
+  )
 ```
 
 ------------------------------------------------------------------------
@@ -137,7 +261,50 @@ legend("topright", legend = paste("Correlation =", round(cor_val, 2), "\n", "p-v
 
 ```{r}
 ## 代码写这里，并运行；
+library(ggplot2)
+library(ggsignif)
 
+# Load the data
+data("starwars")
+starwars_filtered = 
+  na.omit(starwars)
+
+# Initializing the plot
+# Ignore 'NA' in "height"
+p1 =
+  ggplot(
+    starwars_filtered,
+    aes(
+      x = gender,
+      y = height,
+      fill = gender
+    )
+  ) +
+  geom_boxplot() +
+  labs(
+    title = "Boxplot of Height by Gender",
+    x = "Gender",
+    y = "Height"
+  ) +
+  theme(
+    legend.position = "none"
+  )
+
+# Calculate height
+p1_with_signif =
+  p1 +
+  geom_signif(
+    comparisons = 
+      list(
+        c("feminine", "masculine")
+      ),
+    map_signif_level = TRUE
+  )
+
+# Save it
+p1 = p1_with_signif
+
+print(p1)
 ```
 
 ------------------------------------------------------------------------
@@ -152,6 +319,33 @@ legend("topright", legend = paste("Correlation =", round(cor_val, 2), "\n", "p-v
 
 ```{r}
 ## 代码写这里，并运行；
+library(ggplot2)
+
+# Draw the plot
+p2 =
+  ggplot(
+    iris, 
+    aes(
+      x = Sepal.Length, 
+      y = Sepal.Width, 
+      color = Species
+    )
+  ) +
+  geom_density2d() +
+  geom_point(
+    aes(color = Species), 
+    size = 2, 
+    alpha = 0.6) +
+  labs(
+    title = "Density Plot of Sepal.Length vs Sepal.Width by Species", 
+    x = "Sepal.Length", 
+    y = "Sepal.Width"
+  ) +
+  theme(
+    legend.title = element_blank()
+  )
+
+print(p2)
 
 ```
 
@@ -169,6 +363,23 @@ legend("topright", legend = paste("Correlation =", round(cor_val, 2), "\n", "p-v
 
 ```{r}
 ## 代码写这里，并运行；
+# 加载 ggplot2
+library(ggplot2)
+
+# 创建 facet 图形
+p3 <- ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  geom_smooth() +
+  labs(title = "Relationship between wt and mpg by cyl", x = "wt", y = "mpg") +
+  theme(legend.title = element_blank()) +
+  facet_wrap(. ~ cyl,
+             ncol = 2,
+             dir = "h",
+             scales = "free",
+             drop = FALSE)
+
+# 保存图形结果到变量 p3
+p3
 
 ```
 
@@ -189,6 +400,36 @@ legend("topright", legend = paste("Correlation =", round(cor_val, 2), "\n", "p-v
 
 ```{r}
 ## 代码写这里，并运行；
+# 导入 ggplot2 和 dplyr 包
+library(ggplot2)
+library(dplyr)
+
+data(mtcars)
+
+# 增加一列保存行名
+mtcars_named <- mtcars %>% rownames_to_column(var = "car_name")
+
+# 排序数据
+mtcars_arranged <- mtcars_named %>%
+  arrange(cyl, mpg)
+
+# 更改行名的因子
+mtcars_arranged$car_name <- factor(mtcars_arranged$car_name, levels = mtcars_arranged$car_name)
+
+# 计算每个行名的旋转角度
+mtcars_arranged <- mtcars_arranged %>%
+  mutate(id = row_number(),
+         angle = 90 - 360 * (id - 0.5) / n())
+
+# 创建极坐标图
+p4 <- ggplot(mtcars_arranged, aes(x = car_name, y = mpg, fill = factor(cyl))) +
+  geom_bar(stat = "identity",) +
+  coord_polar(theta = "x") +
+  labs(title = "Pie Chart of mpg by cyl")
+
+
+# 保存图形到变量 p4
+p4
 
 ```
 
@@ -204,6 +445,23 @@ legend("topright", legend = paste("Correlation =", round(cor_val, 2), "\n", "p-v
 
 ```{r}
 ## 代码写这里，并运行；
+library(ggplot2)
+library(cowplot)
+
+# 将 p2 和 p3 组合在一起
+combined_p2_p3 =
+  plot_grid(p2,p3,nrow = 2, align = "v", axis = "l")
+print(combined_p2_p3)
+
+# 使用 ggdraw 组合 p1 和 combined_p2_p3
+
+combined_plot =
+  plot_grid(p1, combined_p2_p3, rel_widths = c(2.5,4))
+
+ggdraw(combined_plot)
+
+# 显示最终的组合图
+print(combined_plot)
 
 ```
 
