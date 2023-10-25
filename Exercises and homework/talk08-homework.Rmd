@@ -479,43 +479,49 @@ dfs %>% reduce(full_join);
 ```{r}
 ## 代码写这里，并运行；
 # Example
+library(purrr)
+library(tidyverse)
 dfs <- list(
   age = tibble(name = "John", age = 30),
   sex = tibble(name = c("John", "Mary"), sex = c("M", "F")),
   trt = tibble(name = "Mary", treatment = "A")
 );
 
-dfs %>% reduce(full_join);
+dfs_join =
+  dfs %>% reduce(full_join);
 
 # Task
 # Load the library
 library(tidyverse)
 
 # Create data frame
-dfs = list(
-  age = 
-    tibble(
-      name = "John",
-      age = 30),
-  sex = 
-    tibble(
-      name = c("John", "Mary"), 
-      sex = c("M", "F")),
-  trt = 
-    tibble(
-      name = "Mary", 
-      treatment = "A")
-)
+data_full = 
+  data.frame(
+    `Name` = character(),
+    `Key` = character(),
+    `Value` = character()
+  )
 
-# Combine it
+data_list =
+  list(
+    data.frame(Name = "John", Key = "Age", Value = "30"),
+    data.frame(Name = "John", Key = "Sex", Value = "M"),
+    data.frame(Name = "Mary", Key = "Sex", Value = "F"),
+    data.frame(Name = "John", Key = "Treatment", Value = "A")
+  )
+
+data_full =
+  do.call(rbind, data_list)
+
+# Spread it
 result_tidyverse =
-  dfs %>%
-  reduce(
-    full_join, 
-    by = "name")
+  data_full %>%
+  spread(key = `Key`, value = `Value`)
+result_tidyverse$Age = 
+  as.numeric(result_tidyverse$Age)
 
-# Print the result
 print(result_tidyverse)
+
 
 ```
 
