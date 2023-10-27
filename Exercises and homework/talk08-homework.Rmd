@@ -411,6 +411,7 @@ print(result$correlation_coefficient)
 ```{r}
 ## 代码写这里，并运行；
 library(dplyr)
+library(purrr)
 
 # Task 01
 iris_with_factors =
