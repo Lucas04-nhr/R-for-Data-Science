@@ -423,7 +423,7 @@ mtcars_arranged <- mtcars_arranged %>%
 
 # Creating a Coordinate Chart
 p4 <- ggplot(mtcars_arranged, aes(x = car_name, y = mpg, fill = factor(cyl))) +
-  geom_bar(stat = "identity",) +
+  geom_bar(stat = "identity") +
   coord_polar(theta = "x") + 
   # scale_x_discrete(labels = mtcars_arranged$car_name) +
   # theme(axis.title.x = element_text(angle = (mtcars_arranged$angle))) +
