@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.17)  25 OCT 2023 22:16
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.17)  28 OCT 2023 17:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1208,16 +1208,16 @@ Overfull \hbox (230.44951pt too wide) in paragraph at lines 1035--1035
  []
 
 [19] [20] [21] [22] [23] [24]
-Overfull \hbox (47.855pt too wide) in paragraph at lines 1299--1299
+Overfull \hbox (47.855pt too wide) in paragraph at lines 1300--1300
 []\TU/lmtt/m/n/10.53937 ## [1]  10.63365394 -19.43866101   4.45335944  -0.06955236  -0.29811515[] 
  []
 
-[25] [26] [27] [28]
-Overfull \hbox (64.45448pt too wide) in paragraph at lines 1497--1497
+[25] [26] [27] [28] [29]
+Overfull \hbox (64.45448pt too wide) in paragraph at lines 1518--1518
 []\TU/lmtt/m/n/10.53937 ## Warning: executing %dopar% sequentially: no parallel backend registered[] 
  []
 
-[29] [30] (./talk08-homework.aux)
+[30] [31] (./talk08-homework.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -1235,6 +1235,6 @@ Here is how much of TeX's memory you used:
  41823 multiletter control sequences out of 15000+600000
  566330 words of font info for 112 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 93i,6n,129p,605b,866s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,6n,129p,605b,870s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on talk08-homework.pdf (30 pages).
+Output written on talk08-homework.pdf (31 pages).

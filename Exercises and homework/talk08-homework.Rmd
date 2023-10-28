@@ -627,6 +627,16 @@ for (i in 1:nrow(params)) {
     c(mean_val, sd_val, n_val)
 }
 
+for (i in 1:nrow(params)) {
+  print (
+    rnorm(
+      n = params$n[i],
+      mean = params$mean[i],
+      sd = params$sd[i]
+    )
+  )
+}
+
 result_df =
   as.data.frame(do.call(rbind, result_list))
 colnames(result_df) =
