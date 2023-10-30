@@ -262,6 +262,7 @@ ggplot(
 ```{r}
 ## 代码写这里，并运行；
 library(ggplot2)
+library(tidyverse)
 library(ggsignif)
 
 # Load the data
@@ -407,22 +408,27 @@ library(dplyr)
 data(mtcars)
 
 # Add a column to save row names
-mtcars_named <- mtcars %>% rownames_to_column(var = "car_name")
+mtcars_named =
+  mtcars %>% rownames_to_column(var = "car_name")
 
 # Sorted data
-mtcars_arranged <- mtcars_named %>%
+mtcars_arranged =
+  mtcars_named %>%
   arrange(cyl, mpg)
 
 # Factors for changing line names
-mtcars_arranged$car_name <- factor(mtcars_arranged$car_name, levels = mtcars_arranged$car_name)
+mtcars_arranged$car_name =
+  factor(mtcars_arranged$car_name, levels = mtcars_arranged$car_name)
 
 # Calculate the rotation angle for each line name
-mtcars_arranged <- mtcars_arranged %>%
+mtcars_arranged =
+  mtcars_arranged %>%
   mutate(id = row_number(),
          angle = 90 - 360 * (id - 0.5) / n())
 
 # Creating a Coordinate Chart
-p4 <- ggplot(mtcars_arranged, aes(x = car_name, y = mpg, fill = factor(cyl))) +
+p4 =
+  ggplot(mtcars_arranged, aes(x = car_name, y = mpg, fill = factor(cyl))) +
   geom_bar(stat = "identity") +
   coord_polar(theta = "x") + 
   # scale_x_discrete(labels = mtcars_arranged$car_name) +
@@ -478,7 +484,10 @@ print(combined_plot)
 
 ```{r}
 ## 代码写这里，并运行；
+library(gridExtra)
+library(cowplot)
 
+plot_grid(p1, p2, p4, lables = c("A", "B", "C"),ncol = 2,nrow = 2)
 ```
 
 ------------------------------------------------------------------------
@@ -492,7 +501,7 @@ print(combined_plot)
 
 ```{r}
 ## 代码写这里，并运行；
-
+library(patchwork)
 ```
 
 ## 练习与作业3：作图扩展
@@ -507,5 +516,5 @@ print(combined_plot)
 
 ```{r}
 ## 代码写这里，并运行；
-
+library(lattice)
 ```
