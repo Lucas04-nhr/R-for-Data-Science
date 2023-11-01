@@ -503,26 +503,39 @@ p4
 library(ggplot2)
 library(cowplot)
 
+# Combine the plots
+combined_plot_01 =
+  ggdraw() +
+  draw_plot(
+    plot = p3,
+    x = 0,
+    y = 0,
+    width = 0.5,
+    height = 1
+  ) +
+  draw_plot(
+    plot = p1,
+    x = 0.5,
+    y = 0.5,
+    width = 0.5,
+    height = 0.5
+  ) +
+  draw_plot(
+    plot = p2,
+    x = 0.5,
+    y = 0,
+    width = 0.5,
+    height = 0.5
+  ) +
+  draw_plot_label(
+    label = c("A", "B", "C"),
+    x = c(0, 0.5, 0.5),
+    y = c(1, 1, 0.5),
+    size = 13
+  )
+  
 
-
-
-# THERE ARE STILL BUGS HERE!!!!!!
-# 1. Page layout cannot be controlled.
-
-
-
-
-# 将 p2 和 p3 组合在一起
-combined_p2_p3 =
-  plot_grid(p2,p3,nrow = 2, align = "v", axis = "l")
-print(combined_p2_p3)
-
-# 使用 ggdraw 组合 p1 和 combined_p2_p3
-
-combined_plot =
-  plot_grid(p1, combined_p2_p3, rel_widths = c(2.5,4))
-
-ggdraw(combined_plot)
+ggdraw(combined_plot_01)
 
 
 ```
