@@ -514,17 +514,18 @@ p4 =
   # THE BUG MAY BE FIXED BY FOLLOWING CODES
   # scale_x_discrete(labels = mtcars_arranged$car_name) +
   # theme(axis.title.x = element_text(angle = (mtcars_arranged$angle))) +
-
-  scale_y_continuous(limits = c(0, max(mtcars_arranged$mpg)) +
+  # scale_y_continuous(limits = c(0, max(mtcars_arranged$mpg))) +
   # geom_col(aes(x = 0, y = -1)) +
   # scale_y_continuous(limits = c(0, max(mtcars_arranged$mpg)), breaks = seq(0, max(mtcars_arranged$mpg), by = 2), labels = function(x) ifelse(x >= 10, as.character(x), "")) +
   # coord_cartesian(ylim = c(10, max(mtcars_arranged$mpg))) +
+  # annotate(p4, x = 0, y = 0, size = 8, color = "white") +
+  # draw_circle(x = 0, y = 0, radius = 0.4, fill = "white") +
   
-  
+
   
   labs(title = "Pie Chart of mpg by cyl")
 
-# Save to p4
+  # Save to p4
 p4
 
 ```
