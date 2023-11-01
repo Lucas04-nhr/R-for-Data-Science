@@ -549,7 +549,7 @@ p4
 
 ![](images/talk09-homework-plot06.png)
 
-```{r warning = FALSE,fig.height=5,fig.height=5}
+```{r warning=FALSE,fig.height=5,fig.height=5}
 ## 代码写这里，并运行；
 library(ggplot2)
 library(cowplot)
@@ -635,7 +635,7 @@ combined_plot_02 =
 
 ![](images/talk09-homework-plot08.png)
 
-```{r warning = FALSE,fig.width=10,fig.height=15}
+```{r warning=FALSE,fig.width=10,fig.height=15}
 ## 代码写这里，并运行；
 
 library(ggplot2)
