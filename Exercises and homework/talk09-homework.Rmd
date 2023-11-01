@@ -432,6 +432,7 @@ p3
 
 # 导入 ggplot2 和 dplyr 包
 library(ggplot2)
+library(tidyverse)
 library(dplyr)
 
 data(mtcars)
@@ -523,8 +524,6 @@ combined_plot =
 
 ggdraw(combined_plot)
 
-# 显示最终的组合图
-print(combined_plot)
 
 ```
 
