@@ -624,12 +624,34 @@ combined_plot_02 =
 ```{r}
 ## 代码写这里，并运行；
 
-
-
-# HOW??????????
-
-
+library(ggplot2)
 library(patchwork)
+
+# Add the tags
+p1 =
+  p1 +
+  labs(tag = "A")
+p2 =
+  p2 +
+  labs(tag = "B")
+p3 =
+  p3 +
+  labs(tag = "C")
+p4 =
+  p4 +
+  labs(tag = "D")
+
+# Draw the plot
+combined_plot_03 =
+  p1/p3/p4/p2 +
+  plot_layout(
+    ncol = 2,
+    nrow = 3,
+    heights = c(1, 1, 1, 1),
+    widths = c(2, 1, 1, 2)
+  )
+
+print(combined_plot_03)
 
 ```
 
