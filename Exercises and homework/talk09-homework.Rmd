@@ -79,7 +79,7 @@ Sys.getenv("HOME")
 
 注：每种图提供**基础做图函数**和**ggplot2**两个版本！
 
-```{r warning = FALSE}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
 library(ggplot2)
 data(swiss)
@@ -259,7 +259,7 @@ ggplot(
 
 ![](images/talk09-homework-plot01.png)
 
-```{r warning = FALSE}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
 library(ggplot2)
 library(tidyverse)
@@ -360,7 +360,7 @@ print(p2)
 
 **注** 此图中的 `468` 组为所有数据合在一起的结果。
 
-```{r warning = FALSE}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
 library(ggplot2)
 library(tidyverse)
@@ -406,7 +406,7 @@ p3
 **注** 画点线图，并增加smooth图层。
 
 
-```{r}
+```{r fig.height=5,fig.width=10}
 ## 代码写这里，并运行；
 library(ggplot2)
 
@@ -452,7 +452,7 @@ ggplot(
 
 ![](images/talk09-homework-plot05.png)
 
-```{r warning = FALSE}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
 # Load the packages
 library(ggplot2)
@@ -549,7 +549,7 @@ p4
 
 ![](images/talk09-homework-plot06.png)
 
-```{r warning = FALSE}
+```{r warning = FALSE,fig.height=5,fig.height=5}
 ## 代码写这里，并运行；
 library(ggplot2)
 library(cowplot)
@@ -599,7 +599,7 @@ ggdraw(combined_plot_01)
 
 ![](images/talk09-homework-plot07.png)
 
-```{r warning=FALSE}
+```{r warning=FALSE,fig.width=8,fig.height=8}
 ## 代码写这里，并运行；
 library(gridExtra)
 
@@ -617,6 +617,7 @@ p4 =
 # Draw the plot
 combined_plot_02 =
   grid.arrange(
+    newpage = TRUE,
     p1,p2,p4,
     ncol = 2,
     layout_matrix =
@@ -634,7 +635,7 @@ combined_plot_02 =
 
 ![](images/talk09-homework-plot08.png)
 
-```{r warning = FALSE}
+```{r warning = FALSE,fig.width=10,fig.height=15}
 ## 代码写这里，并运行；
 
 library(ggplot2)

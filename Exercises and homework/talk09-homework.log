@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.17)  1 NOV 2023 18:57
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.17)  1 NOV 2023 19:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -952,10 +952,9 @@ Underfull \vbox (badness 10000) detected at line 809
 [26]
 File: talk09-homework_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
 <use talk09-homework_files/figure-latex/unnamed-chunk-8-1.pdf>
-[27]
 File: images/talk09-homework-plot06.png Graphic file (type bmp)
 <images/talk09-homework-plot06.png>
-[28]
+[27] [28]
 Overfull \hbox (3.58966pt too wide) in paragraph at lines 883--883
 []\TU/lmtt/m/n/10.53937 ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'[] 
  []
@@ -972,16 +971,17 @@ File: talk09-homework_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (ty
 File: images/talk09-homework-plot08.png Graphic file (type bmp)
 <images/talk09-homework-plot08.png>
 [33] [34]
-Overfull \hbox (3.58966pt too wide) in paragraph at lines 1021--1021
+Overfull \hbox (3.58966pt too wide) in paragraph at lines 1022--1022
 []\TU/lmtt/m/n/10.53937 ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'[] 
  []
 
 [35]
 File: talk09-homework_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
 <use talk09-homework_files/figure-latex/unnamed-chunk-11-1.pdf>
+[36]
 File: talk09-homework_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type pdf)
 <use talk09-homework_files/figure-latex/unnamed-chunk-12-1.pdf>
-[36] [37] (./talk09-homework.aux)
+[37] (./talk09-homework.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -995,7 +995,7 @@ Package rerunfilecheck Info: File `talk09-homework.out' has not changed.
 Here is how much of TeX's memory you used:
  20703 strings out of 477166
  437448 string characters out of 5811154
- 1929671 words of memory out of 5000000
+ 1928671 words of memory out of 5000000
  42015 multiletter control sequences out of 15000+600000
  566322 words of font info for 111 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
