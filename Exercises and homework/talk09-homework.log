@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.17)  1 NOV 2023 16:57
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.17)  1 NOV 2023 18:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -896,17 +896,13 @@ Overfull \hbox (230.44951pt too wide) in paragraph at lines 490--490
  []
 
 [15]
-Overfull \hbox (97.65353pt too wide) in paragraph at lines 543--543
-[]\TU/lmtt/m/n/10.53937 ## Warning in wilcox.test.default(c(150, 165, 178, 170, 166, 165), c(172, 202, :[] 
- []
-
 File: talk09-homework_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use talk09-homework_files/figure-latex/unnamed-chunk-4-1.pdf>
 [16]
 File: images/talk09-homework-plot03.png Graphic file (type bmp)
 <images/talk09-homework-plot03.png>
 [17]
-Underfull \vbox (badness 10000) detected at line 592
+Underfull \vbox (badness 10000) detected at line 584
  []
 
 [18]
@@ -916,7 +912,7 @@ File: talk09-homework_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (typ
 File: images/talk09-homework-plot04.png Graphic file (type bmp)
 <images/talk09-homework-plot04.png>
 [20]
-Overfull \hbox (3.58966pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.58966pt too wide) in paragraph at lines 644--644
 []\TU/lmtt/m/n/10.53937 ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'[] 
  []
 
@@ -926,43 +922,42 @@ File: talk09-homework_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (typ
 File: talk09-homework_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf)
 <use talk09-homework_files/figure-latex/unnamed-chunk-7-1.pdf>
 [23]
-Overfull \hbox (4.5544pt too wide) in paragraph at lines 717--721
+Overfull \hbox (4.5544pt too wide) in paragraph at lines 709--713
 []\TU/SongtiSCLight(0)/m/n/10.53937 先 增 加 一 列，|  用 于 保 存 \TU/lmr/m/n/10.53937 rowname : \TU/lmtt/m/n/10.53937 mtcars %>% rownames_to_column()
  []
 
 
-Underfull \hbox (badness 2393) in paragraph at lines 725--727
+Underfull \hbox (badness 2393) in paragraph at lines 717--719
 []\TU/SongtiSCLight(0)/m/n/10.53937 计 算 每 个 \TU/lmr/m/n/10.53937 rowname \TU/SongtiSCLight(0)/m/n/10.53937 的 旋 转 角 度：| \TU/lmtt/m/n/10.53937 mutate( id = row_number(),
  []
 
 File: images/talk09-homework-plot05.png Graphic file (type bmp)
 <images/talk09-homework-plot05.png>
-
-LaTeX Font Warning: Font shape `TU/STFangsong(0)/m/it' undefined
-(Font)              using `TU/STFangsong(0)/m/n' instead on input line 745.
-
 [24]
-Underfull \vbox (badness 10000) detected at line 801
+Underfull \vbox (badness 10000) detected at line 809
  []
 
 
-Underfull \vbox (badness 10000) detected at line 801
+Underfull \vbox (badness 10000) detected at line 809
  []
 
 [25]
-File: talk09-homework_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
-<use talk09-homework_files/figure-latex/unnamed-chunk-8-1.pdf>
-[26]
-File: images/talk09-homework-plot06.png Graphic file (type bmp)
-<images/talk09-homework-plot06.png>
-[27] [28]
-Overfull \hbox (3.58966pt too wide) in paragraph at lines 875--875
-[]\TU/lmtt/m/n/10.53937 ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'[] 
+Underfull \vbox (badness 10000) detected at line 809
  []
 
 
-Overfull \hbox (97.65353pt too wide) in paragraph at lines 880--880
-[]\TU/lmtt/m/n/10.53937 ## Warning in wilcox.test.default(c(150, 165, 178, 170, 166, 165), c(172, 202, :[] 
+Underfull \vbox (badness 10000) detected at line 809
+ []
+
+[26]
+File: talk09-homework_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
+<use talk09-homework_files/figure-latex/unnamed-chunk-8-1.pdf>
+[27]
+File: images/talk09-homework-plot06.png Graphic file (type bmp)
+<images/talk09-homework-plot06.png>
+[28]
+Overfull \hbox (3.58966pt too wide) in paragraph at lines 883--883
+[]\TU/lmtt/m/n/10.53937 ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'[] 
  []
 
 File: talk09-homework_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf)
@@ -971,31 +966,22 @@ File: talk09-homework_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (typ
 File: images/talk09-homework-plot07.png Graphic file (type bmp)
 <images/talk09-homework-plot07.png>
 [30] [31]
-Overfull \hbox (97.65353pt too wide) in paragraph at lines 947--947
-[]\TU/lmtt/m/n/10.53937 ## Warning in wilcox.test.default(c(150, 165, 178, 170, 166, 165), c(172, 202, :[] 
- []
-
 File: talk09-homework_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pdf)
 <use talk09-homework_files/figure-latex/unnamed-chunk-10-1.pdf>
 [32]
 File: images/talk09-homework-plot08.png Graphic file (type bmp)
 <images/talk09-homework-plot08.png>
 [33] [34]
-Overfull \hbox (97.65353pt too wide) in paragraph at lines 1024--1024
-[]\TU/lmtt/m/n/10.53937 ## Warning in wilcox.test.default(c(150, 165, 178, 170, 166, 165), c(172, 202, :[] 
- []
-
-[35]
-Overfull \hbox (3.58966pt too wide) in paragraph at lines 1028--1028
+Overfull \hbox (3.58966pt too wide) in paragraph at lines 1021--1021
 []\TU/lmtt/m/n/10.53937 ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'[] 
  []
 
+[35]
 File: talk09-homework_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
 <use talk09-homework_files/figure-latex/unnamed-chunk-11-1.pdf>
-[36]
 File: talk09-homework_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type pdf)
 <use talk09-homework_files/figure-latex/unnamed-chunk-12-1.pdf>
-[37] (./talk09-homework.aux)
+[36] [37] (./talk09-homework.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -1007,10 +993,10 @@ Package rerunfilecheck Info: File `talk09-homework.out' has not changed.
 (rerunfilecheck)             Checksum: 5AF28EE313CD5333C189E4C67480BD8D;880.
  ) 
 Here is how much of TeX's memory you used:
- 20706 strings out of 477166
- 437532 string characters out of 5811154
- 1927671 words of memory out of 5000000
- 42018 multiletter control sequences out of 15000+600000
+ 20703 strings out of 477166
+ 437448 string characters out of 5811154
+ 1929671 words of memory out of 5000000
+ 42015 multiletter control sequences out of 15000+600000
  566322 words of font info for 111 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  93i,6n,120p,545b,866s stack positions out of 10000i,1000n,20000p,200000b,200000s

@@ -79,7 +79,7 @@ Sys.getenv("HOME")
 
 注：每种图提供**基础做图函数**和**ggplot2**两个版本！
 
-```{r}
+```{r warning = FALSE}
 ## 代码写这里，并运行；
 library(ggplot2)
 data(swiss)
@@ -259,7 +259,7 @@ ggplot(
 
 ![](images/talk09-homework-plot01.png)
 
-```{r}
+```{r warning = FALSE}
 ## 代码写这里，并运行；
 library(ggplot2)
 library(tidyverse)
@@ -278,7 +278,7 @@ p1 =
     aes(
       x = gender,
       y = height,
-      fill = gender
+      fill = gender,
     )
   ) +
   geom_boxplot() +
@@ -286,9 +286,6 @@ p1 =
     title = "Boxplot of Height by Gender",
     x = "Gender",
     y = "Height"
-  ) +
-  theme(
-    legend.position = "none"
   )
 
 # Calculate height
@@ -363,7 +360,7 @@ print(p2)
 
 **注** 此图中的 `468` 组为所有数据合在一起的结果。
 
-```{r}
+```{r warning = FALSE}
 ## 代码写这里，并运行；
 library(ggplot2)
 library(tidyverse)
@@ -455,19 +452,8 @@ ggplot(
 
 ![](images/talk09-homework-plot05.png)
 
-```{r}
+```{r warning = FALSE}
 ## 代码写这里，并运行；
-
-
-
-
-# THERE ARE STILL BUGS HERE!!!!!!
-# 1. Can't insert the hole in the center of the plot
-# 2. Can't rotate the label of each tab
-
-
-
-
 # Load the packages
 library(ggplot2)
 library(tidyverse)
@@ -506,24 +492,47 @@ p4 =
       fill = factor(cyl)
     )
   ) +
-  coord_cartesian(ylim = c(10, max(mtcars_arranged$mpg))) +
+  scale_y_continuous(expand = c(0.01,max(mtcars_arranged$mpg)/3)) +
   geom_bar(stat = "identity") +
   coord_polar(theta = "x") + 
-  
-  
-  # THE BUG MAY BE FIXED BY FOLLOWING CODES
-  # scale_x_discrete(labels = mtcars_arranged$car_name) +
-  # theme(axis.title.x = element_text(angle = (mtcars_arranged$angle))) +
-  # scale_y_continuous(limits = c(0, max(mtcars_arranged$mpg))) +
-  # geom_col(aes(x = 0, y = -1)) +
-  # scale_y_continuous(limits = c(0, max(mtcars_arranged$mpg)), breaks = seq(0, max(mtcars_arranged$mpg), by = 2), labels = function(x) ifelse(x >= 10, as.character(x), "")) +
-  # coord_cartesian(ylim = c(10, max(mtcars_arranged$mpg))) +
-  # annotate(p4, x = 0, y = 0, size = 8, color = "white") +
-  # draw_circle(x = 0, y = 0, radius = 0.4, fill = "white") +
-  
+  # Change the 
+  geom_text(
+    aes(x = 1:length(mtcars_arranged$car_name),
+        label = mtcars_arranged$car_name,
+        angle = mtcars_arranged$angle,
+        hjust = -0.05
+      )
+  ) +
 
-  
-  labs(title = "Pie Chart of mpg by cyl")
+# Change the theme
+  # Hide the axis lable
+  theme(
+    panel.grid.major = 
+      element_blank(),
+    panel.grid.minor = 
+      element_blank()) +
+  theme(
+    axis.ticks = 
+      element_blank(),
+    axis.text.y =
+      element_blank(),
+    axis.text.x =
+      element_blank()) +
+    
+  # Make the background color transparent
+  theme(
+    panel.background = 
+      element_rect(
+        fill = "transparent",
+        colour = NA),
+      plot.background = 
+      element_rect(
+        fill = "transparent",
+        colour = NA)) +
+  labs(
+    x = "",
+    y = "",
+    title = "Pie Chart of mpg by cyl")
 
   # Save to p4
 p4
@@ -540,7 +549,7 @@ p4
 
 ![](images/talk09-homework-plot06.png)
 
-```{r}
+```{r warning = FALSE}
 ## 代码写这里，并运行；
 library(ggplot2)
 library(cowplot)
@@ -590,7 +599,7 @@ ggdraw(combined_plot_01)
 
 ![](images/talk09-homework-plot07.png)
 
-```{r}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
 library(gridExtra)
 
@@ -625,7 +634,7 @@ combined_plot_02 =
 
 ![](images/talk09-homework-plot08.png)
 
-```{r}
+```{r warning = FALSE}
 ## 代码写这里，并运行；
 
 library(ggplot2)
