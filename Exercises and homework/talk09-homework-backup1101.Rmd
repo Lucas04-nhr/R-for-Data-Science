@@ -13,7 +13,7 @@ output:
 knit: (
   function(inputFile, encoding) { 
 
-    pSubTitle <- 'talk09-homework'
+    pSubTitle <- 'talk09-homework-backup1101'
 
     rmarkdown::render( 
       input       = inputFile, 
