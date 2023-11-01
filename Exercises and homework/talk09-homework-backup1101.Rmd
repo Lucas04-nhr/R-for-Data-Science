@@ -138,7 +138,7 @@ ggplot(
     y = "Frequency")
 
 # Task 02
-# 使用 ggplot2 绘制散点图
+# Plotting Scatterplots with ggplot2
 ggplot(
   swiss, 
   aes(x = Education, 
