@@ -436,6 +436,8 @@ cat("Wilcoxon rank sum test p.value:", wilcox_test_result$p.value, "\n")
 
 答：
 
+**AWAITING PERFECTION**
+
 ------------------------------------------------------------------------
 
 -   **以下是学生参加辅导班前后的成绩情况，请计算同学们的成绩是否有普遍提高？**
@@ -485,7 +487,7 @@ if (t_test_result$p.value < 0.05) {
 
 ```{r}
 library(tidyverse);
-data.fig3a <- read_csv( file = "../data/talk10/nc2015_data_for_fig3a.csv" );
+data.fig3a <- read_csv( file = "../data/talk10/nc2015_data_for_fig3a.csv" ,show_col_types = FALSE);
 ```
 
 ```         
