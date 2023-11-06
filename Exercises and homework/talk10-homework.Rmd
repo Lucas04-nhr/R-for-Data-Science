@@ -603,7 +603,7 @@ mtcars_correlation =
 scatter_plot_with_regression =
   scatter_plot_mtcars +
   # Add a linear regression line
-  geom_smooth(method = "lm", se = FALSE, color = "#FF9C5B") +  
+  geom_smooth(method = "lm", se = FALSE, color = "#FF9C5B")
   
   # Add correlation formula
   
