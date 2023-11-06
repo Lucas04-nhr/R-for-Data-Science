@@ -610,7 +610,7 @@ scatter_plot_with_regression =
   
   
   # AWAITING PERFECTION
-  annotate("text", x = 4, y = 30, label = paste("Correlation:", round(correlation, 2)))  
+  # annotate("text", x = 4, y = 30, label = paste("Correlation:", round(correlation, 2)))  
 
 
 
