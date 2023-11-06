@@ -677,7 +677,13 @@ wts2_scatter_plot_with_regression =
   geom_smooth(
     method = "lm", 
     se = FALSE, 
-    color = "#2B484E")
+    color = "#2B484E")+
+  theme(
+    text=element_text(
+      family="RLQDMSWR",
+      size=14))
+
+print(wts2_scatter_plot_with_regression)
 
 # Constructing a linear regression model
 linear_model =

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.17)  7 NOV 2023 00:40
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.10.17)  7 NOV 2023 00:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -994,20 +994,28 @@ Overfull \hbox (25.7225pt too wide) in paragraph at lines 1043--1043
  []
 
 [29]
-Overfull \vbox (1.0322pt too high) detected at line 1128
+Overfull \hbox (3.58966pt too wide) in paragraph at lines 1118--1118
+[]\TU/lmtt/m/n/10.53937 ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'[] 
  []
 
 [30]
-Overfull \hbox (31.25545pt too wide) in paragraph at lines 1132--1132
+File: talk10_files/figure-latex/unnamed-chunk-16-1.pdf Graphic file (type pdf)
+<use talk10_files/figure-latex/unnamed-chunk-16-1.pdf>
+
+Overfull \vbox (1.0755pt too high) detected at line 1145
+ []
+
+[31]
+Overfull \hbox (31.25545pt too wide) in paragraph at lines 1149--1149
 []\TU/lmtt/m/n/10.53937 ## Correlation between Actual Weight and Predicted Weight: 0.8240552[] 
  []
 
 
-Overfull \hbox (69.98773pt too wide) in paragraph at lines 1143--1143
+Overfull \hbox (69.98773pt too wide) in paragraph at lines 1160--1160
 []\TU/lmtt/m/n/10.53937 ## Linear Regression Formula: wt =  57.11  +  -0.54  * age +  5.56  * class[] 
  []
 
-[31] (./talk10.aux)
+[32] (./talk10.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -1019,12 +1027,12 @@ Package rerunfilecheck Info: File `talk10.out' has not changed.
 (rerunfilecheck)             Checksum: 20951AA511136C18530745B2072D5DB2;757.
  ) 
 Here is how much of TeX's memory you used:
- 20565 strings out of 477166
- 428950 string characters out of 5811154
+ 20576 strings out of 477166
+ 429520 string characters out of 5811154
  1930671 words of memory out of 5000000
- 41890 multiletter control sequences out of 15000+600000
+ 41900 multiletter control sequences out of 15000+600000
  566322 words of font info for 111 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  93i,5n,120p,684b,864s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on talk10.pdf (31 pages).
+Output written on talk10.pdf (32 pages).
