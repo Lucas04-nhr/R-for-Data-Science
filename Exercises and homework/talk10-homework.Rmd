@@ -85,7 +85,7 @@ showtext_auto()
 
 3.  检查 `mean` +- 1 \* `sd`，`mean` +- 2 \* `sd`和`mean` +- 3 \* `sd` 范围内的取值占总值数量的百分比。
 
-```{r warning=FALSE}
+```{r warning=FALSE,fig.width=8,fig.height=5,fig.align='center'}
 ## 代码写这里，并运行；
 library(ggplot2)
 
@@ -543,13 +543,10 @@ print(fig3a_boxplot_signif)
 
 答：
 
-不可以，不满足t-test的先决条件，如果运行下列t.test的代码将会报错
+不可以，不满足t-test的先决条件，如果运行下列t.test的代码将会报错:
 
-+ 数据的方差齐性检验不满足，运行下面的代码将会报错
 
 ```{r eval=FALSE}
-## 代码写这里，并运行；
-
 # Take the first 200 rows of data 
 # to avoid exceeding the test range
 fig3a_df_test = fig3a_df[1:200,]
@@ -577,7 +574,7 @@ levene_test =
 
 ![](images/xyplot.png)
 
-```{r warning=FALSE}
+```{r warning=FALSE,fig.width=8,fig.height=5,fig.align='center'}
 ## 代码写这里，并运行；
 library(ggplot2)
 
@@ -628,14 +625,14 @@ print(scatter_plot_with_regression)
 
 -   **使用以下代码产生数据进行分析**
 
-```{r}
+```{r fig.width=5,fig.height=8,fig.align='center'}
 wts2 <- bind_rows( 
    tibble( class = 1, age = sample( 13:15, 20, replace = T ), wt = sample( seq(50, 60, by = 0.1), 20 ) ),
    tibble( class = 2, age = sample( 14:16, 20, replace = T ), wt = sample( seq(55, 65, by = 0.1), 20 ) ),
    tibble( class = 3, age = sample( 15:17, 20, replace = T ), wt = sample( seq(60, 70, by = 0.1), 20 ) )
 );
 
-ggplot(wts2, aes( factor( age ), wt ) ) + geom_boxplot() + coord_flip();
+ggplot(wts2, aes( factor( age ), wt ) ) + geom_boxplot() ;
 ```
 
 ```         
@@ -648,7 +645,7 @@ ggplot(wts2, aes( factor( age ), wt ) ) + geom_boxplot() + coord_flip();
 -   用线性公式显示如何用`age`, `class`计算`wt`的值。
 ```
 
-```{r warning=FALSE}
+```{r warning=FALSE,fig.width=8,fig.height=5,fig.align='center'}
 ## 代码写这里，并运行；
 library(ggplot2)
 library(dplyr)
@@ -682,14 +679,9 @@ wts2_scatter_plot_with_regression =
     se = FALSE, 
     color = "#2B484E")
 
-# Print the scatter plot with regression
-print(wts2_scatter_plot_with_regression)
-
 # Constructing a linear regression model
 linear_model =
   lm(wt ~ age + class, data = wts2)
-
-head(linear_model)
 
 # Forecast wt
 predicted_wt =
@@ -699,7 +691,6 @@ predicted_wt =
       data.frame(
         age = wts2$age, 
         class = wts2$class))
-head(predicted_wt)
 
 # Calculate the correlation 
 # between actual wt and predicted wt
