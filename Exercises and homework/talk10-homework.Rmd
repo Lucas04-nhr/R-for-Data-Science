@@ -67,6 +67,12 @@ Sys.info()[["user"]]
 Sys.getenv("HOME")
 ```
 
+
+```{r include=FALSE}
+library(showtext)
+font_add("RLQDMSWR",regular = "data/RLQDMSWR.ttf")
+showtext_auto()
+```
 ## 练习与作业1：数据查看
 
 ------------------------------------------------------------------------
@@ -79,9 +85,55 @@ Sys.getenv("HOME")
 
 3.  检查 `mean` +- 1 \* `sd`，`mean` +- 2 \* `sd`和`mean` +- 3 \* `sd` 范围内的取值占总值数量的百分比。
 
-```{r}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
-plot(1:10)
+library(ggplot2)
+
+# Setting random seeds to ensure reproducibility
+set.seed(123)  
+data = rnorm(100000)
+df = data.frame(value = data)
+
+# Creating density maps with ggplot2
+ggplot(df, aes(x = data)) +
+  geom_density() +
+  # Prevent the GBK character to show as block
+  theme(
+    text=element_text(
+      family="RLQDMSWR",
+      size=14)) +
+  labs(
+    title = "Normal Distribution Density Plot(正态分布密度图)", 
+    x = "Numerical Value(数值)", 
+    y = "Density(密度)"
+  )
+
+# Calculate the percentage of the total number 
+# of values taken in different ranges:
+mean_value = mean(data)
+sd_value = sd(data)
+
+# Calculate the percentage in the range mean +- 1 * sd
+within_1_sd =
+  sum(data >= mean_value - sd_value & 
+        data <= mean_value + sd_value) / length(data)
+
+# Calculate the percentage in the range mean +- 2 * sd
+within_2_sd =
+  sum(data >= mean_value - 2 * sd_value &
+        data <= mean_value + 2 * sd_value) / length(data)
+
+# Calculate the percentage in the range mean +- 3 * sd
+within_3_sd =
+  sum(data >= mean_value - 3 * sd_value &
+        data <= mean_value + 3 * sd_value) / length(data)
+
+# Convert results to percentages
+within_1_sd * 100  
+within_2_sd * 100
+within_3_sd * 100
+
+
 ```
 
 ------------------------------------------------------------------------
@@ -90,20 +142,167 @@ plot(1:10)
 
 另外，在英文名后给出对应的中文名：
 
-    -   Uniform Distribution
+```         
+-   Uniform Distribution
 
-    -   Normal Distribution
+-   Normal Distribution
 
-    -   Binomial Distribution
+-   Binomial Distribution
 
-    -   Poisson Distribution
+-   Poisson Distribution
 
-    -   Exponential Distribution
+-   Exponential Distribution
 
-    -   Gamma Distribution
+-   Gamma Distribution
+```
 
-```{r}
+```{r warning=FALSE,fig.height=9,fig.width=16,fig.align='center'}
 ## 代码写这里，并运行；
+# Task 01: Uniform Distribution
+# Generate uniformly distributed random values
+uniform_data = 
+  runif(10000, 
+        min = 0, 
+        max = 1)
+
+# Creating Density Maps
+ggplot(
+  data.frame(
+    x = uniform_data), 
+  aes(x)) +
+  geom_density() +
+  # Prevent the GBK character to show as block
+  theme(
+    text=element_text(
+      family="RLQDMSWR",
+      size=14)) +
+  labs(
+    title = "Fig. 01: 均匀分布 (Uniform Distribution)", 
+    x = "数值", 
+    y = "密度")
+
+
+# Task 02: Normal Distribution
+# Setting random seeds to ensure reproducibility
+set.seed(123)
+
+# Generate normally distributed random values
+normal_data =
+  rnorm(100000)
+
+# Creating data.frame
+normal_df =
+  data.frame(value = normal_data)
+
+# Creating Density Plots with ggplot2
+library(ggplot2)
+
+ggplot(normal_df, 
+       aes(x = value)) +
+  geom_density() +
+  labs(
+    title = "Fig 02: 正态分布密度图 (Normal Distribution)", 
+    x = "数值",
+    y = "密度") +
+  # Prevent the GBK character to show as block
+  theme(
+    text = element_text(
+      family = "RLQDMSWR",
+      size = 14))
+
+
+# Task 03: Binomial Distribution
+# Generate random values for binomial distribution
+binomial_data =
+  rbinom(10000, size = 10, prob = 0.5)
+
+# Creating Histograms
+ggplot(
+  data.frame(
+    x = binomial_data), 
+  aes(x)) +
+  geom_histogram(
+    binwidth = 1, 
+    fill = "#7C82A2", 
+    color = "#ABADBC") +
+  labs(
+    title = "Fig 03: 二项分布 (Binomial Distribution)", 
+    x = "数值", 
+    y = "频数") +
+  # Prevent the GBK character to show as block
+  theme(
+    text = element_text(
+      family = "RLQDMSWR",
+      size = 14))
+
+
+# Task 04: Poisson Distribution
+# Generate random values for poisson distribution
+poisson_data =
+  rpois(10000, lambda = 3)
+
+# Creating Histograms
+ggplot(
+  data.frame(
+    x = poisson_data), 
+  aes(x)) +
+  geom_histogram(
+    binwidth = 1, 
+    fill = "#C7CFE4", 
+    color = "#BDAFCA") +
+  labs(
+    title = "Fig 04: 泊松分布 (Poisson Distribution)",
+    x = "数值",
+    y = "频数") +
+  # Prevent the GBK character to show as block
+  theme(
+    text = element_text(
+      family = "RLQDMSWR",
+      size = 14))
+
+
+# Task 05: Exponential Distribution
+# Generate random values for exponential distribution
+exponential_data =
+  rexp(10000, rate = 0.5)
+
+# Generate density plot
+ggplot(
+  data.frame(
+    x = exponential_data), 
+  aes(x)) +
+  geom_density() +
+  labs(
+    title = "Fig 05: 指数分布 (Exponential Distribution)", 
+    x = "数值", 
+    y = "密度") +
+  # Prevent the GBK character to show as block
+  theme(
+    text = element_text(
+      family = "RLQDMSWR", 
+      size = 14))
+
+
+# Task 06: Gamma Distribution
+# Generate random values for gamma distribution
+gamma_data =
+  rgamma(10000, shape = 2, rate = 0.5)
+
+# Generate density plot
+ggplot(
+  data.frame(
+    x = gamma_data),
+  aes(x)) +
+  geom_density() +
+  labs(
+    title = "Fig 06: 伽马分布 (Gamma Distribution)", 
+    x = "数值",
+    y = "密度") +
+  # Prevent the GBK character to show as block
+  theme(text = element_text(
+    family = "RLQDMSWR", 
+    size = 14))
+
 
 ```
 
@@ -113,7 +312,7 @@ plot(1:10)
 
     -   什么是`equal-sized bin`和`equal-distance bin`？以`mtcars`为例，将`wt`列按两种方法分组，并显示结果。
 
-```{r}
+```{r Exercise 03}
 ## 代码写这里，并运行；
 
 ```
@@ -140,14 +339,18 @@ source("../data/talk10/input_data1.R"); ## 装入 Data data.frame ...
 head(Data);
 ```
 
-    -    分别用`t.test`和`wilcox.test`比较男女生步数是否有显著差异；打印出`p.value`
+```         
+-    分别用`t.test`和`wilcox.test`比较男女生步数是否有显著差异；打印出`p.value`
+```
 
 ```{r}
 ## 代码写这里，并运行；
 
 ```
 
-    -    两种检测方法的`p.value`哪个更显著？为什么？
+```         
+-    两种检测方法的`p.value`哪个更显著？为什么？
+```
 
 答：
 
@@ -182,9 +385,11 @@ library(tidyverse);
 data.fig3a <- read_csv( file = "../data/talk10/nc2015_data_for_fig3a.csv" );
 ```
 
-    -   利用两列数据：`tai` `zAA1.at` 做`talk10`中的`boxplot`（详见：`fig3a`的制作）；
+```         
+-   利用两列数据：`tai` `zAA1.at` 做`talk10`中的`boxplot`（详见：`fig3a`的制作）；
 
-    -   用`ggsignif`为相邻的两组做统计分析（如用 `wilcox.test` 函数），并画出`p.value`；
+-   用`ggsignif`为相邻的两组做统计分析（如用 `wilcox.test` 函数），并画出`p.value`；
+```
 
 ```{r}
 ## 代码写这里，并运行；
@@ -233,13 +438,15 @@ wts2 <- bind_rows(
 ggplot(wts2, aes( factor( age ), wt ) ) + geom_boxplot() + coord_flip();
 ```
 
-    -   用线性回归检查`age`, `class` 与 `wt` 的关系，构建线性回归模型；
+```         
+-   用线性回归检查`age`, `class` 与 `wt` 的关系，构建线性回归模型；
 
-    -   以`age`, `class`为输入，用得到的模型预测`wt`；
+-   以`age`, `class`为输入，用得到的模型预测`wt`；
 
-    -   计算预测的`wt`和实际`wt`的相关性；
+-   计算预测的`wt`和实际`wt`的相关性；
 
-    -   用线性公式显示如何用`age`, `class`计算`wt`的值。
+-   用线性公式显示如何用`age`, `class`计算`wt`的值。
+```
 
 ```{r}
 ## 代码写这里，并运行；
