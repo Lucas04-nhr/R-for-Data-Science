@@ -67,12 +67,12 @@ Sys.info()[["user"]]
 Sys.getenv("HOME")
 ```
 
-
 ```{r include=FALSE}
 library(showtext)
 font_add("RLQDMSWR",regular = "data/RLQDMSWR.ttf")
 showtext_auto()
 ```
+
 ## 练习与作业1：数据查看
 
 ------------------------------------------------------------------------
@@ -156,7 +156,7 @@ within_3_sd * 100
 -   Gamma Distribution
 ```
 
-```{r warning=FALSE,fig.height=9,fig.width=16,fig.align='center'}
+```{r warning=FALSE,fig.height=5,fig.width=8,fig.align='center'}
 ## 代码写这里，并运行；
 # Task 01: Uniform Distribution
 # Generate uniformly distributed random values
@@ -312,8 +312,40 @@ ggplot(
 
     -   什么是`equal-sized bin`和`equal-distance bin`？以`mtcars`为例，将`wt`列按两种方法分组，并显示结果。
 
-```{r Exercise 03}
+**Answer:**
+
+-   Equal-sized bin (等宽分组)：在这种分组方法中，数据被分成具有相同宽度或大小的区间（bin）或组。这意味着每个分组具有相同数量的数据点，但这可能导致一些分组的范围内包含更多或更少的数据点，具体取决于数据的分布。
+
+-   Equal-distance bin (等距分组)：这种分组方法将数据按照等距离间隔的方式分成分组。区间的宽度可能不同，但每个区间都覆盖了相等的数值范围。这意味着每个分组的数据点的范围是相等的，但每个分组可能包含不同数量的数据点，具体取决于数据的分布。
+
+```{r warning=FALSE}
 ## 代码写这里，并运行；
+library(dplyr)
+
+# Use equal-width grouping to 
+# divide wt columns into 5 groups
+mtcars_equal_width =
+  mtcars %>%
+  mutate(
+    wt_group_equal_width = 
+      cut(wt, 
+          breaks = 5,
+          labels = FALSE))
+
+head(mtcars_equal_width)
+
+
+# Use isometric grouping to 
+# divide wt columns into 5 groups
+mtcars_equal_distance =
+  mtcars %>%
+  mutate(
+    wt_group_equal_distance = 
+      cut_interval(wt, 
+                   n = 5))
+
+head(mtcars_equal_distance)
+
 
 ```
 
@@ -325,6 +357,39 @@ ggplot(
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the data
+data(swiss)
+
+# Select the columns to look for outliers
+infant_mortality =
+  swiss$Infant.Mortality
+
+# Calculate quartiles
+Q1 =
+  quantile(infant_mortality, 0.25)
+Q3 =
+  quantile(infant_mortality, 0.75)
+
+# Calculate IQR
+IQR = Q3 - Q1
+
+# Calculate upper and lower limit
+upper_limit =
+  Q3 + 1.5 * IQR
+lower_limit =
+  Q1 - 1.5 * IQR
+
+# Find the outlier
+outliers =
+  infant_mortality[
+    infant_mortality > upper_limit | 
+      infant_mortality < lower_limit]
+
+# 打印异常值
+cat(
+  "Infant Mortality Outliers:", 
+  outliers, 
+  "\n")
 
 ```
 
@@ -343,9 +408,26 @@ head(Data);
 -    分别用`t.test`和`wilcox.test`比较男女生步数是否有显著差异；打印出`p.value`
 ```
 
-```{r}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
+data_df = as.data.frame(Data)
 
+# Task 01: 
+# Use t.test to compare 
+# whether there is a significant difference 
+# in the number of steps 
+# taken by male and female students
+t_test_result = t.test(Steps ~ Sex, data = data_df)
+cat("t-test p.value:", t_test_result$p.value, "\n")
+
+
+# Task 02:
+# Using wilcox.test to compare 
+# whether there is a significant difference 
+# in the number of steps 
+# taken by male and female students
+wilcox_test_result = wilcox.test(Steps ~ Sex, data = data_df)
+cat("Wilcoxon rank sum test p.value:", wilcox_test_result$p.value, "\n")
 ```
 
 ```         
@@ -369,7 +451,28 @@ head(scores);
 
 ```{r}
 ## 代码写这里，并运行；
+score_df = as.data.frame(scores)
 
+# Execute paired t-test
+t_test_result =
+  t.test(Score ~ Time, 
+         data = score_df, 
+         paired = TRUE)
+
+# Print the result
+cat(
+  "Paired t-test p.value:", 
+  t_test_result$p.value,
+  "\n")
+
+# Check if the p-value is 
+# less than the level of significance,
+# e.g. 0.05
+if (t_test_result$p.value < 0.05) {
+  cat("Student achievement has generally improved.\n")
+} else {
+  cat("There is insufficient evidence of a general improvement in student achievement.\n")
+}
 ```
 
 ## 练习与作业2：作图
@@ -391,8 +494,46 @@ data.fig3a <- read_csv( file = "../data/talk10/nc2015_data_for_fig3a.csv" );
 -   用`ggsignif`为相邻的两组做统计分析（如用 `wilcox.test` 函数），并画出`p.value`；
 ```
 
-```{r}
+```{r warning=FALSE,fig.width=5,fig.height=8,fig.align='center'}
 ## 代码写这里，并运行；
+library(tidyverse)
+library(ggsignif)
+
+fig3a_df = as.data.frame(data.fig3a)
+
+# Draw the basic boxplot
+fig3a_boxplot =
+  ggplot( fig3a_df, 
+          aes( factor(tai), zAA1.at ) ) +
+  geom_boxplot( 
+    fill = "#8EACCD", 
+    linetype = 1 ,
+    outlier.size = 1, 
+    width = 0.6) + 
+  xlab( "tAI group" ) +
+  ylab( expression( paste( italic(S[RNA]) ) ) ) +
+  scale_x_discrete(
+    breaks= 1:5 , 
+    labels= paste("Q", 1:5, sep = "") ) + 
+  geom_hline(
+    yintercept = 0, 
+    colour = "#D7E5CA", 
+    linetype = 2) +
+  theme(
+    text=element_text(
+      family="RLQDMSWR",
+      size=14))
+
+
+# Add p.value
+fig3a_boxplot_signif =
+  fig3a_boxplot +
+  geom_signif( 
+    comparisons = list(1:2, 2:3, 3:4, 4:5), 
+    test = wilcox.test,
+    step_increase = 0.1 )
+
+print(fig3a_boxplot_signif)
 
 ```
 
@@ -400,8 +541,25 @@ data.fig3a <- read_csv( file = "../data/talk10/nc2015_data_for_fig3a.csv" );
 
 答：
 
-```{r}
+不可以，不满足t-test的先决条件，如果运行下列t.test的代码将会报错
+
++ 数据的方差齐性检验不满足，运行下面的代码将会报错
+
+```{r eval=FALSE}
 ## 代码写这里，并运行；
+
+# Take the first 200 rows of data 
+# to avoid exceeding the test range
+fig3a_df_test = fig3a_df[1:200,]
+
+
+# Carry out the examination
+shapiro_test =
+  shapiro.test(fig3a_df_test$zAA1.at)
+levene_test =
+  car::leveneTest(
+    fig3a_df_test$zAA1.at ~ fig3a_df_test$tai, 
+    data = fig3a_df_test)
 
 ```
 
@@ -413,12 +571,52 @@ data.fig3a <- read_csv( file = "../data/talk10/nc2015_data_for_fig3a.csv" );
 
     -   添加线性回归直线图层
 
-    -   计算`wt`）与 `mpg`的相关性，并将结果以公式添加到图上。其最终效果如下图所示（注：相关代码可在`talk09`中找到）：
+    -   计算`wt`与 `mpg`的相关性，并将结果以公式添加到图上。其最终效果如下图所示（注：相关代码可在`talk09`中找到）：
 
 ![](images/xyplot.png)
 
-```{r}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
+library(ggplot2)
+
+data("mtcars")
+# Creating Scatterplots
+scatter_plot_mtcars =
+  ggplot(mtcars, 
+         aes(x = wt, y = mpg)) +
+  geom_point() +
+  geom_smooth(color = "#A4B0FA") +
+  labs(
+    title = "Scatter Plot of Weight vs. MPG", 
+    x = "Weight", 
+    y = "MPG") +
+  theme(
+    text=element_text(
+      family="RLQDMSWR",
+      size=14))
+
+# Calculate Correlation
+mtcars_correlation =
+  cor(mtcars$wt, mtcars$mpg)
+
+# Draw the plot
+scatter_plot_with_regression =
+  scatter_plot_mtcars +
+  # Add a linear regression line
+  geom_smooth(method = "lm", se = FALSE, color = "#FF9C5B") +  
+  
+  # Add correlation formula
+  
+  
+  
+  # AWAITING PERFECTION
+  annotate("text", x = 4, y = 30, label = paste("Correlation:", round(correlation, 2)))  
+
+
+
+# Print scatter plots and 
+# linear regression lines
+print(scatter_plot_with_regression)
 
 ```
 
@@ -448,7 +646,75 @@ ggplot(wts2, aes( factor( age ), wt ) ) + geom_boxplot() + coord_flip();
 -   用线性公式显示如何用`age`, `class`计算`wt`的值。
 ```
 
-```{r}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
+library(ggplot2)
+library(dplyr)
+
+# Create data.frame
+wts2 = bind_rows( 
+   tibble( class = 1, age = sample( 13:15, 20, replace = T ), wt = sample( seq(50, 60, by = 0.1), 20 ) ),
+   tibble( class = 2, age = sample( 14:16, 20, replace = T ), wt = sample( seq(55, 65, by = 0.1), 20 ) ),
+   tibble( class = 3, age = sample( 15:17, 20, replace = T ), wt = sample( seq(60, 70, by = 0.1), 20 ) )
+)
+
+# Draw Scatter Plot
+wts2_scatter_plot =
+  ggplot(wts2, aes(x = age, y = wt)) +
+  geom_point() + 
+  geom_smooth(color = "#377177")
+  theme(
+    text=element_text(
+      family="RLQDMSWR",
+      size=14)) +
+  labs(
+    title = "Scatter Plot of Age vs. Weight", 
+    x = "Age", 
+    y = "Weight")
+
+# Add a linear regression line
+wts2_scatter_plot_with_regression =
+  wts2_scatter_plot +
+  geom_smooth(
+    method = "lm", 
+    se = FALSE, 
+    color = "#2B484E")
+
+# Print the scatter plot with regression
+print(wts2_scatter_plot_with_regression)
+
+# Constructing a linear regression model
+linear_model =
+  lm(wt ~ age + class, data = wts2)
+
+head(linear_model)
+
+# Forecast wt
+predicted_wt =
+  predict(
+    linear_model, 
+    newdata = 
+      data.frame(
+        age = wts2$age, 
+        class = wts2$class))
+head(predicted_wt)
+
+# Calculate the correlation 
+# between actual wt and predicted wt
+correlation =
+  cor(wts2$wt, predicted_wt)
+
+# Print relevance
+cat("Correlation between Actual Weight and Predicted Weight:", correlation, "\n")
+
+# Print the formula
+cat("Linear Regression Formula: wt = ", round(coef(linear_model)[1], 2), " + ", round(coef(linear_model)[2], 2), " * age + ", round(coef(linear_model)[3], 2), " * class\n")
+
+
+
+# AWAITING PERFECTION:
+# Insert the formula into the figure
+
+
 
 ```
