@@ -13,7 +13,7 @@ output:
 knit: (
   function(inputFile, encoding) { 
 
-    pSubTitle <- 'talk10'
+    pSubTitle <- 'talk10-homework'
 
     rmarkdown::render( 
       input       = inputFile, 
@@ -355,7 +355,7 @@ head(mtcars_equal_distance)
 
     -   以 `swiss$Infant.Mortality` 为例，找到它的 `outlier` 并打印出来；
 
-```{r}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
 # Load the data
 data(swiss)
@@ -387,7 +387,7 @@ outliers =
 
 # 打印异常值
 cat(
-  "Infant Mortality Outliers:", 
+  "Infant Mortality Outlier(s):", 
   outliers, 
   "\n")
 
@@ -411,6 +411,7 @@ head(Data);
 ```{r warning=FALSE}
 ## 代码写这里，并运行；
 data_df = as.data.frame(Data)
+rm(Data)
 
 # Task 01: 
 # Use t.test to compare 
@@ -434,9 +435,28 @@ cat("Wilcoxon rank sum test p.value:", wilcox_test_result$p.value, "\n")
 -    两种检测方法的`p.value`哪个更显著？为什么？
 ```
 
-答：
+**答：**
 
-**AWAITING PERFECTION**
+在统计学中，`t.test` 和 `wilcox.test` 是两种不同的检验方法，用于比较两个样本之间的差异。它们的显著性水平（`p-value`）的解释方式有所不同，而哪个更显著取决于数据的性质和问题的背景。
+
+1. `t.test`:
+   - `t.test` 是一种用于比较两组数值型数据之间平均值差异的方法。
+   - 当两组数据来自正态分布的总体时，通常可以使用 `t.test`。
+   - `p-value` 衡量了两组数据的平均值之间是否存在显著差异。较小的 `p-value` 表示更显著的差异。
+
+2. `wilcox.test`:
+   - `wilcox.test` 是一种非参数检验方法，用于比较两组数据的中位数差异。
+   - 这个方法适用于数据不满足正态分布假设的情况，或者数据的中位数差异比平均值差异更值得关注时。
+   - `p-value` 衡量了两组数据的中位数之间是否存在显著差异。较小的 `p-value` 表示更显著的差异。
+
+哪个方法的 `p-value` 更显著取决于所研究的数据和问题。
+
+- 如果数据满足 `t.test` 的假设，且平均值差异更重要，那么 `t.test` 可能会产生更显著的 `p-value`。
+
+- 如果数据不满足 `t.test` 的假设，或者中位数差异更重要，那么 `wilcox.test` 可能会产生更显著的 `p-value`。
+
+
+> (Based on ChatGPT-3.5)
 
 ------------------------------------------------------------------------
 
@@ -451,9 +471,10 @@ head(scores);
 
 注：计算时请使用 `paired = T` 参数；
 
-```{r}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
 score_df = as.data.frame(scores)
+rm(scores)
 
 # Execute paired t-test
 t_test_result =
@@ -502,6 +523,7 @@ library(tidyverse)
 library(ggsignif)
 
 fig3a_df = as.data.frame(data.fig3a)
+rm(data.fig3a)
 
 # Draw the basic boxplot
 fig3a_boxplot =
@@ -594,22 +616,48 @@ scatter_plot_mtcars =
       family="RLQDMSWR",
       size=14))
 
+# Calculate lm_model
+mtcars_lm_model =
+  lm(mpg ~ wt, data = mtcars)
+
 # Calculate Correlation
 mtcars_correlation =
   cor(mtcars$wt, mtcars$mpg)
+
+# Generate the equation
+mtcars_equation =
+  paste("y =", 
+        round(coef(mtcars_lm_model)[2], 2),
+        "x +", 
+        round(coef(mtcars_lm_model)[1], 2))
+
+# Calculate the p-value
+mtcars_p_value =
+  round(
+    summary(mtcars_lm_model)$coefficients[2, 4], 4)
 
 # Draw the plot
 scatter_plot_with_regression =
   scatter_plot_mtcars +
   # Add a linear regression line
-  geom_smooth(method = "lm", se = FALSE, color = "#FF9C5B")
+  geom_smooth(method = "lm", se = FALSE, color = "#FF9C5B") +
   
   # Add correlation formula
+  annotate("text",
+           # Locate the annotation
+           x = 4, y = 30,
+           # Contents of the annotation
+           label = paste("Correlation =",
+                         mtcars_correlation,
+                         "\n",
+                         "Equation: ",
+                         mtcars_equation,
+                         "\n",
+                         "p-value =", 
+                         mtcars_p_value),)
   
   
-  
-  # AWAITING PERFECTION
-  # annotate("text", x = 4, y = 30, label = paste("Correlation:", round(correlation, 2)))  
+
 
 
 
@@ -625,7 +673,7 @@ print(scatter_plot_with_regression)
 
 -   **使用以下代码产生数据进行分析**
 
-```{r fig.width=5,fig.height=8,fig.align='center'}
+```{r warning=FALSE,fig.width=5,fig.height=8,fig.align='center'}
 wts2 <- bind_rows( 
    tibble( class = 1, age = sample( 13:15, 20, replace = T ), wt = sample( seq(50, 60, by = 0.1), 20 ) ),
    tibble( class = 2, age = sample( 14:16, 20, replace = T ), wt = sample( seq(55, 65, by = 0.1), 20 ) ),
@@ -661,7 +709,7 @@ wts2 = bind_rows(
 wts2_scatter_plot =
   ggplot(wts2, aes(x = age, y = wt)) +
   geom_point() + 
-  geom_smooth(color = "#377177")
+  geom_smooth(color = "#377177") +
   theme(
     text=element_text(
       family="RLQDMSWR",
