@@ -45,6 +45,11 @@ Sys.info()[["user"]]
 Sys.getenv("HOME")
 ```
 
+```{r include=FALSE}
+library(showtext)
+font_add("RLQDMSWR",regular = "data/RLQDMSWR.ttf")
+showtext_auto()
+```
 
 ## 练习与作业1：linear regression
 
@@ -59,8 +64,54 @@ Sys.getenv("HOME")
 3.  用得到的线性模型，以`income`为输入，预测`happiness`的值；
 4.  用点线图画出预测值与真实`happiness`的关系，并在图上写出 R2 值。
 
-```{r}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
+# 安装和加载必要的包
+library(readr)
+library(ggplot2)
+
+# 读取数据
+unzip("data/talk11/income.data_.zip", exdir = "data/talk11/")
+income.dat =
+  read_csv("data/talk11/income.data.csv",
+           show_col_types = FALSE)
+
+# 执行线性回归
+income_linear_model =
+  lm(happiness ~ income, 
+     data = income.dat)
+
+# 绘制点线图
+income_pic01 =
+  ggplot(
+    income.dat, 
+    aes(
+      x = income, 
+      y = happiness)) +
+  geom_point(shape = 16, size = 1, color = "lightblue") +
+  geom_smooth(
+    method = "lm",
+    se = FALSE, 
+    color = "#0BAFFF") +
+  labs(
+    title = "Income vs Happiness", 
+    x = "Income", 
+    y = "Happiness") +
+  theme(
+    text = element_text(
+      family = "RLQDMSWR",
+      size = 14))
+
+# 预测happiness的值
+predicted_happiness <- predict(income_linear_model, newdata = data.frame(income = income.dat$income))
+
+# 使用ggplot2绘制预测值与真实值的关系图
+df <- data.frame(income = income.dat$income, happiness = income.dat$happiness, predicted = predicted_happiness)
+ggplot(df, aes(x = income, y = happiness)) +
+  geom_point() +
+  geom_line(aes(y = predicted), color = "blue") +
+  labs(title = "Predicted vs Actual Happiness", x = "Income", y = "Happiness")
+
 
 ```
 
