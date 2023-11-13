@@ -47,6 +47,14 @@ Sys.getenv("HOME")
 
 ```{r include=FALSE}
 library(showtext)
+library(dplyr)
+library(readr)
+library(tidyverse)
+library(ggplot2)
+library(relaimpo)
+library(earth)
+library(caret)
+library(vip)
 font_add("RLQDMSWR",regular = "data/RLQDMSWR.ttf")
 showtext_auto()
 ```
@@ -66,29 +74,33 @@ showtext_auto()
 
 ```{r warning=FALSE}
 ## 代码写这里，并运行；
-# 安装和加载必要的包
+# Load the packages
 library(readr)
 library(ggplot2)
 
-# 读取数据
+# Read the data
 unzip("data/talk11/income.data_.zip", exdir = "data/talk11/")
 income.dat =
   read_csv("data/talk11/income.data.csv",
            show_col_types = FALSE)
 
-# 执行线性回归
+# Executing linear prediction
 income_linear_model =
   lm(happiness ~ income, 
      data = income.dat)
+summary(income_linear_model)
 
-# 绘制点线图
+# Draw the plot
 income_pic01 =
   ggplot(
     income.dat, 
     aes(
       x = income, 
       y = happiness)) +
-  geom_point(shape = 16, size = 1, color = "lightblue") +
+  geom_point(
+    shape = 16, 
+    size = 1, 
+    color = "lightblue") +
   geom_smooth(
     method = "lm",
     se = FALSE, 
@@ -102,15 +114,45 @@ income_pic01 =
       family = "RLQDMSWR",
       size = 14))
 
-# 预测happiness的值
-predicted_happiness <- predict(income_linear_model, newdata = data.frame(income = income.dat$income))
+print(income_pic01)
 
-# 使用ggplot2绘制预测值与真实值的关系图
-df <- data.frame(income = income.dat$income, happiness = income.dat$happiness, predicted = predicted_happiness)
-ggplot(df, aes(x = income, y = happiness)) +
-  geom_point() +
-  geom_line(aes(y = predicted), color = "blue") +
-  labs(title = "Predicted vs Actual Happiness", x = "Income", y = "Happiness")
+# Predict the value of happiness
+income_predicted_happiness =
+  predict(
+    income_linear_model, 
+    newdata = data.frame(
+      income = income.dat$income))
+
+# Plotting predicted values against true values
+income_df =
+  data.frame(
+    income = income.dat$income, 
+    happiness = income.dat$happiness, 
+    predicted = income_predicted_happiness)
+
+income_pic02 =
+  ggplot(income_df, 
+         aes(
+           x = income,
+           y = happiness)) +
+    geom_point(
+      shape = 16, 
+      size = 1, 
+      color = "#F2D7D4") +
+    geom_line(
+      aes(y = predicted), 
+      color = "#D38983",
+      size = 1) +
+    labs(
+      title = "Predicted vs Actual Happiness", 
+      x = "Income", 
+      y = "Happiness") +
+    theme(
+      text = element_text(
+        family = "RLQDMSWR",
+        size = 14))  
+
+print(income_pic02)
 
 
 ```
@@ -131,6 +173,94 @@ ggplot(df, aes(x = income, y = happiness)) +
 
 ```{r}
 ## 代码写这里，并运行；
+# Load the packages
+library(readr)
+library(ggplot2)
+library(relaimpo)
+
+# Read the data
+unzip("data/talk11/heart.data_.zip", exdir = "data/talk11/")
+heart.dat =
+  read_csv("data/talk11/heart.data.csv",
+           show_col_types = FALSE)
+
+# Perform multiple linear regression
+heart_linear_model =
+  lm(heart.disease ~ biking + smoking, 
+     data = heart.dat)
+summary(heart_linear_model)
+
+# Calculate R2
+R2 =
+  summary(heart_linear_model)$r.squared
+cat("R-squared value:", R2, "\n")
+
+# Calculating the importance of a variable
+heart_data_importance =
+  calc.relimp(heart_linear_model)
+print(heart_data_importance)
+
+# Performing multiple linear regressions 
+# including interactions
+heart_interaction_model =
+  lm(heart.disease ~ biking * smoking, 
+     data = heart.dat)
+
+# Print summary of regression 
+# results with interactions
+summary(heart_interaction_model)
+
+# Predicting the value of heart.disease
+predicted_heart.disease =
+  predict(heart_linear_model, 
+          newdata = 
+            data.frame(
+              biking = heart.dat$biking,
+              smoking = heart.dat$smoking))
+
+# Plotting predicted values against true values
+heart_df =
+  data.frame(
+    heart.disease = heart.dat$heart.disease, 
+    predicted = predicted_heart.disease)
+heart_pic01 = 
+  ggplot(
+    heart_df, 
+    aes(
+      x = heart.disease,
+      y = predicted)) +
+    geom_point(
+      shape = 16, 
+      size = 1, 
+      color = "#A9E4D9") +
+    geom_abline(
+      intercept = 0,
+      slope = 1, 
+      linetype = "dashed", 
+      color = "#9BC5D7",
+      size = 1) +
+    labs(
+      title = "Predicted vs Actual Heart Disease", 
+      x = "Actual Heart Disease", 
+      y = "Predicted Heart Disease") +
+    theme(
+      text = element_text(
+        family = "RLQDMSWR",
+        size = 14)) +
+    annotate(
+      "text", 
+      x = max(heart_df$heart.disease), 
+      y = min(heart_df$predicted), 
+      label = 
+        paste(
+          "R-squared =", 
+          round(R2, 3)), 
+      hjust = 1, 
+      vjust = 0)
+ 
+print(heart_pic01)
+
+
 
 ```
 
@@ -140,10 +270,75 @@ ggplot(df, aes(x = income, y = happiness)) +
 
 用 `glm` 建模时使用`family=binomial`；在预测时， `type=`参数可取值 `link`（默认）和 `response`。请问，两者的区别是什么？请**写代码**举例说明。
 
+在glm中，type参数在预测时用于选择输出的类型。具体而言，对于二项分布（family=binomial），type参数可以设置为link或response。
+
+1. link：这是默认选项。返回的是线性预测的值，即链接函数（logit）的输出。在二项分布的情况下，这通常是log-odds的值。
+
+2. response：返回的是估计的概率，即反映了响应变量为1的概率。
+
+以下是使用glm建模和预测的示例代码：
+
 ```{r}
 ## 代码写这里，并运行；
 
+# Suppose there is dichotomous data, 
+# represented by the response variable
+
+# In this example, 
+# family=binomial is used to
+# indicate that the response variable is 
+# binomially distributed
+
+# Generate sample data
+set.seed(123)
+example_data =
+  data.frame(
+    response = 
+      sample(c(0, 1), 
+             100, 
+             replace = TRUE),
+    predictor1 = rnorm(100),
+    predictor2 = rnorm(100)
+  )
+
+# Model
+example_model =
+  glm(
+    response ~ predictor1 + predictor2, 
+    family = binomial, 
+    data = example_data)
+
+# Create new data for prediction
+example_new_data =
+  data.frame(
+    predictor1 = rnorm(10),
+    predictor2 = rnorm(10)
+  )
+
+# Predicts and outputs LINK
+example_link_predictions =
+  predict(example_model, 
+          newdata = example_new_data, 
+          type = "link")
+cat(
+  "Link Predictions:", 
+  example_link_predictions, 
+  "\n"
+)
+
+# Predict and output response
+example_response_predictions =
+  predict(example_model, 
+          newdata = example_new_data, 
+          type = "response")
+cat(
+  "Response Predictions:", 
+  example_response_predictions,
+  "\n")
+
 ```
+
+在这个例子中，link_predictions将包含线性预测的值，而response_predictions将包含估计的概率。其中，response_predictions的值将在0到1之间，表示相应的二项分布中响应变量为1的概率。
 
 ## 练习与作业2：non-linear regression
 
@@ -158,7 +353,81 @@ ggplot(df, aes(x = income, y = happiness)) +
 
 ![](images/talk11-feature-importance.png)
 
-```{r}
+```{r warning=FALSE}
 ## 代码写这里，并运行；
+# Loading the library
+library(earth)
+library(caret)
+library(vip)
+
+# Load the data
+data(swiss)
+
+# Setting control parameters 
+# for cross-validation
+ctrl =
+  trainControl(
+    method = "repeatedcv", 
+    number = 10, 
+    repeats = 10)
+
+# Modeling using the EARTH method
+model_earth =
+  train(Fertility ~ ., 
+        data = swiss, 
+        method = "earth", 
+        metric = "RMSE", 
+        trControl = ctrl)
+
+# Modeling using the LM approach
+model_lm =
+  train(Fertility ~ ., 
+        data = swiss, 
+        method = "lm", 
+        metric = "RMSE",
+        trControl = ctrl)
+
+# Comparing the results of the two models
+resamples(
+  list(Earth = model_earth, 
+       LM = model_lm))
+
+# Mapping the importance of 
+# features for the EARTH model
+earth_model_plot =
+  vip(model_earth,
+      geom = "point")
+
+earth_model_pic01 =
+  earth_model_plot +
+    geom_point(
+    shape = 16, 
+    size = 1) +
+    theme(
+    text = element_text(
+      family = "RLQDMSWR",
+      size = 14))  
+
+print(earth_model_pic01)
+
+  
+
+# Mapping the importance of 
+# features for the LM model
+lm_model_plot =
+  vip(model_lm,
+      geom = "point")
+
+lm_model_pic01 =
+  lm_model_plot +
+    geom_point(
+    shape = 16, 
+    size = 1) +
+    theme(
+    text = element_text(
+      family = "RLQDMSWR",
+      size = 14))  
+
+print(lm_model_pic01)
 
 ```
