@@ -72,7 +72,7 @@ showtext_auto()
 3.  用得到的线性模型，以`income`为输入，预测`happiness`的值；
 4.  用点线图画出预测值与真实`happiness`的关系，并在图上写出 R2 值。
 
-```{r warning=FALSE,fig.width=16,fig.height=9,fig.align='center'}
+```{r warning=FALSE,fig.width=4,fig.height=3,fig.align='center'}
 ## 代码写这里，并运行；
 # Load the packages
 library(readr)
@@ -171,7 +171,7 @@ print(income_pic02)
 6.  用得到的线性模型预测`heart.disease`，用点线图画出预测值与真实值的关系，并在图上写出 R2 值。
 7.  在建模时考虑 `biking` 和 `smoking`的互作关系，会提高模型的 R2 值吗？如果是，意味着什么？如果不是，又意味着什么？
 
-```{r fig.width=16,fig.height=9,fig.align='center'}
+```{r fig.width=4,fig.height=3,fig.align='center'}
 ## 代码写这里，并运行；
 # Load the packages
 library(readr)
