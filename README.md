@@ -15,7 +15,7 @@ Anyone **can** get my code as a reference, but <font color = red><font size =5>*
 
 I will add contributors (i.e. the one who helps me to find bugs or give me ideas to complete the task) in the commit to express my acknowledgement. 
 
-For more information and the document which gives a brief content of this course to let you review for the exam more easily, you can go to [REVIEW.md](./REVIEW.md).
+For more information and the document which gives a brief content of this course to let you review for the exam more easily, you can go to [REVIEW.md](./Review/REVIEW.md).
 
 Feel free to give me any thought you have to contribute to the documentation.
 
