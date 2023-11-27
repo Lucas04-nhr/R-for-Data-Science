@@ -4,6 +4,5 @@
     <option name="disableRprofile" value="true" />
     <option name="interpreterPath" value="/usr/local/bin/R" />
     <option name="loadWorkspace" value="true" />
-    <option name="saveWorkspace" value="true" />
   </component>
 </project>
