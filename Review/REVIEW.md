@@ -2,10 +2,12 @@
 
 <font size = 1>**By Haoran Nie @ HUST Life ST**</font>
 
+> Reference: [R for Data Science](https://r4ds.had.co.nz)
+
 <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
 
-
 ## Multi-omics data analysis and visualisation, #1
+
 > Talk 01
 > 	View the original slide through [this link](../talk01.pdf).
 > 	View the original R markdown file of the slide through [this link](../talk01.Rmd).
@@ -72,7 +74,7 @@ Some functions to determine these special values:
 + `is.finite()`
 + `is.infinite()`
 
-## Vectors and Arrays
+### Vectors and Arrays
 
 Both are arrays. A `vector` is a one-dimensional array and a matrix is a two-dimensional array.
 
@@ -82,7 +84,7 @@ This means.
 - High-dimensional arrays, like `vector` and matrices, can contain only one basic data type.
 - Higher dimensional arrays can be defined by the `array()` function.
 
-### Vector maniulation
+#### Vector maniulation
 
 ```R
 dim(m);
@@ -94,8 +96,140 @@ summary(m); ## Can also be used in vector
 
 Extra:
 
-- Incorporation`ab = c(a, b)`
-- Take part`ab[1]`
-- Replacement of individual values`ab[1] = c`
-- Replacing multiple values`ab[c(2, 3)] = c("Weihua", "Chen")`
-- Naming 
+- Incorporation `ab = c(a, b)`
+
+- Take part `ab[1]`
+
+- Replacement of individual values `ab[1] = c`
+
+- Replacing multiple values `ab[c(2, 3)] = c("Weihua", "Chen")`
+
+- Naming elements and replace values `names(ab) = as.character(ab)`
+
+- Reverse `rev(1:10)`
+
+- Sort&order 
+
+	```R
+	lts = sample(LETTERS[1:20])
+	sort(lts)
+	```
+
+- Fetch one line or multiple lines
+
+	```R
+	# (There's already some data in workspace)
+	
+	$ m
+	> (List the content of matrix "m")
+	
+	$ m[1, ]
+	> (List the first row of matrix 'm')
+	
+	$ m[1:2, ]
+	> (List the first two rows of matrix 'm')
+	```
+
+	> You can also let the console to fetch multiple lines as the order you give.
+	>
+	> ```R
+	> m[c("row_B", "row_A")]
+	> ```
+	>
+	> The console will output the contents of matrix "m" in the order of "row_B" and then "row_A".
+
+- Fetch one column or multiple columns
+
+	> As can be seen from the same principle, I only list codes here
+
+	```R
+	m[ , 1]
+	m[ , c(1:2)]
+	m[ , c("col_B", "col_A")]
+	```
+
+- Fetch parts `m[1:2, 2:3]`
+
+- Replacement
+
+	```R
+	m[1, ] = c(10)
+	m[, "C"] = c(230, 140)
+	m[1:2,] = matrix( 1:6, nrow=2)
+	m[1, c("C", "B")] = matrix(110:111, nrow = 1)
+	```
+
+- Transparent `t(m)`
+
+### The hierarchy of R’s vector types
+
+<img src="./image/data-structures-overview.png" alt="The hierarchy of R’s vector types" style="zoom:24%;" />
+
+You can use function `typeof()` to know the type of a vector.
+
+Here are some examples of other `is.xxx()` function:
+
+```R
+is.null( NULL )
+is.numeric( NA )
+is.numeric( Inf );
+is.list(); # This is a function which can take the place of "typeof()"
+is.logical()
+is.character()
+is.vector();
+# more ...
+```
+
+
+
+## R language basics, part 2
+
+> Talk 03
+> 	View the original slide through [this link](../talk03.pdf).
+> 	View the original R markdown file of the slide through [this link](../talk03.Rmd).
+
+### `data.frame`
+
+#### **What is a `data.frame`?**
+
+```R
+library(tidyverse);
+library(kableExtra)
+kbl(head(mpg), 
+    booktabs = T)
+```
+
+Here’s the result:
+
+![Introduction of df](./image/Introduction%20of%20df.png)
+
+#### **Usage of `head()` and `tail()`**
+
+- `head()` is a function to display the first rows of some data (vectors etc.)
+- `tail()` is a function to display the last rows of some data (vectors etc.)
+
+#### Components of `data.frame` and common functions
+
+**Components:**
+
+- Two-dimensional table
+- consists of different columns; each column is a vector, different columns can have different data types, but a column contains only one data type (`int`, `num`, `chr` ...)
+- Each column has the same length
+
+**Common functions:**
+
+```R
+nrow() # Show the number of rows
+ncol() # Show the number of columns
+dim()  # Show the dimension
+```
+
+#### Structure of `data.frame` & `tibble`
+
+`str(mpg)`
+
+This command shows the structure of the tibble `mpg`:
+
+<img src="./image/Structure%20of%20mpg.png" alt="Structure of mpg" style="zoom:67%;" />
+
+#### Make a new `data.frame`
