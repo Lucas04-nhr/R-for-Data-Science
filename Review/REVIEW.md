@@ -703,3 +703,76 @@ Use the following functions to write object(s) to external files:
 	  col_names = !append
 	)
 	```
+
+# R language basics, part 3: factor
+
+> Talk 04
+> 	View the original slide through [this link](../talk04.pdf).
+> 	View the original R markdown file of the slide through [this link](../talk04.Rmd).
+
+## IO and working enviroment management
+
+Each R session is a separate **work space** containing its own data, variables, and operation history.
+
+<img src="./image/r_sessions.png" alt="r_sessions" />
+
+Each RStudio session is automatically associated with a R session
+
+> Not only RStudio, PyCharm or VSCode also support R session.
+>
+> However, I’m keen on coding with PyCharm but not RStudio, for its wonderful Plug-in Environment, which can let me use plug-ins such as Code GeeX by Zhipu AI (a company founded by some student in KEG team inTsinghua University) or GitHub Copilot by GitHub to let the coding process more quickly, for the instruction from GPTs.
+
+<img src="./image/r_session_in_rstudio.png" alt="r_session_in_rstudio"  />
+
+### Start a new RStudio session by creating a new project
+
+> To start a new session in PyCharm, simply press the bottom corner and select a new session.
+
+- Click the Project button in the upper right corner and select New Project in the pop-up menu …
+
+	<img src="./image/rstudio_create_new_project.png" alt="rstudio_create_new_project" style="zoom:48%;" />
+
+- Select: New directory -> New Project in the popup window
+
+	<img src="./image/rstudio_create_project_2.png" alt="rstudio_create_project_2" style="zoom:48%;" />
+
+- Enter a new directory name, choose its mother directory ...
+
+	<img src="./image/rstudio_create_new_project_3.png" alt="rstudio_create_new_project_3" style="zoom:50%;" />
+
+### Working Space
+
+Current workspace, including all loaded data, packets and homebrew functions.
+
+Variables can be managed with the following code:
+
+```R
+ls() # Show all the variables in current workspace/session
+rm(x) # Remove a variable
+rm(list = ls()) # Remove ALL variables in current workspace/session
+```
+
+### Variables in working space in RStudio
+
+The "Environment" window in the upper right corner of RStudio shows all the variables of the current workspace.
+
+<img src="./image/rstudio_enviroment_window.png" alt="rstudio_enviroment_window" style="zoom:50%;" />
+
+### Save and restore work space
+
+```R
+# Save all loaded variables into an external .RData file
+save.image(file = "prj_r_for_bioinformatics_aug3_2019.RData") 
+# Restore (load) saved work space
+load(file = "prj_r_for_bioinformatics_aug3_2019.RData")
+```
+
+**Notes:**
+
+- Existing variables will be kept, however, those will the same names will be replaced by loaded variables
+
+- Please consider using `rm(list=ls())` to remove all existing variables to have a clean start
+
+- You may need to reload all the packages
+
+### Save selected variables
