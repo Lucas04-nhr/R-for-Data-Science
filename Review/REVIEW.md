@@ -20,54 +20,82 @@ This section has nothing to explain :)
 > 	View the original slide through [this link](../talk02.pdf).
 > 	View the original R markdown file of the slide through [this link](../talk02.Rmd).
 
-### 基本数据类型
+###  Fundamental Data Type
 
-最基本的数据类型包括**数字**，**逻辑符号**和**字符串**，是其它数据类型的基本组成部分。
+The most basic data types include **numbers**, **logical symbols** and **strings** and are the basic building blocks of the other data types.
 
-### 简单数据类型
+###  Simple Data Types
 
-包括```vector```和矩阵，它们都可以包含某一种基本数据类型的多个数值，比如由多个数字组成的矩阵，多个字符串组成的```vector```等。但它们**只能包含单一数据类型**。
+This includes vectors and matrices, both of which can contain multiple values of a certain basic data type, such as a **matrix** consisting of multiple numbers, a **vector** consisting of multiple strings, and so on. However, **they can only contain a single data type.**
 
 ```R
-c(100, 20, 30) ## 整数 vector 
-c("字符串", "数组","是我") ## 字符串 vector
-c(TRUE, FALSE, TRUE, T, F) ## 一个逻辑 vector
+c(100, 20, 30) ## Interger vector 
+c("String", "Array", "It's me".) ## String vector
+c(TRUE, FALSE, TRUE, T, F) ## A logic vector
 ```
 
-如上所示，数组通常用函数 `c()` 来定义。除此之外，还可以用 `:` 操作符号来定义包含连续整数的 `vector`。
+As shown above, arrays are usually defined with the function `c()`. In addition, a `vector` containing consecutive integers can be defined using the `:` operator.
 
-### 数据类型间的转换
+###  Conversion between data types
 
-1. 自动转换
+1. Automatic Conversion
 
-	`vector`只能包含一种基本数据类型。因此，在定义数组时，如果输入的数值是混合的，那么某些基本数据类型会自动转换为其它类型，以保证数值类型的一致性；这在英文里称为`coerce`，有强制转换的意思。这种转换的优先级为：
+	A `vector` can contain only one basic data type. Therefore, when defining arrays, if the input values are mixed, certain basic data types are automatically converted to other types to ensure consistency of the numeric types; this is called `coerce` in English, and has the meaning of forced conversion. The priority of this conversion is:
 
-	* 逻辑类型 -> 数字类型
-	* 逻辑类型 -> 字符串 
-	* 数字类型 -> 字符串
+	* Logical types -> numeric types
+	* Logical Type -> String 
+	* numeric type -> string
 
-1. 手动转换
+1. Manual switchover
 
-	除了自动转换外，还可以手动转换向量中元素的类型
+	In addition to the automatic conversion, you can manually convert the types of the elements in a vector:
 
-	+ 查看变量类型`class()`
-	+ 类的检查`is.type()`
-	+ 类的转换`as.type()`
+	+ Checking the type of a variable `class()`
+	+ Checking of classes `is.type()`
+	+ Conversion of classes `as.type()`
 
-### 矩阵中的一些特殊值
+### Some special values in matrices
 
-+ `NA`缺失值
++ `NA` (Not Available) missing values
 
-+ `NaN`无意义
++ `NaN` (Not a Number)is meaningless
 
-+ `-Inf`负无穷
++ `-Inf` Negative Infinity
 
-+ `NULL`空
++ `Inf` Positive Infinity
 
-判断这些特殊值的一些函数
++ `NULL` Null
+
+Some functions to determine these special values:
 
 + `is.na()`
-
 + `is.finite()`
-
 + `is.infinite()`
+
+## Vectors and Arrays
+
+Both are arrays. A `vector` is a one-dimensional array and a matrix is a two-dimensional array.
+
+This means.
+
+- There can be more dimensional arrays
+- High-dimensional arrays, like `vector` and matrices, can contain only one basic data type.
+- Higher dimensional arrays can be defined by the `array()` function.
+
+### Vector maniulation
+
+```R
+dim(m);
+nrow(m);
+ncol(m);
+range(m); ## Available when the content is numeric
+summary(m); ## Can also be used in vector
+```
+
+Extra:
+
+- Incorporation`ab = c(a, b)`
+- Take part`ab[1]`
+- Replacement of individual values`ab[1] = c`
+- Replacing multiple values`ab[c(2, 3)] = c("Weihua", "Chen")`
+- Naming 
