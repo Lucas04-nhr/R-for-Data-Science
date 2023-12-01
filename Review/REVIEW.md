@@ -614,3 +614,92 @@ Some available functions:
 Use the following functions to write object(s) to external files:
 
 > Default parameters are listed.
+>
+> More related documents can be found in this [link](https://r4ds.had.co.nz/data-import.html?q=file#writing-to-a-file).
+
+- Comma delimited file: 
+
+	```R
+	write_csv(
+	  x, 
+	  path, 
+	  na = “NA”, 
+	  append = FALSE, 
+	  col_names = !append
+	) 
+	```
+
+- File with arbitrary delimiter: 
+
+	```R
+	write_delim(
+	  x, 
+	  path, 
+	  delim = ” “, 
+	  na =”NA”, 
+	  append = FALSE, 
+	  col_names = !append
+	)
+	```
+
+- CSV for excel: 
+
+	```R
+	write_excel_csv(
+	  x, 
+	  path, 
+	  na = “NA”, 
+	  append = FALSE,
+	  col_names = !append
+	) 
+	```
+
+- String to file: 
+
+	```R
+	write_file(
+	  x,
+	  path, 
+	  append = FALSE
+	)
+	```
+
+- String vector to file, one element per line: 
+
+	```R
+	write_lines(
+	  x,
+	  path,
+	  na = “NA”, 
+	  append = FALSE
+	) 
+	```
+
+- Object to RDS file: 
+
+	```R
+	write_rds(
+	  x,
+	  path, 
+	  compress = 
+	  	c(
+	      “none”,
+	      “gz”,
+	      “bz2”,
+	      “xz”
+	    ),
+	  ...
+	)
+	```
+
+- Tab delimited files: 
+
+	```R
+	write_tsv(
+	  x, 
+	  path, 
+	  na = “NA”, 
+	  append = FALSE, 
+	  col_names = !append
+	)
+	```
