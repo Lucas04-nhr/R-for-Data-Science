@@ -923,3 +923,220 @@ fct_count(gender_fct)
 <img src="./image/image-20231202114937281.png" alt="image-20231202114937281" style="zoom:50%;" />
 
 You can also use `fct_relabel()` to do the same thing
+
+```R
+fct_relabel(
+  gender,
+  ~ ifelse(
+    tolower(
+      substring(., 1, 1)) == "f",
+    "Female",
+    "Male"
+  )
+)
+```
+
+### Usage of factors in drawing plots
+
+```R
+library(ggplot2)
+
+responses =
+  factor(
+    c("Agree", "Agree", "Strongly Agree", "Disagree", "Disagree", "Agree")
+  )
+
+response_barplot =
+  ggplot(
+    data = data.frame(responses),
+    aes(x = responses)
+  ) +
+  geom_bar()
+```
+
+<img src="./image/response_barplot.png" alt="response_barplot" style="zoom:24%;" />
+
+By default, `factor` is sorted alphabetically.
+
+ `ggplot2` also plots `factor` in that order, so you can adjust the `factor` to adjust the drawing order.
+
+```R
+res =
+  data.frame(responses)
+# Sort by level of agreement from strong -> weak
+res$res =
+  factor(
+    res$res,
+    levels =
+       c("Strongly Agree", "Agree", "Disagree")
+  )
+
+response_barplot2 =
+  ggplot(
+    data = res,
+    aes(x = res)
+  ) +
+  geom_bar() +
+  xlab("Response")
+```
+
+<img src="./image/response_barplot2.png" alt="response_barplot2" style="zoom:24%;" />
+
+You can also use the parameter `ordered` to let others know that your `factor` is ordered properly.
+
+```R
+responses =
+  factor(
+    c("Agree", "Agree", "Strongly Agree", "Disagree", "Disagree", "Agree"),
+    ordered = TRUE
+  )
+```
+
+<img src="./image/image-20231202134409231.png" alt="image-20231202134409231" style="zoom:50%;" />
+
+### Using `factor` to vhange values
+
+You can use `recode()` in `dplyr` package to change `value`
+
+`dplyr` is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:
+
++ `mutate()` adds new variables that are functions of existing variables
++ `select()` picks variables based on their names.
++ `filter()` picks cases based on their values.
++ `summarise()` reduces multiple values down to a single summary.
++ `arrange()` changes the ordering of the rows.
+
+These all combine naturally with `group_by()` which allows you to perform any operation “by group”. You can learn more about them in `vignette("dplyr")`. As well as these single-table verbs, dplyr also provides a variety of two-table verbs, which you can learn about in `vignette("two-table")`.
+
+> Based on the introduction on the [official website](https://dplyr.tidyverse.org) of `dplyr`.
+
+Here’s an example:
+
+```R
+x =
+  factor(
+    c("alpha", "beta", "gamma", "theta", "beta", "alpha")
+  )
+
+x =
+  recode(
+    x,
+    alpha = "a",
+    beta = "b",
+    gamma = "c",
+    theta = "d"
+  )
+```
+
+<img src="./image/image-20231202135555790.png" alt="image-20231202135555790" style="zoom:50%;" />
+
+### Delete useless `levels`
+
+```R
+mouse.genes =
+  read.delim(
+    file = "data/talk04/mouse_genes_biomart_sep2018.txt",
+    sep = "\t",
+    header = T, 
+    stringsAsFactors = T 
+  )
+```
+
+<img src="./image/image-20231202135803901.png" alt="image-20231202135803901" style="zoom:50%;" />
+
+If you draw a plot without deleting the useless `levels`, you will get this result:
+
+<img src="./image/mouse_gene_plot01.png" alt="mouse_gene_plot01.png" style="zoom:50%;" />
+
+But when you delete the useless `level` using these commands:
+
+```R
+mouse.chr_10_12$Chromosome.scaffold.name =
+  droplevels(mouse.chr_10_12$Chromosome.scaffold.name)
+```
+
+You will see that:
+
+<img src="./image/image-20231202141212937.png" alt="image-20231202141212937" style="zoom:50%;" />
+
+Then, you’ll get the plot like this:
+
+<img src="./image/mouse_gene_plot02.png" alt="mouse_gene_plot02" style="zoom:24%;" />
+
+*Source code:*
+
+``` R
+mouse_gene_plot02 =
+  ggplot(
+    mouse.chr_10_12,
+    aes(
+      x = Chromosome.scaffold.name,
+      y = Transcript.length..including.UTRs.and.CDS.
+    )
+  ) +
+  geom_boxplot() +
+  labs(
+    x = "Chromosome Scaffold Name",
+    y = "Transcript Length (including UTRs and CDS)"
+  )
+```
+
+You can also use `tibble` to solve these problems:
+
+```R
+mouse.tibble =
+  read_delim(
+    file = "data/talk04/mouse_genes_biomart_sep2018.txt",
+    delim = "\t",
+    quote = "",
+    show_col_types = FALSE
+  )
+
+mouse.tibble.chr10_12 =
+  mouse.tibble %>% filter(
+    `Chromosome/scaffold name` %in% c("10", "11", "12"))
+
+
+mouse_gene_plot03 =
+    ggplot(
+        mouse.tibble.chr10_12,
+        aes(
+        x = Chromosome.scaffold.name,
+        y = Transcript.length..including.UTRs.and.CDS.
+        )
+    ) +
+    geom_boxplot() +
+    labs(
+        x = "Chromosome",
+        y = "Transcript length (bp)"
+    ) +
+    coord_flip() +
+    ylim(0, 2500) +
+    theme_bw()
+```
+
+<img src="./image/mouse_gene_plot03.png" alt="mouse_gene_plot03" style="zoom:24%;" />
+
+### Advance usage
+
+- Use `reorder()` function to reorder the level.
+
+	```R
+	x = reorder( 
+	  `Chromosome/scaffold name`,
+	  `Transcript length (including UTRs and CDS)`,
+	  median
+	)
+	```
+
+- Use `forcats::fct_reorder()` to reorder factors
+
+	```R
+	x = fct_reorder( 
+	  `Chromosome/scaffold name`,
+	  `Transcript length (including UTRs and CDS)`,
+	  median 
+	)
+	```
+
+	
