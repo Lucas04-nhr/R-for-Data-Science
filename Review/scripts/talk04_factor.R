@@ -16,3 +16,13 @@ gender_fct =
   )
 
 fct_count(gender_fct)
+
+gender_fct_relabel =
+  fct_relabel(
+    gender,
+    ~ ifelse(tolower(substring(., 1, 1))) == "f",
+    "Female",
+    "Male"
+  )
+
+fct_count(gender_fct_relabel)
