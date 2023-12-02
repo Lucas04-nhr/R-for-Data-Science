@@ -3,14 +3,18 @@
 <font size = 1>**By Haoran Nie @ HUST Life ST**</font>
 
 > Reference: [R for Data Science](https://r4ds.had.co.nz)
+>
+> The book updated to 2^nd^ ed. on July,2023, here’ s a [link](https://r4ds.hadley.nz) to the official website.
 
 <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
 
 # Multi-omics data analysis and visualisation, #1
 
 > Talk 01
-> 	View the original slide through [this link](../talk01.pdf).
-> 	View the original R markdown file of the slide through [this link](../talk01.Rmd).
+>
+> View the original slide through [this link](../talk01.pdf).
+>
+> View the original R markdown file of the slide through [this link](../talk01.Rmd).
 
 This section has nothing to explain :)
 
@@ -19,8 +23,10 @@ This section has nothing to explain :)
 # R language basics, part 1
 
 > Talk 02
-> 	View the original slide through [this link](../talk02.pdf).
-> 	View the original R markdown file of the slide through [this link](../talk02.Rmd).
+>
+> View the original slide through [this link](../talk02.pdf).
+>
+> View the original R markdown file of the slide through [this link](../talk02.Rmd).
 
 ##  Fundamental Data Type
 
@@ -185,8 +191,10 @@ is.vector();
 # R language basics, part 2
 
 > Talk 03
-> 	View the original slide through [this link](../talk03.pdf).
-> 	View the original R markdown file of the slide through [this link](../talk03.Rmd).
+>
+> View the original slide through [this link](../talk03.pdf).
+>
+> View the original R markdown file of the slide through [this link](../talk03.Rmd).
 
 ## `data.frame`
 
@@ -707,8 +715,10 @@ Use the following functions to write object(s) to external files:
 # R language basics, part 3: factor
 
 > Talk 04
-> 	View the original slide through [this link](../talk04.pdf).
-> 	View the original R markdown file of the slide through [this link](../talk04.Rmd).
+>
+> View the original slide through [this link](../talk04.pdf).
+>
+> View the original R markdown file of the slide through [this link](../talk04.Rmd).
 
 ## IO and working enviroment management
 
@@ -723,6 +733,20 @@ Each RStudio session is automatically associated with a R session
 > However, I’m keen on coding with PyCharm but not RStudio, for its wonderful Plug-in Environment, which can let me use plug-ins such as Code GeeX by Zhipu AI (a company founded by some student in KEG team inTsinghua University) or GitHub Copilot by GitHub to let the coding process more quickly, for the instruction from GPTs.
 
 <img src="./image/r_session_in_rstudio.png" alt="r_session_in_rstudio"  />
+
+If you want to coding with R using PyCharm or other JetBrains IDE (i.e. IntelliJ, CLion, etc.), remember to install the *R Language Plug-in*
+
+<img src="./image/image-20231202111619635.png" alt="r-language plug-in in PyCharm" style="zoom:50%;" />
+
+For instruction how to get FREE Student Lisence of GitHub Pro, GitHub Copilot and JetBrains Products and their benefits, see their official website:
+
+- [GitHub Global Campus](https://campus.github.com)
+
+	Make sure you don’t use VPNs and use your phone to log in and apply (HUST Campus Network is recommended), give “Precise Location” permission to your browser. You may use your “[Student Number]@hust.edu.cn” mail to verify your identity as a student studying in HUST.
+
+- [JetBrains Products](https://www.jetbrains.com/lp/leaflets-gdc/students/)
+
+	Because our email addresses ending with “@hust.edu.cn” are banned due to misuse, you should apply for an online verification report on [CHSI](chsi.com.cn) (press the link to visit the website), instructions [here](https://www.chsi.com.cn/xlcx/rhsq.jsp).
 
 ### Start a new RStudio session by creating a new project
 
@@ -776,3 +800,126 @@ load(file = "prj_r_for_bioinformatics_aug3_2019.RData")
 - You may need to reload all the packages
 
 ### Save selected variables
+
+Sometimes you need to transfer processed data to a collaborator ...
+
+```R
+# Save selected variables to external
+save(
+  city, 
+  country, 
+  file="1.RData"
+)
+# You can specify directory name
+load("1.RData")
+```
+
+### Close and (re)open a project
+
+- To close a project
+
+	<img src="./image/Rstudio_close_a_project.png" alt="Rstudio_close_a_project" />
+
+- In RStudio and similar IDEs, there are some preferences to choose
+
+	<img src="./image/rstudio_project_options.png" alt="rstudio_project_options" style="zoom:80%;" />
+
+> The UI in PyCharm
+
+<img src="./image/pycharm_project_options.png" alt="pycharm_project_options" style="zoom: 33%;" />
+
+**Notes:**
+
+- Save on exit
+- Load on opening 
+- When the data is large, the loading time may be too long ...
+
+### Open a project
+
+<img src="./image/rstudio_open_a_project.png" alt="rstudio_open_a_project" style="zoom:80%;" />
+
+> When in PyCharm, simply drag the working directory to its main window, remember to trust the project.
+>
+
+## Factors
+
+Factor is a data structure used for fields that takes only predefined, finite number of values (categorical data).
+
+It will limit the selection of input data.
+
+### Play around with `levels()`
+
+Here are instructions of modifying factor levels
+
+> Based on the textbook
+
+The levels are terse and inconsistent. Let’s tweak them to be longer and use a parallel construction. Like most rename and recoding functions in the tidyverse, the new values go on the left and the old values go on the right:
+
+```R
+load(gss_cat)
+
+mutate(
+  partyid = fct_recode(partyid,
+    "Republican, strong"    = "Strong republican",
+    "Republican, weak"      = "Not str republican",
+    "Independent, near rep" = "Ind,near rep",
+    "Independent, near dem" = "Ind,near dem",
+    "Democrat, weak"        = "Not str democrat",
+    "Democrat, strong"      = "Strong democrat"
+  )
+) 
+
+count(partyid)
+
+#> # A tibble: 10 × 2
+#>   partyid                   n
+#>   <fct>                 <int>
+#> 1 No answer               154
+#> 2 Don't know                1
+#> 3 Other party             393
+#> 4 Republican, strong     2314
+#> 5 Republican, weak       3032
+#> 6 Independent, near rep  1791
+#> # ℹ 4 more rows
+```
+
+Use this technique with care: if you group together categories that are truly different you will end up with misleading results.
+
+The order of the `levels` determines the sorting order.
+
+### Use factor to clean data
+
+> Usage of `fct_xxx()` functions.
+
+Suppose I have a set of gender data that is written in a very irregular way:
+
+```R
+gender =
+	c("f", "m ", "male ","male", "female", "FEMALE", "Male", "f", "m")
+
+gender_fct =
+  as.factor(gender)
+
+fct_count(gender_fct)
+```
+
+The output looks like this:
+
+<img src="./image/image-20231202114121080.png" alt="image-20231202114121080" style="zoom:50%;" />
+
+Now I request to replace with Female, Male.
+
+```R
+gender_fct =
+  fct_collapse(
+    gender,
+    Female = c("f", "female", "FEMALE"),
+    Male = c("m ", "m", "male ", "male", "Male")
+  )
+
+fct_count(gender_fct)
+```
+
+<img src="./image/image-20231202114937281.png" alt="image-20231202114937281" style="zoom:50%;" />
+
+You can also use `fct_relabel()` to do the same thing
