@@ -1,4 +1,4 @@
-# Review of the course “R for Data Science”
+# Review of the course “R for Data Science” Part 01(Talk 01~ 04)
 
 <font size = 1>**By Haoran Nie @ HUST Life ST**</font>
 
