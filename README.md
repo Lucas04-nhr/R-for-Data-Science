@@ -29,8 +29,8 @@ Of course, you can buy me a coffee if you like~
 
 Payment methods:
 
-- [WeChat](./PaymentImages/Wechat.png)
-- [Alipay](./PaymentImages/Alipay.png)
+- [WeChat](./images/WeChat.png)
+- [Alipay](./images/Alipay.png)
 
 ---
 
